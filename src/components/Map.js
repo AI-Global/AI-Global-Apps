@@ -36,7 +36,7 @@ function renderPulse(map, context, size, offset) {
 };
 
 let eventToFeatureJSON = (event) => {
-  let {title, desc, lat, lng, link} = event;
+  let { title, desc, lat, lng, link } = event;
   return {
     'type': 'Feature',
     'properties': {
@@ -71,6 +71,13 @@ class Map extends React.Component {
       center: [this.state.lng, this.state.lat],
       zoom: this.state.zoom
     });
+    map.on('move', () => {
+      this.setState({
+        lng: map.getCenter().lng.toFixed(4),
+        lat: map.getCenter().lat.toFixed(4),
+        zoom: map.getZoom().toFixed(2)
+      });
+    });
     map.on('load', () => {
       db.map(item => eventToFeatureJSON(item)).forEach((marker, i) => {
         let canvas = document.createElement('canvas');
@@ -101,6 +108,10 @@ class Map extends React.Component {
     let { width, height } = this.state;
     return (
       <div>
+        <div className='overlap-box'>
+          <h3 className='overlap-box-title'>Internet</h3>
+          <div className='overlap-box-content'>{db.map(item => <div>{item.title}</div>)}</div>
+        </div>
         <div id="#map" ref={elem => this.mapContainer = elem}
           style={{ width: width + 'px', height: height + 'px' }} />
       </div>
