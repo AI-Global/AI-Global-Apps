@@ -2,58 +2,53 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import db from '../data/db';
 
-const size = 100;
-let pulseImg = (map) => {
+function renderPulse(map, context, size, offset) {
+  let duration = 1300;
+  let t = (offset + performance.now() % duration) / duration;
+  let radius = (size / 2) * 0.3;
+  let outerRadius = (size / 2) * 0.7 * t + radius;
+  context.clearRect(0, 0, size, size);
+  context.beginPath();
+  context.arc(
+    size / 2,
+    size / 2,
+    outerRadius,
+    0,
+    Math.PI * 2
+  );
+  context.fillStyle = 'rgba(255, 200, 200,' + (1 - t) + ')';
+  context.fill();
+  context.beginPath();
+  context.arc(
+    size / 2,
+    size / 2,
+    radius,
+    0,
+    Math.PI * 2
+  );
+  context.fillStyle = 'rgba(255, 100, 100, 1)';
+  context.strokeStyle = 'white';
+  context.lineWidth = 2 + 4 * (1 - t);
+  context.fill();
+  context.stroke();
+  map.triggerRepaint();
+  return true;
+};
+
+let eventToFeatureJSON = (event) => {
+  let {title, desc, lat, lng, link} = event;
   return {
-    width: size,
-    height: size,
-    data: new Uint8Array(size * size * 4),
-    onAdd: function () {
-      var canvas = document.createElement('canvas');
-      canvas.width = this.width;
-      canvas.height = this.height;
-      this.context = canvas.getContext('2d');
+    'type': 'Feature',
+    'properties': {
+      'title': title,
+      'description': desc,
+      'link': link
     },
-    render: function () {
-      var duration = 1000;
-      var t = (performance.now() % duration) / duration;
-      var radius = (size / 2) * 0.3;
-      var outerRadius = (size / 2) * 0.7 * t + radius;
-      var context = this.context;
-      context.clearRect(0, 0, this.width, this.height);
-      context.beginPath();
-      context.arc(
-        this.width / 2,
-        this.height / 2,
-        outerRadius,
-        0,
-        Math.PI * 2
-      );
-      context.fillStyle = 'rgba(255, 200, 200,' + (1 - t) + ')';
-      context.fill();
-      context.beginPath();
-      context.arc(
-        this.width / 2,
-        this.height / 2,
-        radius,
-        0,
-        Math.PI * 2
-      );
-      context.fillStyle = 'rgba(255, 100, 100, 1)';
-      context.strokeStyle = 'white';
-      context.lineWidth = 2 + 4 * (1 - t);
-      context.fill();
-      context.stroke();
-      this.data = context.getImageData(
-        0,
-        0,
-        this.width,
-        this.height
-      ).data;
-      map.triggerRepaint();
-      return true;
+    'geometry': {
+      'type': 'Point',
+      'coordinates': [lng, lat]
     }
-  }
+  };
 };
 
 class Map extends React.Component {
@@ -77,53 +72,24 @@ class Map extends React.Component {
       zoom: this.state.zoom
     });
     map.on('load', () => {
-      let popup = new mapboxgl.Popup({
-        closeButton: false,
-        closeOnClick: false
-      });
-      map.addImage('pulsing-dot', pulseImg(map), { pixelRatio: 2 });
-      map.addSource('points', {
-        'type': 'geojson',
-        'data': {
-          'type': 'FeatureCollection',
-          'features': [
-            {
-              'type': 'Feature',
-              'properties': {
-                'description':
-                  '<strong>Fullname</strong><p>Info.</p><a href="#">http://website.com</a>',
-              },
-              'geometry': {
-                'type': 'Point',
-                'coordinates': [0, 0]
-              }
-            }
-          ]
-        }
-      });
-      map.addLayer({
-        'id': 'points',
-        'type': 'symbol',
-        'source': 'points',
-        'layout': {
-          'icon-image': 'pulsing-dot'
-        }
-      });
-      map.on('mouseenter', 'points', (e) => {
-        map.getCanvas().style.cursor = 'pointer';
-        let coordinates = e.features[0].geometry.coordinates.slice();
-        let description = e.features[0].properties.description;
-        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
-          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
-        }
-        popup
-          .setLngLat(coordinates)
-          .setHTML(description)
+      db.map(item => eventToFeatureJSON(item)).forEach((marker, i) => {
+        let canvas = document.createElement('canvas');
+        canvas.width = 50;
+        canvas.height = 50;
+        let context = canvas.getContext('2d');
+        let offset = Math.random() * 1000;
+        let markerRender = () => {
+          renderPulse(map, context, 50, offset);
+          requestAnimationFrame(markerRender);
+        };
+        requestAnimationFrame(markerRender);
+        let popUpHTML = `<h3>${marker.properties.title}</h3>
+          <p>${marker.properties.description}</p>
+          <a href="${marker.properties.link}">More Info</a>`;
+        new mapboxgl.Marker(canvas)
+          .setLngLat(marker.geometry.coordinates)
+          .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popUpHTML))
           .addTo(map);
-      });
-      map.on('mouseleave', 'points', function () {
-        map.getCanvas().style.cursor = '';
-        popup.remove();
       });
     });
     window.addEventListener('resize', () => {
