@@ -89,6 +89,10 @@ class Map extends React.Component {
           'features': [
             {
               'type': 'Feature',
+              'properties': {
+                'description':
+                  '<strong>Fullname</strong><p>Info.</p><a href="#">http://website.com</a>',
+              },
               'geometry': {
                 'type': 'Point',
                 'coordinates': [0, 0]
@@ -104,6 +108,22 @@ class Map extends React.Component {
         'layout': {
           'icon-image': 'pulsing-dot'
         }
+      });
+      map.on('mouseenter', 'points', (e) => {
+        map.getCanvas().style.cursor = 'pointer';
+        let coordinates = e.features[0].geometry.coordinates.slice();
+        let description = e.features[0].properties.description;
+        while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
+          coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
+        }
+        popup
+          .setLngLat(coordinates)
+          .setHTML(description)
+          .addTo(map);
+      });
+      map.on('mouseleave', 'points', function () {
+        map.getCanvas().style.cursor = '';
+        popup.remove();
       });
     });
     window.addEventListener('resize', () => {
