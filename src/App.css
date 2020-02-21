@@ -8,19 +8,14 @@
   position: absolute;
   left: 0;
   bottom: 50px;
-  width: 500px;
   background-color: #404040;
   color: #ffffff;
   z-index: 1 !important;
-  padding-left: 6px;
-  padding-top: 6px;
+  padding: 6px;
 }
 
-.overlap-box-content {
-  overflow-y: scroll;
-  height: 100px;
-}
-
-.overlap-box-title {
-  margin-top: 2px;
+.overlap-box a {
+  text-decoration: none;
+  color: #ffffff;
+  border-radius: 3px;
 }
