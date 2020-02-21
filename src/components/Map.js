@@ -16,7 +16,7 @@ function renderPulse(map, context, size, offset, colors) {
     0,
     Math.PI * 2
   );
-  context.fillStyle = `rgba(${colors[0][0]}, ${colors[0][1]}, ${colors[0][2]}, ${1-t})`;
+  context.fillStyle = `rgba(${colors[0][0]}, ${colors[0][1]}, ${colors[0][2]}, ${1 - t})`;
   context.fill();
   context.beginPath();
   context.arc(
@@ -37,7 +37,7 @@ function renderPulse(map, context, size, offset, colors) {
 
 let eventToFeatureJSON = (event) => {
   let { title, issue, lat, lng, link, isInternet, domain } = event;
-  if(isInternet) {
+  if (isInternet) {
     lat = Math.random();
     lng = Math.random();
   }
@@ -92,7 +92,6 @@ class Map extends React.Component {
         acc[domain] = [[r + 200, g + 200, b + 200], [r + 100, g + 100, b + 100]];
         return acc;
       }, {});
-      
       db.map(item => eventToFeatureJSON(item)).forEach((marker, i) => {
         let item = db[i];
         let canvas = document.createElement('canvas');
@@ -101,19 +100,32 @@ class Map extends React.Component {
         let context = canvas.getContext('2d');
         let offset = Math.random() * 1000;
         let colors = domainToColors[item.domain];
-        let markerRender = () => {
-          renderPulse(map, context, 50, offset, colors);
-          requestAnimationFrame(markerRender);
-        };
-        requestAnimationFrame(markerRender);
         let popUpHTML = `<h3>${marker.properties.title}</h3>
           <p><i>${marker.properties.category}</i></p>
           <p>${marker.properties.description}</p>
           <a target="_blank" href="${marker.properties.link}">More Info</a>`;
-        new mapboxgl.Marker(canvas)
+        let mkr = new mapboxgl.Marker(canvas)
           .setLngLat(marker.geometry.coordinates)
           .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popUpHTML))
           .addTo(map);
+        let animateParams = [i * 100];
+        let dx = Math.random() * 160 + 20;
+        let dy = Math.random() * 30 + 20;
+        let markerRender = () => {
+          if(item.isInternet) {
+            let t = animateParams[0]++;
+            let lng = Math.sin(t / 1000) * dx - 40;
+            let lat = Math.cos(t / 1000) * dy + 40;
+            if (lng < -90) lng = 90 - (-lng);
+            if (lat < -90) lat = 90 - (-lat);
+            if (lng > 90) lng = -90 - (-lng);
+            if (lat > 90) lat = -90 - (-lat);
+            mkr.setLngLat([lng, lat]);
+          }
+          renderPulse(map, context, 50, offset, colors);
+          requestAnimationFrame(markerRender);
+        };
+        requestAnimationFrame(markerRender);
       });
     });
     window.addEventListener('resize', () => {
