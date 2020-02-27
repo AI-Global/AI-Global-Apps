@@ -35,6 +35,19 @@ function renderPulse(map, context, size, offset, colors) {
   return true;
 };
 
+let domains = [...new Set(db.map(item => item.domain))];
+let domainToColors = domains.reduce((acc, domain) => {
+  let r = Math.floor(Math.random() * 155);
+  let g = Math.floor(Math.random() * 155);
+  let b = Math.floor(Math.random() * 155);
+  acc[domain] = [
+    [r + 200, g + 200, b + 200], 
+    [r + 100, g + 100, b + 100], 
+    `rgba(${r + 100}, ${g + 100}, ${b + 100}, 1)`
+  ];
+  return acc;
+}, {});
+
 let eventToFeatureJSON = (event) => {
   let { title, issue, lat, lng, link, isInternet, domain } = event;
   if (isInternet) {
@@ -65,7 +78,7 @@ class Map extends React.Component {
       height: window.innerHeight,
       lng: 5,
       lat: 34,
-      zoom: 2
+      zoom: 1.3
     };
   }
 
@@ -84,14 +97,6 @@ class Map extends React.Component {
       });
     });
     map.on('load', () => {
-      let domains = [...new Set(db.map(item => item.domain))];
-      let domainToColors = domains.reduce((acc, domain) => {
-        let r = Math.floor(Math.random() * 155);
-        let g = Math.floor(Math.random() * 155);
-        let b = Math.floor(Math.random() * 155);
-        acc[domain] = [[r + 200, g + 200, b + 200], [r + 100, g + 100, b + 100]];
-        return acc;
-      }, {});
       db.map(item => eventToFeatureJSON(item)).forEach((marker, i) => {
         let item = db[i];
         let canvas = document.createElement('canvas');
@@ -102,8 +107,10 @@ class Map extends React.Component {
         let colors = domainToColors[item.domain];
         let popUpHTML = `<h3>${marker.properties.title}</h3>
           <p><i>${marker.properties.category}</i></p>
-          <p>${marker.properties.description}</p>
-          <a target="_blank" href="${marker.properties.link}">More Info</a>`;
+          <p>${marker.properties.description}</p>`;
+        if (marker.properties.link) {
+          popUpHTML += `<a target="_blank" href="${marker.properties.link}">More Info</a>`;
+        }
         let mkr = new mapboxgl.Marker(canvas)
           .setLngLat(marker.geometry.coordinates)
           .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popUpHTML))
@@ -112,7 +119,7 @@ class Map extends React.Component {
         let dx = Math.random() * 160 + 20;
         let dy = Math.random() * 30 + 20;
         let markerRender = () => {
-          if(item.isInternet) {
+          if (item.isInternet) {
             let t = animateParams[0]++;
             let lng = Math.sin(t / 1000) * dx - 40;
             let lat = Math.cos(t / 1000) * dy + 40;
@@ -137,8 +144,15 @@ class Map extends React.Component {
     let { width, height } = this.state;
     return (
       <div>
-        <div className="overlap-box">
+        <div className="legend-box">
+          <p>Domains</p>
+          {domains.map(domain => 
+            <div><div style={{backgroundColor: domainToColors[domain][2]}} className="color-block"></div> {domain}</div>)}
+          <br/>
           <a target="_blank" href="https://google.com">View Dataset</a>
+        </div>
+        <div className="title-box">
+            <h1>Where AI Has Gone Wrong</h1>
         </div>
         <div id="#map" ref={elem => this.mapContainer = elem}
           style={{ width: width + 'px', height: height + 'px' }} />

@@ -504,7 +504,7 @@ export default [
     "lat": "",
     "lng": "",
     "isInternet": 1,
-    "link": "(https://edition.cnn.com/2019/11/12/business/apple-card-gender-bias/index.html",
+    "link": "https://edition.cnn.com/2019/11/12/business/apple-card-gender-bias/index.html",
     "action": "",
     "reading": "",
     "insights": ""
@@ -594,7 +594,7 @@ export default [
     "lat": 44.934891,
     "lng": -93.467056,
     "isInternet": 0,
-    "link": "(https://www.bizjournals.com/twincities/news/2019/10/29/unitedhealth-algorithm-accused-of-racial-bias-gets.html)",
+    "link": "https://www.bizjournals.com/twincities/news/2019/10/29/unitedhealth-algorithm-accused-of-racial-bias-gets.html)",
     "action": "",
     "reading": "",
     "insights": ""
