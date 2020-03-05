@@ -41,8 +41,12 @@
   left: 0;
   right: 0;
   margin: auto;
-  color: #ffffff;
+  color: #404040;
   z-index: 2 !important;
   padding: 6px;
   border-radius: 3px;
+}
+
+.mapboxgl-popup .mapboxgl-popup-anchor-bottom {
+  z-index: 999;
 }

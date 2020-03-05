@@ -149,10 +149,11 @@ class Map extends React.Component {
           {domains.map(domain => 
             <div><div style={{backgroundColor: domainToColors[domain][2]}} className="color-block"></div> {domain}</div>)}
           <br/>
-          <a target="_blank" href="https://google.com">View Dataset</a>
+          <a target="_blank" href="https://portal.ai-global.org/dataset/ai-violation-use-cases">View Dataset</a>
         </div>
         <div className="title-box">
             <h1>Where AI Has Gone Wrong</h1>
+            <h5>A cool description about the content of the map that exists below.</h5>
         </div>
         <div id="#map" ref={elem => this.mapContainer = elem}
           style={{ width: width + 'px', height: height + 'px' }} />
