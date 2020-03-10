@@ -15,11 +15,11 @@
   position: absolute;
   left: 0;
   bottom: 60px;
-  background-color: #404040;
+  background-color: #1A2c37;
   color: #ffffff;
   z-index: 1 !important;
   padding: 6px;
-  border-radius: 3px;
+  border-radius: 10px;
 }
 
 .legend-box a {
@@ -41,7 +41,7 @@
   left: 0;
   right: 0;
   margin: auto;
-  color: #404040;
+  color: #eeeeee;
   z-index: 2 !important;
   padding: 6px;
   border-radius: 3px;

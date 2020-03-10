@@ -36,17 +36,26 @@ function renderPulse(map, context, size, offset, colors) {
 };
 
 let domains = [...new Set(db.map(item => item.domain))];
-let domainToColors = domains.reduce((acc, domain) => {
-  let r = Math.floor(Math.random() * 155);
-  let g = Math.floor(Math.random() * 155);
-  let b = Math.floor(Math.random() * 155);
-  acc[domain] = [
-    [r + 200, g + 200, b + 200], 
-    [r + 100, g + 100, b + 100], 
-    `rgba(${r + 100}, ${g + 100}, ${b + 100}, 1)`
+let domainColors = [
+  [242, 255, 73],
+  [255, 36, 36],
+  [100, 93, 215],
+  [223, 97, 237],
+  [179, 255, 252],
+  [239, 195, 245],
+  [242, 100, 48],
+  [0, 155, 114]
+];
+
+let domainToColors = {};
+for(let dIdx in domains) {
+  let [r, g, b] = domainColors[dIdx];
+  domainToColors[domains[dIdx]] = [
+    [r, g, b],
+    [r + 50, g + 50, b + 50],
+    `rgba(${r}, ${g}, ${b}, 1)`
   ];
-  return acc;
-}, {});
+};
 
 let eventToFeatureJSON = (event) => {
   let { title, issue, lat, lng, link, isInternet, domain } = event;
@@ -111,24 +120,14 @@ class Map extends React.Component {
         if (marker.properties.link) {
           popUpHTML += `<a target="_blank" href="${marker.properties.link}">More Info</a>`;
         }
+        let [x, y] = marker.geometry.coordinates;
+        x += Math.random() * 0.5 - 0.25;
+        y += Math.random() * 0.5 - 0.25;
         let mkr = new mapboxgl.Marker(canvas)
-          .setLngLat(marker.geometry.coordinates)
+          .setLngLat([x, y])
           .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popUpHTML))
           .addTo(map);
-        let animateParams = [i * 100];
-        let dx = Math.random() * 160 + 20;
-        let dy = Math.random() * 30 + 20;
         let markerRender = () => {
-          if (item.isInternet) {
-            let t = animateParams[0]++;
-            let lng = Math.sin(t / 1000) * dx - 40;
-            let lat = Math.cos(t / 1000) * dy + 40;
-            if (lng < -90) lng = 90 - (-lng);
-            if (lat < -90) lat = 90 - (-lat);
-            if (lng > 90) lng = -90 - (-lng);
-            if (lat > 90) lat = -90 - (-lat);
-            mkr.setLngLat([lng, lat]);
-          }
           renderPulse(map, context, 50, offset, colors);
           requestAnimationFrame(markerRender);
         };
@@ -141,7 +140,7 @@ class Map extends React.Component {
   }
 
   render() {
-    let { width, height } = this.state;
+    let { width, height, zoom } = this.state;
     return (
       <div>
         <div className="legend-box">
@@ -153,7 +152,7 @@ class Map extends React.Component {
         </div>
         <div className="title-box">
             <h1>Where AI Has Gone Wrong</h1>
-            <h5>A cool description about the content of the map that exists below.</h5>
+            {zoom < 3.55 && <h5 style={{margin: 'auto', width: '40%'}}>Where AI Has Gone Wrong represents historical instances of where AI has adversely impacted society in a specific domain. Click on a dot for a brief description and a link for more information! If a dot is traveling, it means the case impacts society across country borders on the Internet.</h5>}
         </div>
         <div id="#map" ref={elem => this.mapContainer = elem}
           style={{ width: width + 'px', height: height + 'px' }} />
