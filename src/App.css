@@ -47,6 +47,10 @@
   border-radius: 3px;
 }
 
-.mapboxgl-popup .mapboxgl-popup-anchor-bottom {
-  z-index: 999;
+.title-box h1, .title-box h5 {
+  backdrop-filter: blur(6px);
+}
+
+.mapboxgl-popup {
+  z-index: 999 !important;
 }

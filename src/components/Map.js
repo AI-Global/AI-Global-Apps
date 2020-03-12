@@ -41,7 +41,7 @@ let domainColors = [
   [255, 36, 36],
   [100, 93, 215],
   [223, 97, 237],
-  [179, 255, 252],
+  [101, 255, 249],
   [239, 195, 245],
   [242, 100, 48],
   [0, 155, 114]
@@ -87,7 +87,7 @@ class Map extends React.Component {
       height: window.innerHeight,
       lng: 5,
       lat: 34,
-      zoom: 1.3
+      zoom: 1.7
     };
   }
 
@@ -98,6 +98,7 @@ class Map extends React.Component {
       center: [this.state.lng, this.state.lat],
       zoom: this.state.zoom
     });
+    map.addControl(new mapboxgl.NavigationControl());
     map.on('move', () => {
       this.setState({
         lng: map.getCenter().lng.toFixed(4),
@@ -151,7 +152,7 @@ class Map extends React.Component {
           <a target="_blank" href="https://portal.ai-global.org/dataset/ai-violation-use-cases">View Dataset</a>
         </div>
         <div className="title-box">
-            <h1>Where AI Has Gone Wrong</h1>
+            <h1 style={{margin: 'auto', width: '40%', marginBottom: '20px'}}>Where AI Has Gone Wrong</h1>
             {zoom < 3.55 && <h5 style={{margin: 'auto', width: '40%'}}>Where AI Has Gone Wrong represents historical instances of where AI has adversely impacted society in a specific domain. Click on a dot for a brief description and a link for more information! If a dot is traveling, it means the case impacts society across country borders on the Internet.</h5>}
         </div>
         <div id="#map" ref={elem => this.mapContainer = elem}
