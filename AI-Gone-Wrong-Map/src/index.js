@@ -5,7 +5,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-mapboxgl.accessToken = 'pk.eyJ1Ijoic3NoaDEyIiwiYSI6ImNpcTVhNDQxYjAwM3FmaGtrYnl6czEwMGcifQ.eYETiDD8NqThLahLIBmjSQ';
+mapboxgl.accessToken = 'pk.eyJ1IjoibWFydGhhY3oiLCJhIjoiY2s2a3pxaHIwMDZnNzNubzZpbHBycHVzaCJ9.Zx53mFfDvereaTWOIRHfwA';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
