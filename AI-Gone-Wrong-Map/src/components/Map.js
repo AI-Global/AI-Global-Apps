@@ -5,6 +5,7 @@ import db from '../data/db';
 function renderPulse(map, context, size, offset, colors) {
   let duration = 1300;
   let t = (offset + performance.now() % duration) / duration;
+  t = 0.8; // TODO remove animation
   let radius = (size / 2) * 0.3;
   let outerRadius = (size / 2) * 0.7 * t + radius;
   context.clearRect(0, 0, size, size);
