@@ -276,10 +276,6 @@ export default [
     "type": "Corporate"
   },
   {
-    "name": "Google",
-    "type": "Corporate"
-  },
-  {
     "name": "Microsoft",
     "type": "Corporate"
   },
@@ -377,10 +373,6 @@ export default [
   },
   {
     "name": "Data Robot",
-    "type": "Corporate"
-  },
-  {
-    "name": "Google",
     "type": "Corporate"
   },
   {
