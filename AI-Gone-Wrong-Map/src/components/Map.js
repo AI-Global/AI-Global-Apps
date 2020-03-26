@@ -2,13 +2,16 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import db from '../data/db';
 
-function renderPulse(map, context, size, offset, colors) {
+function renderPulse(map, context, size, offset, domain, colors) {
   let duration = 1300;
   let t = (offset + performance.now() % duration) / duration;
   t = 0.8; // TODO remove animation
   let radius = (size / 2) * 0.3;
   let outerRadius = (size / 2) * 0.7 * t + radius;
   context.clearRect(0, 0, size, size);
+  if(!domainToVisable[domain]) {
+    return;
+  }
   context.beginPath();
   context.arc(
     size / 2,
@@ -38,24 +41,28 @@ function renderPulse(map, context, size, offset, colors) {
 
 let domains = [...new Set(db.map(item => item.domain))];
 let domainColors = [
-  [242, 255, 73],
-  [255, 36, 36],
-  [100, 93, 215],
-  [223, 97, 237],
-  [101, 255, 249],
-  [239, 195, 245],
-  [242, 100, 48],
-  [0, 155, 114]
+  [148, 189, 255],
+  [4, 236, 217],
+  [6, 55, 234],
+  [144, 7, 232],
+  [221, 101, 20],
+  [188, 10, 10],
+  [79, 34, 1],
+  [0, 86, 31],
+  [104, 110, 153],
+  [255, 97, 105]
 ];
 
 let domainToColors = {};
-for(let dIdx in domains) {
+let domainToVisable = {};
+for (let dIdx in domains) {
   let [r, g, b] = domainColors[dIdx];
   domainToColors[domains[dIdx]] = [
     [r, g, b],
     [r + 50, g + 50, b + 50],
     `rgba(${r}, ${g}, ${b}, 1)`
   ];
+  domainToVisable[domains[dIdx]] = true;
 };
 
 let eventToFeatureJSON = (event) => {
@@ -86,6 +93,7 @@ class Map extends React.Component {
     this.state = {
       width: window.innerWidth,
       height: window.innerHeight,
+      selected: domains,
       lng: 5,
       lat: 34,
       zoom: 1.7
@@ -130,7 +138,7 @@ class Map extends React.Component {
           .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popUpHTML))
           .addTo(map);
         let markerRender = () => {
-          renderPulse(map, context, 50, offset, colors);
+          renderPulse(map, context, 50, offset, item.domain, colors);
           requestAnimationFrame(markerRender);
         };
         requestAnimationFrame(markerRender);
@@ -141,20 +149,35 @@ class Map extends React.Component {
     });
   }
 
+  onClickDomain(domain) {
+    this.setState(state => {
+      if(state.selected.includes(domain)) {
+        domainToVisable[domain] = false;
+        state.selected = state.selected.filter(x => x != domain);
+      } else {
+        domainToVisable[domain] = true;
+        state.selected.push(domain);
+      }
+      return state;
+    });
+  }
+
   render() {
-    let { width, height, zoom } = this.state;
+    let { width, height, zoom, selected } = this.state;
     return (
       <div>
         <div className="legend-box">
           <p>Domains</p>
-          {domains.map(domain => 
-            <div><div style={{backgroundColor: domainToColors[domain][2]}} className="color-block"></div> {domain}</div>)}
-          <br/>
+          {domains.map(domain =>
+            <div>
+              <input type="checkbox" checked={selected.includes(domain)} onClick={() => this.onClickDomain(domain)}/>
+              <div style={{ backgroundColor: domainToColors[domain][2] }} className="color-block"></div> {domain}</div>)}
+          <br />
           <a target="_blank" href="https://portal.ai-global.org/dataset/ai-violation-use-cases">View Dataset</a>
         </div>
         <div className="title-box">
-            <h1 style={{margin: 'auto', width: '40%', marginBottom: '20px'}}>Where AI Has Gone Wrong</h1>
-            {zoom < 3.55 && <h5 style={{margin: 'auto', width: '40%'}}>Where AI Has Gone Wrong represents historical instances of where AI has adversely impacted society in a specific domain. Click on a dot for a brief description and a link for more information! If a dot is traveling, it means the case impacts society across country borders on the Internet.</h5>}
+          <h1 style={{ margin: 'auto', width: '40%', marginBottom: '20px' }}>Where AI Has Gone Wrong</h1>
+          {zoom < 3.55 && <h5 style={{ margin: 'auto', width: '40%' }}>Where AI Has Gone Wrong represents historical instances of where AI has adversely impacted society in a specific domain. Click on a dot for a brief description and a link for more information! If a dot is traveling, it means the case impacts society across country borders on the Internet.</h5>}
         </div>
         <div id="#map" ref={elem => this.mapContainer = elem}
           style={{ width: width + 'px', height: height + 'px' }} />
