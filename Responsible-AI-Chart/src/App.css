@@ -1,3 +1,52 @@
 .App {
   text-align: center;
 }
+
+.legend-box {
+  display: inline-block;
+  text-align: left;
+  position: absolute;
+  left: 0;
+  bottom: 60px;
+  background-color: #e9e9e9;
+  color: #242424;
+  z-index: 1 !important;
+  padding: 6px;
+  border-radius: 2px;
+}
+
+.legend-box a {
+  text-decoration: none;
+  color: #242424;
+  border-radius: 3px;
+}
+
+.legend-box p {
+  margin-top: 4px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.title-box {
+  display: inline-block;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  color: #2e2e2e;
+  z-index: 2 !important;
+  padding: 6px;
+  border-radius: 3px;
+}
+
+.color-block {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  background-color:#ff0000;
+}
+
+text {
+  font-size: 20px !important;
+}
