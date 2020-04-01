@@ -35,7 +35,8 @@ class Chart extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: Object.keys(itemsByType)
+      selected: null,
+      selectedTypes: Object.keys(itemsByType)
     };
   }
 
@@ -80,19 +81,19 @@ class Chart extends React.Component {
 
   onCheckClick(type) {
     this.setState(state => {
-      if(state.selected.includes(type)) {
-        state.selected = state.selected.filter(x => x != type);
+      if(state.selectedTypes.includes(type)) {
+        state.selectedTypes = state.selectedTypes.filter(x => x != type);
       } else {
-        state.selected.push(type);
+        state.selectedTypes.push(type);
       }
       return state;
     });
   }
 
   render() {
-    let {selected} = this.state;
+    let {selectedTypes} = this.state;
     let nodesByType = db.reduce((acc, item) => {
-      if(!selected.includes(item.type)) {
+      if(!selectedTypes.includes(item.type)) {
         return acc;
       }
       if (!(item.type in acc)) {
@@ -127,7 +128,7 @@ class Chart extends React.Component {
         <div className="legend-box">
           <p>Types</p>
           {Object.keys(itemsByType).map((type) => <div>
-            <input type="checkbox" checked={selected.includes(type)} onClick={() => this.onCheckClick(type)}/>
+            <input type="checkbox" checked={selectedTypes.includes(type)} onClick={() => this.onCheckClick(type)}/>
             <div style={{backgroundColor: 'rgb(' + typeToColor[type].join(',') + ')'}} className="color-block"></div> {type}</div>)}
           <br />
           <a target="_blank" href="https://google.com">View Dataset</a>
