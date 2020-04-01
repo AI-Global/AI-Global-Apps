@@ -1,382 +1,1166 @@
 export default [
   {
-    "name": "Open Community for Ethics in Autonomous and Intelligent Systems (OCEANIS)",
-    "type": "Regional body"
-  },
-  {
-    "name": "European Committee for Standardization (CEN)/ CENELEC",
-    "type": "Regional body"
-  },
-  {
-    "name": "Euopean Commission",
-    "type": "Regional body"
-  },
-  {
-    "name": "AFNOR normalisation",
-    "type": "National Standard Setting Organizaton"
-  },
-  {
-    "name": "Austrian Standards International",
-    "type": "National Standard Setting Organizaton"
-  },
-  {
-    "name": "American National Standards Institute",
-    "type": "National Standard Setting Organizaton"
-  },
-  {
-    "name": "Standards Council of Canada",
-    "type": "National Standard Setting Organizaton"
-  },
-  {
-    "name": "Standardization Administration of China",
-    "type": "National Standard Setting Organizaton"
-  },
-  {
-    "name": "CESI",
-    "type": "University"
-  },
-  {
-    "name": "Standards for New Zealand",
-    "type": "National Standard Setting Organizaton"
-  },
-  {
-    "name": "ISO",
-    "type": "Sponsored by BSI"
-  },
-  {
-    "name": "Google",
-    "type": "Corporate"
-  },
-  {
-    "name": "University of Montreal",
-    "type": "Multi-stakeholder"
-  },
-  {
-    "name": "European High-level expert group on AI",
-    "type": "Government"
-  },
-  {
-    "name": "European Group on Ethics in Science and New Technologies",
-    "type": "Government"
-  },
-  {
-    "name": "ITU",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "Standards administration of China",
-    "type": "Government"
-  },
-  {
-    "name": "AQSIQ",
-    "type": "Government"
-  },
-  {
-    "name": "Ministry of Industry and Information Technology",
-    "type": "Government"
-  },
-  {
-    "name": "NBIE",
-    "type": "Government"
-  },
-  {
-    "name": "Japan",
-    "type": "Government"
-  },
-  {
-    "name": "US National Science and Technology Council",
-    "type": "Government"
-  },
-  {
-    "name": "Access Now",
-    "type": "Civil Society"
-  },
-  {
-    "name": "T20: Think20",
-    "type": "Civil Society"
-  },
-  {
-    "name": "Government of Canada",
-    "type": "Government"
-  },
-  {
-    "name": "Future of Humanity",
-    "type": "Civil Society"
-  },
-  {
-    "name": "European Union",
-    "type": "Political and Economic Union"
-  },
-  {
-    "name": "Government of California",
-    "type": "Government"
-  },
-  {
-    "name": "British Standrads Institute (BSI)",
-    "type": "National Standard Setting Organizaton"
-  },
-  {
-    "name": "IEEE",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Model Process for Addressing Ethical Concerns During System Design",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Transparency of Autonomous Systems",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Data Privacy Process",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Algorithmic Bias Considerations",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Standard on Child and Student Data Governance",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Standard on Employer Data Governance",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Standard on Personal Data AI Agent Working Group",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Ontological Standard for Ethically driven Robotics and Automation Systems",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Standard for Ethically Driven Nudging for Robotic, Intelligent and Autonomous Systems",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Standard for Fail-Safe Design of Autonomous and Semi-Autonomous Systems",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Wellbeing Metrics Standard for Ethical Artificial Intelligence and Autonomous Systems",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Process of Identifying and Rating the Trustworthiness of News Sources",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Machine Readable Personal Privacy Terms",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Inclusion and Application Standards for Automated Facial Analysis Technology",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "Standard for Ethical considerations in Emulated Empathy in Autonomous and Intelligent Systems",
-    "type": "Technical Organization"
-  },
-  {
-    "name": "International Organization for Standards (ISO)/ International Electrotechnical Commission (IEC)",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/ IEC",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC 20546:2019 -Information technology -- Big data -- Overview and vocabulary",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC AWI TR 20547-1 - Information technology -- Big data reference architecture -- Part 1: Framework and application process",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC TR 20547-2:2018 - Information technology -- Big data reference architecture -- Part 2: Use cases and derived requirements",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC DIS 20547-3.2 - Information technology -- Big data reference architecture -- Part 3: Reference architecture",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC TR 20547-5:2018 -",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "Information technology -- Big data reference architecture -- Part 5: Standards roadmap",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC WD 22989 - Artificial intelligence -- Concepts and terminology",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC WD 23053 - Framework for Artificial Intelligence (AI) Systems Using Machine Learning (ML)",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC AWI 23894 - Information Technology -- Artificial Intelligence -- Risk Management",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC NP TR 24027 - Information technology -- Artificial Intelligence (AI) -- Bias in AI systems and AI aided decision making",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC PDTR 24028 - Information technology -- Artificial Intelligence (AI -- Overview of trustworthiness in Artificial Intelligence",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC NP TR 24029-1 - Artificial Intelligence (AI) -- Assessment of the robustness of neural networks -- Part 1: Overview",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC NP TR 24030 - Information technology -- Artificial Intelligence (AI) -- Use cases",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC AWI TR 24368 - Information technology -- Artificial intelligence -- Overview of ethical and societal concerns",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC AWI TR 24372 - Information technology -- Artificial intelligence (AI) -- Overview of computational approaches for AI system",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC NP 24668 - Information technology -- Artificial intelligence --Process management framework for Big data analytics",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "ISO/IEC AWI 38507 - Information technology -- Governance of IT -- Governance implications of the use of artificial intelligence by organizations",
-    "type": "International Standards Setting Organization"
-  },
-  {
-    "name": "Global Partnership on AI",
-    "type": "Government activities"
-  },
-  {
-    "name": "Deloitte",
-    "type": "Corporate"
-  },
-  {
-    "name": "IA Latam",
-    "type": "Corporate"
-  },
-  {
-    "name": "Tella",
-    "type": "Corporate"
-  },
-  {
-    "name": "Telefonica",
-    "type": "Corporate"
-  },
-  {
-    "name": "Microsoft",
-    "type": "Corporate"
-  },
-  {
-    "name": "SAGE",
-    "type": "Corporate"
-  },
-  {
-    "name": "ITI",
-    "type": "Corporate"
-  },
-  {
-    "name": "Council of Europe, CEPEJ",
-    "type": "Inter-goernmental"
-  },
-  {
-    "name": "NY Times",
-    "type": "Multi-stakeholder"
-  },
-  {
-    "name": "IEEE",
-    "type": "Multi-stakeholder"
-  },
-  {
-    "name": "Global Network Initiative",
-    "type": "Multi-stakeholder"
-  },
-  {
-    "name": "Future of Life Institute",
-    "type": "Multi-stakeholder"
-  },
-  {
-    "name": "Partnership on AI",
-    "type": "Multi-stakeholder"
-  },
-  {
-    "name": "Monetary Authority of Singapore",
-    "type": "Government"
-  },
-  {
-    "name": "Smart Dubai",
-    "type": "Government"
-  },
-  {
-    "name": "The Public Voice Coallition",
-    "type": "Civil Society"
-  },
-  {
-    "name": "Amnesty International/ Access Now",
-    "type": "Civil Society"
-  },
-  {
-    "name": "UNI Global Union",
-    "type": "Civil Society"
-  },
-  {
-    "name": "German Federal Ministries of Education, Economic Affairs, and Social Affairs",
-    "type": "Government"
-  },
-  {
-    "name": "British Embassy in Mexico",
-    "type": "Government"
-  },
-  {
-    "name": "British House of Lords",
-    "type": "Government"
-  },
-  {
-    "name": "European Commission",
-    "type": "Government"
-  },
-  {
-    "name": "Agnecy for Digital Italy",
-    "type": "Government"
-  },
-  {
-    "name": "Mission assigned by French Prime Minister",
-    "type": "Government"
-  },
-  {
-    "name": "Government of Canada",
-    "type": "Government - National"
-  },
-  {
-    "name": "AI Now",
-    "type": "University"
-  },
-  {
-    "name": "CognitiveScale",
-    "type": "Corporate"
-  },
-  {
-    "name": "Considerai",
-    "type": "Corporate"
-  },
-  {
-    "name": "Data Robot",
-    "type": "Corporate"
-  },
-  {
-    "name": "NITI Aayog, Government of India",
-    "type": "Government"
+    "organization": "Open Community for Ethics in Autonomous and Intelligent Systems (OCEANIS)",
+    "activity": "Fourth ISO/IEC JTC 1/SC 42 Plenary",
+    "domain": "",
+    "type": "Regional body",
+    "region": "Europe",
+    "link": "https://ethicsstandards.org/p7000/",
+    "workType": "Coordinator and convenor",
+    "category": "",
+    "date": "",
+    "notes": "Connected to ISO/ IEC, not sure they are doing their own standards. Oceanis provides a high level global forum for discussion, debate and collaboration for organizations interested in the development and use of standards to further the development of autonomous and intelligent systems."
+  },
+  {
+    "organization": "European Committee for Standardization (CEN)/ CENELEC",
+    "activity": "CEN-CENELEC Focus Group on Artificial Intelligence",
+    "domain": "",
+    "type": "Regional body",
+    "region": "Europe",
+    "link": "ftp://ftp.cencenelec.eu/EN/News/SectorNews/2019/AI-Focus-Group/CEN-CLC_AI_FG%20N004_Roadmap.pdf",
+    "workType": "Standards body",
+    "category": "",
+    "date": "",
+    "notes": "Working group kick-off was on April 24, 2019 -  aim to launch a high-level discussion on standardization in the field of AI and agree on a roadmap for AI standardization by 2020."
+  },
+  {
+    "organization": "Euopean Commission",
+    "activity": "European AI Aliiance - High level group on AI",
+    "domain": "",
+    "type": "Regional body",
+    "region": "Europe",
+    "link": "https://ec.europa.eu/futurium/en/ai-alliance-consultation/guidelines#Top",
+    "workType": "Discussion forum",
+    "category": "",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "AFNOR normalisation",
+    "activity": "",
+    "domain": "",
+    "type": "Standards",
+    "region": "France",
+    "link": "https://normalisation.afnor.org/thematiques/intelligence-artificielle/",
+    "workType": "Standards body",
+    "category": "",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Austrian Standards International",
+    "activity": "",
+    "domain": "",
+    "type": "Standards",
+    "region": "Austria",
+    "link": "https://www.iso.org/member/1529.html?view=participation&t=PT",
+    "workType": "Coordinator and convenor, can provide certification",
+    "category": "",
+    "date": "",
+    "notes": "Points to ISO work"
+  },
+  {
+    "organization": "American National Standards Institute",
+    "activity": "",
+    "domain": "",
+    "type": "Standards",
+    "region": "US",
+    "link": "https://www.ansi.org/news_publications/news_story?menuid=7&articleid=c9c4ec49-640e-4192-a1c0-15c319ba3a86",
+    "workType": "Coordinator and convenor, can provide certification",
+    "category": "",
+    "date": "",
+    "notes": "points to ISO and IEEE work"
+  },
+  {
+    "organization": "Standards Council of Canada",
+    "activity": "Data Governance Standards",
+    "domain": "",
+    "type": "Standards",
+    "region": "Canada",
+    "link": "https://www.scc.ca/en/news-events/news/2019/leading-experts-join-scc-effort-transform-data-governance-landscape",
+    "workType": "Coordinator and convenor, can provide certification",
+    "category": "",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Standardization Administration of China",
+    "activity": "",
+    "domain": "",
+    "type": "Standards",
+    "region": "China",
+    "link": "",
+    "workType": "Coordinator and convenor, can provide certification",
+    "category": "",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "CESI",
+    "activity": "",
+    "domain": "",
+    "type": "University",
+    "region": "France",
+    "link": "Associated with Future of Humanity",
+    "workType": "",
+    "category": "",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Standards for New Zealand",
+    "activity": "",
+    "domain": "",
+    "type": "Standards",
+    "region": "NZ",
+    "link": "https://theconversation.com/call-for-independent-watchdog-to-monitor-nz-government-use-of-artificial-intelligence-117589",
+    "workType": "Coordinator and convenor, can provide certification",
+    "category": "",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO",
+    "activity": "ISO 3100 - Risk Management framework",
+    "domain": "Risk Management",
+    "type": "Standards",
+    "region": "UK",
+    "link": "https://www.iso.org/iso-31000-risk-management.html",
+    "workType": "Standard/ Best practice",
+    "category": "Best Practices",
+    "date": "",
+    "notes": "ISO 31000:2018, Risk management – Guidelines, provides principles, framework and a process for managing risk. It can be used by any organization regardless of its size, activity or sector.\n\nUsing ISO 31000 can help organizations increase the likelihood of achieving objectives, improve the identification of opportunities and threats and effectively allocate and use resources for risk treatment.\n\nHowever, ISO 31000 cannot be used for certification purposes, but does provide guidance for internal or external audit programmes. Organizations using it can compare their risk management practices with an internationally recognised benchmark, providing sound principles for effective management and corporate governance."
+  },
+  {
+    "organization": "Google",
+    "activity": "Responsible AI Practices",
+    "domain": "",
+    "type": "Corporate",
+    "region": "United States",
+    "link": "https://ai.google/responsibilities/responsible-ai-practices/",
+    "workType": "Principles/ guidelines",
+    "category": "Best Practices",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "University of Montreal",
+    "activity": "Montreal Declaration",
+    "domain": "",
+    "type": "Multi-stakeholder",
+    "region": "Canada",
+    "link": "https://www.montrealdeclaration-responsibleai.com/",
+    "workType": "Principles/ Assessment",
+    "category": "Best Practices",
+    "date": "December 2018",
+    "notes": ""
+  },
+  {
+    "organization": "European High-level expert group on AI",
+    "activity": "DRAFT Ethics Guidelines for Trustworthy AI",
+    "domain": "",
+    "type": "Government",
+    "region": "Belgium",
+    "link": "https://ec.europa.eu/digital-single-market/en/news/draft-ethics-guidelines-trustworthy-ai",
+    "workType": "Guidelines",
+    "category": "Best Practices",
+    "date": "December 2018",
+    "notes": ""
+  },
+  {
+    "organization": "European Group on Ethics in Science and New Technologies",
+    "activity": "Statement on AI, Robotics and Autonomous Systems",
+    "domain": "Robotics",
+    "type": "Government",
+    "region": "Belgium",
+    "link": "http://ec.europa.eu/research/ege/pdf/ege_ai_statement_2018.pdf",
+    "workType": "Whitepaper",
+    "category": "Concepts/Desired Outcomes",
+    "date": "March 2018",
+    "notes": ""
+  },
+  {
+    "organization": "ITU",
+    "activity": "AI Summit",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://aiforgood.itu.int/",
+    "workType": "Conference",
+    "category": "",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Standards administration of China",
+    "activity": "Whitepaper on AI Standardization",
+    "domain": "",
+    "type": "Government",
+    "region": "China",
+    "link": "https://www.newamerica.org/cybersecurity-initiative/digichina/blog/translation-excerpts-chinas-white-paper-artificial-intelligence-standardization/",
+    "workType": "",
+    "category": "Concepts/Desired Outcomes",
+    "date": "January 2018",
+    "notes": ""
+  },
+  {
+    "organization": "AQSIQ",
+    "activity": "",
+    "domain": "",
+    "type": "Government",
+    "region": "China",
+    "link": "http://english.aqsiq.gov.cn/",
+    "workType": "",
+    "category": "",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Ministry of Industry and Information Technology",
+    "activity": "",
+    "domain": "",
+    "type": "Government",
+    "region": "China",
+    "link": "",
+    "workType": "",
+    "category": "",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "NBIE",
+    "activity": "",
+    "domain": "",
+    "type": "Government",
+    "region": "New Zealand",
+    "link": "",
+    "workType": "",
+    "category": "",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Japan",
+    "activity": "DRAFT AI R&D Guidelines",
+    "domain": "",
+    "type": "Government",
+    "region": "Japan",
+    "link": "http://www.soumu.go.jp/main_content/000507517.pdf",
+    "workType": "Whitepaper",
+    "category": "Concepts/Desired Outcomes",
+    "date": "July 2017",
+    "notes": ""
+  },
+  {
+    "organization": "US National Science and Technology Council",
+    "activity": "Preparing for the Future of AI",
+    "domain": "",
+    "type": "Government",
+    "region": "United States",
+    "link": "https://obamawhitehouse.archives.gov/sites/default/files/whitehouse_files/microsites/ostp/NSTC/preparing_for_the_future_of_ai.pdf",
+    "workType": "Whitepaper",
+    "category": "Concepts/Desired Outcomes",
+    "date": "October 2016",
+    "notes": ""
+  },
+  {
+    "organization": "Access Now",
+    "activity": "Human Rights in the Age of AI",
+    "domain": "",
+    "type": "Civil Society",
+    "region": "United States",
+    "link": "https://www.accessnow.org/cms/assets/uploads/2018/11/AI-and-Human-Rights.pdf",
+    "workType": "Whitepaper",
+    "category": "Concepts/Desired Outcomes",
+    "date": "November 2018",
+    "notes": ""
+  },
+  {
+    "organization": "T20: Think20",
+    "activity": "Future of Work for Education in the Digital Age",
+    "domain": "",
+    "type": "Civil Society",
+    "region": "Argentina",
+    "link": "https://t20argentina.org/wp-content/uploads/2018/09/Bridges-to-the-Future-of-Education-Policy-Recommendations-for-the-Digital-Age.pdf",
+    "workType": "Whitepaper",
+    "category": "Concepts/Desired Outcomes",
+    "date": "July 2018",
+    "notes": ""
+  },
+  {
+    "organization": "Government of Canada",
+    "activity": "Responsible Use of AI in Government",
+    "domain": "",
+    "type": "Government",
+    "region": "Canada",
+    "link": "https://portal.ai-global.org/dataset?organization=government-of-canada",
+    "workType": "Whitepaper",
+    "category": "Concepts/Desired Outcomes",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Future of Humanity",
+    "activity": "Standards for AI Governance",
+    "domain": "",
+    "type": "Civil Society",
+    "region": "",
+    "link": "https://www.fhi.ox.ac.uk/wp-content/uploads/Standards_-FHI-Technical-Report.pdf",
+    "workType": "Standards",
+    "category": "Concepts/Desired Outcomes",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "European Union",
+    "activity": "European Union General Data Protection Regulation (EUGDPR)",
+    "domain": "",
+    "type": "Political and Economic Union",
+    "region": "",
+    "link": "Implementation changes by region",
+    "workType": "Regulation",
+    "category": "Policies/Laws",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Government of California",
+    "activity": "California Consumer Privacy Act",
+    "domain": "Data privacy",
+    "type": "Government",
+    "region": "",
+    "link": "https://www.caprivacy.org/",
+    "workType": "Law",
+    "category": "Policies/Laws",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "British Standrads Institute (BSI)",
+    "activity": "BS 8611- Robotics and Robotic Devices",
+    "domain": "Robotics",
+    "type": "Standards",
+    "region": "UK",
+    "link": "https://shop.bsigroup.com/ProductDetail?pid=000000000030320089",
+    "workType": "Standard (Guideline)",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": "BS 8611 gives guidelines for the identification of potential ethical harm arising from the growing number of robots and autonomous systems being used in everyday life.\n\nThe standard also provides additional guidelines to eliminate or reduce the risks associated with these ethical hazards to an acceptable level. The standard covers safe design, protective measures and information for the design and application of robots.\n\nThe new standard builds on existing safety requirements for different types of robots, covering industrial, personal care and medical."
+  },
+  {
+    "organization": "IEEE",
+    "activity": "P7000- AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": "Second link is for the 15 working groups to support the IEEE standard:\n- Model Process for Addressing Ethical Concerns During System Design\n- Transparency of Autonomous Systems\n- Data Privacy Process\n- Algorithmic Bias Considerations\n- Standard on Child and Student Data Governance\n- Standard on Employer Data Governance\n- Standard on Personal Data AI Agent Working Group\n- Ontological Standard for Ethically driven Robotics and Automation Systems \n- Standard for Ethically Driven Nudging for Robotic, Intelligent and Autonomous Systems \n- Standard for Fail-Safe Design of Autonomous and Semi-Autonomous Systems\n- Wellbeing Metrics Standard for Ethical Artificial Intelligence and Autonomous Systems \n-  Process of Identifying and Rating the Trustworthiness of News Sources\n- Machine Readable Personal Privacy Terms\n- Inclusion and Application Standards for Automated Facial Analysis Technology\n-  Standard for Ethical considerations in Emulated Empathy in Autonomous and Intelligent Systems"
+  },
+  {
+    "organization": "Model Process for Addressing Ethical Concerns During System Design",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Transparency of Autonomous Systems",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Data Privacy Process",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Algorithmic Bias Considerations",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Considerations",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Standard on Child and Student Data Governance",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Standard on Employer Data Governance",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Standard on Personal Data AI Agent Working Group",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Ontological Standard for Ethically driven Robotics and Automation Systems",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Standard for Ethically Driven Nudging for Robotic, Intelligent and Autonomous Systems",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Standard for Fail-Safe Design of Autonomous and Semi-Autonomous Systems",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Wellbeing Metrics Standard for Ethical Artificial Intelligence and Autonomous Systems",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Process of Identifying and Rating the Trustworthiness of News Sources",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Machine Readable Personal Privacy Terms",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Inclusion and Application Standards for Automated Facial Analysis Technology",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Standard for Ethical considerations in Emulated Empathy in Autonomous and Intelligent Systems",
+    "activity": "AI policy standards series",
+    "domain": "",
+    "type": "Technical Organization",
+    "region": "Global",
+    "link": "https://ethicsinaction.ieee.org/#set-the-standard",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "International Organization for Standards (ISO)/ International Electrotechnical Commission (IEC)",
+    "activity": "JTC1 40-IT Governance/ JTC 1/ SC 42",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/6794475/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": "Next meeting, October 8, Tokyo\nStandards include:\n- ISO/IEC 20546:2019 -Information technology -- Big data -- Overview and vocabulary\n- ISO/IEC AWI TR 20547-1 - Information technology -- Big data reference architecture -- Part 1: Framework and application process\n- ISO/IEC TR 20547-2:2018 - Information technology -- Big data reference architecture -- Part 2: Use cases and derived requirements\n- ISO/IEC DIS 20547-3.2 - Information technology -- Big data reference architecture -- Part 3: Reference architecture\n- ISO/IEC TR 20547-5:2018 - \nInformation technology -- Big data reference architecture -- Part 5: Standards roadmap\n- ISO/IEC WD 22989 - Artificial intelligence -- Concepts and terminology\n- ISO/IEC WD 23053 - Framework for Artificial Intelligence (AI) Systems Using Machine Learning (ML)\n- ISO/IEC AWI 23894 - Information Technology -- Artificial Intelligence -- Risk Management\n- ISO/IEC NP TR 24027 - Information technology -- Artificial Intelligence (AI) -- Bias in AI systems and AI aided decision making\n- ISO/IEC PDTR 24028 - Information technology -- Artificial Intelligence (AI -- Overview of trustworthiness in Artificial Intelligence\n- ISO/IEC NP TR 24029-1 - Artificial Intelligence (AI) -- Assessment of the robustness of neural networks -- Part 1: Overview\n- ISO/IEC NP TR 24030 - Information technology -- Artificial Intelligence (AI) -- Use cases\n- ISO/IEC AWI TR 24368 - Information technology -- Artificial intelligence -- Overview of ethical and societal concerns\n- ISO/IEC AWI TR 24372 - Information technology -- Artificial intelligence (AI) -- Overview of computational approaches for AI system\n- ISO/IEC NP 24668 - Information technology -- Artificial intelligence --Process management framework for Big data analytics\n- ISO/IEC AWI 38507 - Information technology -- Governance of IT -- Governance implications of the use of artificial intelligence by organizations"
+  },
+  {
+    "organization": "ISO/ IEC",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC 20546:2019 -Information technology -- Big data -- Overview and vocabulary",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "",
+    "category": "",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC AWI TR 20547-1 - Information technology -- Big data reference architecture -- Part 1: Framework and application process",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC TR 20547-2:2018 - Information technology -- Big data reference architecture -- Part 2: Use cases and derived requirements",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC DIS 20547-3.2 - Information technology -- Big data reference architecture -- Part 3: Reference architecture",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC TR 20547-5:2018 -",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Information technology -- Big data reference architecture -- Part 5: Standards roadmap",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC WD 22989 - Artificial intelligence -- Concepts and terminology",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC WD 23053 - Framework for Artificial Intelligence (AI) Systems Using Machine Learning (ML)",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC AWI 23894 - Information Technology -- Artificial Intelligence -- Risk Management",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC NP TR 24027 - Information technology -- Artificial Intelligence (AI) -- Bias in AI systems and AI aided decision making",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC PDTR 24028 - Information technology -- Artificial Intelligence (AI -- Overview of trustworthiness in Artificial Intelligence",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC NP TR 24029-1 - Artificial Intelligence (AI) -- Assessment of the robustness of neural networks -- Part 1: Overview",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC NP TR 24030 - Information technology -- Artificial Intelligence (AI) -- Use cases",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC AWI TR 24368 - Information technology -- Artificial intelligence -- Overview of ethical and societal concerns",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC AWI TR 24372 - Information technology -- Artificial intelligence (AI) -- Overview of computational approaches for AI system",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC NP 24668 - Information technology -- Artificial intelligence --Process management framework for Big data analytics",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "ISO/IEC AWI 38507 - Information technology -- Governance of IT -- Governance implications of the use of artificial intelligence by organizations",
+    "activity": "JTC1 40-IT Governance",
+    "domain": "",
+    "type": "Standards",
+    "region": "Global",
+    "link": "https://www.iso.org/committee/5013818/x/catalogue/",
+    "workType": "Standard",
+    "category": "Policy Standards",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Global Partnership on AI",
+    "activity": "",
+    "domain": "",
+    "type": "Government",
+    "region": "Canada/ France",
+    "link": "https://www.canada.ca/en/innovation-science-economic-development/news/2019/05/international-panel-on-artificial-intelligence.html",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "",
+    "notes": "Proposed deliverables: Deliverables: IPAI will showcase key achievements in AI, and will adopt reports on AI developments and specific AI-related issues such as:\n\nData and Privacy\nTrust in AI\nUse and Adoption of AI\nFuture of work\nGovernance, Law and Justice\nAI and Human Rights"
+  },
+  {
+    "organization": "Deloitte",
+    "activity": "",
+    "domain": "",
+    "type": "Corporate",
+    "region": "",
+    "link": "https://www2.deloitte.com/insights/us/en/focus/signals-for-strategists/ethical-artificial-intelligence.html",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "",
+    "notes": "Related: Jobs of the future - https://www2.deloitte.com/insights/us/en/industry/public-sector/future-of-government-jobs.html\n- Enlist the board, engage stakeholders\n- Leverage technology and process to avoid bias and other risks\n- Build trust through transparency\n- Help alleviate employee anxiety"
+  },
+  {
+    "organization": "IA Latam",
+    "activity": "Declaration of the Ethical Principles for AI",
+    "domain": "",
+    "type": "Corporate",
+    "region": "Chile",
+    "link": "",
+    "workType": "",
+    "category": "Principles",
+    "date": "Feb 2019",
+    "notes": ""
+  },
+  {
+    "organization": "Tella",
+    "activity": "Guiding Principles on Trusted AI EIthics",
+    "domain": "",
+    "type": "Corporate",
+    "region": "Sweden",
+    "link": "",
+    "workType": "",
+    "category": "Principles",
+    "date": "January 2019",
+    "notes": ""
+  },
+  {
+    "organization": "Telefonica",
+    "activity": "AI Principles of Telefonica",
+    "domain": "",
+    "type": "Corporate",
+    "region": "Spain",
+    "link": "",
+    "workType": "",
+    "category": "Principles",
+    "date": "October 2018",
+    "notes": ""
+  },
+  {
+    "organization": "Google",
+    "activity": "AI at Google: Our Principles",
+    "domain": "",
+    "type": "Corporate",
+    "region": "United States",
+    "link": "https://www.blog.google/technology/ai/ai-principles/",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "January 2018",
+    "notes": ""
+  },
+  {
+    "organization": "Microsoft",
+    "activity": "Microsoft AI Principles",
+    "domain": "",
+    "type": "Corporate",
+    "region": "United States",
+    "link": "https://www.microsoft.com/en-us/ai/our-approach-to-ai",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "January 2018",
+    "notes": ""
+  },
+  {
+    "organization": "SAGE",
+    "activity": "The Ethics of Code",
+    "domain": "",
+    "type": "Corporate",
+    "region": "United States",
+    "link": "https://www.sage.com/~/media/group/files/business-builders/business-builders-ethics-of-code.pdf?la=en",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "January 2017",
+    "notes": ""
+  },
+  {
+    "organization": "ITI",
+    "activity": "AI Policy Principles",
+    "domain": "",
+    "type": "Corporate",
+    "region": "United States",
+    "link": "https://www.itic.org/resources/AI-Policy-Principles-FullReport2.pdf",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "October 2017",
+    "notes": ""
+  },
+  {
+    "organization": "Council of Europe, CEPEJ",
+    "activity": "European Ethical Charter on the use of AI in judicial systems",
+    "domain": "",
+    "type": "Government",
+    "region": "France",
+    "link": "https://www.coe.int/en/web/cepej/cepej-european-ethical-charter-on-the-use-of-artificial-intelligence-ai-in-judicial-systems-and-their-environment",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "December 2018",
+    "notes": ""
+  },
+  {
+    "organization": "NY Times",
+    "activity": "Seeking Ground Rules for AI",
+    "domain": "",
+    "type": "Multi-stakeholder",
+    "region": "United States",
+    "link": "https://www.nytimes.com/paidpost/imda/singapores-governing-framework-for-artificial-intelligence.html",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "March 2019",
+    "notes": ""
+  },
+  {
+    "organization": "IEEE",
+    "activity": "Ethically aligned design",
+    "domain": "",
+    "type": "Multi-stakeholder",
+    "region": "United States",
+    "link": "https://standards.ieee.org/content/dam/ieee-standards/standards/web/documents/other/ead1e.pdf",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "May 2019",
+    "notes": ""
+  },
+  {
+    "organization": "Global Network Initiative",
+    "activity": "The GNI Principles",
+    "domain": "",
+    "type": "Multi-stakeholder",
+    "region": "United States",
+    "link": "https://globalnetworkinitiative.org/gni-principles/",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "May 2017",
+    "notes": ""
+  },
+  {
+    "organization": "Future of Life Institute",
+    "activity": "Asilomar AI Principles",
+    "domain": "",
+    "type": "Multi-stakeholder",
+    "region": "United States",
+    "link": "https://futureoflife.org/ai-principles/",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "January 2017",
+    "notes": ""
+  },
+  {
+    "organization": "Partnership on AI",
+    "activity": "Tenents",
+    "domain": "",
+    "type": "Multi-stakeholder",
+    "region": "United States",
+    "link": "https://www.partnershiponai.org/tenets/",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "September 2016",
+    "notes": ""
+  },
+  {
+    "organization": "Monetary Authority of Singapore",
+    "activity": "Principles to promote FEAT AI in the Financial Sector",
+    "domain": "Finance",
+    "type": "Government",
+    "region": "Singapore",
+    "link": "https://www.mas.gov.sg/news/media-releases/2018/mas-introduces-new-feat-principles-to-promote-responsible-use-of-ai-and-data-analytics",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "February 2019",
+    "notes": ""
+  },
+  {
+    "organization": "Smart Dubai",
+    "activity": "AI Principles and Ethics",
+    "domain": "",
+    "type": "Government",
+    "region": "United Arab Emirates",
+    "link": "https://www.smartdubai.ae/initiatives/ai-principles-ethics",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "January 2019",
+    "notes": ""
+  },
+  {
+    "organization": "The Public Voice Coallition",
+    "activity": "Universal Guidelines for AI",
+    "domain": "",
+    "type": "Civil Society",
+    "region": "Belgium",
+    "link": "https://thepublicvoice.org/ai-universal-guidelines/",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "October 2018",
+    "notes": ""
+  },
+  {
+    "organization": "Amnesty International/ Access Now",
+    "activity": "Toronto Declaration",
+    "domain": "",
+    "type": "Civil Society",
+    "region": "Canada",
+    "link": "https://www.accessnow.org/the-toronto-declaration-protecting-the-rights-to-equality-and-non-discrimination-in-machine-learning-systems/",
+    "workType": "Principles",
+    "category": "Principles",
+    "date": "May 2018",
+    "notes": ""
+  },
+  {
+    "organization": "UNI Global Union",
+    "activity": "Top 10 Principles for Ethical AI",
+    "domain": "",
+    "type": "Civil Society",
+    "region": "Switzerland",
+    "link": "http://www.thefutureworldofwork.org/opinions/10-principles-for-ethical-ai/",
+    "workType": "principles",
+    "category": "Principles",
+    "date": "December 2017",
+    "notes": ""
+  },
+  {
+    "organization": "German Federal Ministries of Education, Economic Affairs, and Social Affairs",
+    "activity": "Artificial Intelligence Strategy",
+    "domain": "",
+    "type": "Government",
+    "region": "Germany",
+    "link": "https://ec.europa.eu/knowledge4policy/publication/germany-artificial-intelligence-strategy_en",
+    "workType": "Strategy",
+    "category": "Reporting/Strategies",
+    "date": "November 2018",
+    "notes": ""
+  },
+  {
+    "organization": "British Embassy in Mexico",
+    "activity": "AI in Mexico",
+    "domain": "",
+    "type": "Government",
+    "region": "Mexico",
+    "link": "https://www.cminds.co/ai",
+    "workType": "Whitepaper",
+    "category": "Reporting/Strategies",
+    "date": "June 2018",
+    "notes": ""
+  },
+  {
+    "organization": "British House of Lords",
+    "activity": "AI in the UK",
+    "domain": "",
+    "type": "Government",
+    "region": "United Kingdom",
+    "link": "https://publications.parliament.uk/pa/ld201719/ldselect/ldai/100/100.pdf",
+    "workType": "Whitepaper/ Strategy",
+    "category": "Reporting/Strategies",
+    "date": "April 2018",
+    "notes": "All other docs from the UK: https://portal.ai-global.org/dataset?organization=government-of-the-united-kingdom"
+  },
+  {
+    "organization": "European Commission",
+    "activity": "AI for Europe",
+    "domain": "",
+    "type": "Government",
+    "region": "Belgium",
+    "link": "https://ec.europa.eu/digital-single-market/en/artificial-intelligence",
+    "workType": "repeat",
+    "category": "Reporting/Strategies",
+    "date": "April 2018",
+    "notes": ""
+  },
+  {
+    "organization": "Agnecy for Digital Italy",
+    "activity": "AI at the Service of CItizens",
+    "domain": "",
+    "type": "Government",
+    "region": "Italy",
+    "link": "https://ia.italia.it/assets/whitepaper.pdf",
+    "workType": "Strategy",
+    "category": "Reporting/Strategies",
+    "date": "March 2018",
+    "notes": ""
+  },
+  {
+    "organization": "Mission assigned by French Prime Minister",
+    "activity": "For a Meaningful Artificial Intelligence",
+    "domain": "",
+    "type": "Government",
+    "region": "France",
+    "link": "https://www.aiforhumanity.fr/pdfs/MissionVillani_Report_ENG-VF.pdf",
+    "workType": "Strategy",
+    "category": "Reporting/Strategies",
+    "date": "March 2018",
+    "notes": ""
+  },
+  {
+    "organization": "Government of Canada",
+    "activity": "Directive on Automated Decision Making",
+    "domain": "Government",
+    "type": "Government",
+    "region": "",
+    "link": "https://www.tbs-sct.gc.ca/pol/doc-eng.aspx?id=32592",
+    "workType": "Policy with Assessment Tool",
+    "category": "Tools",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "AI Now",
+    "activity": "Algorithmic Impact Assessment",
+    "domain": "Civil Society",
+    "type": "University",
+    "region": "",
+    "link": "https://ainowinstitute.org/aiareport2018.pdf",
+    "workType": "Assessment tool",
+    "category": "Tools",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "CognitiveScale",
+    "activity": "Certifai",
+    "domain": "Health, Finance, Insurance",
+    "type": "Corporate",
+    "region": "",
+    "link": "Proprietary",
+    "workType": "Assessment tool",
+    "category": "Tools",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Considerai",
+    "activity": "Artificial Intelligence Impact Assessment",
+    "domain": "",
+    "type": "Corporate",
+    "region": "",
+    "link": "https://www.considerati.com/publications/ai-impact-assessment-co-created-by-considerati.html",
+    "workType": "Assessment tool",
+    "category": "Tools",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Data Robot",
+    "activity": "Feature Impact in Machine Learning",
+    "domain": "Explainability",
+    "type": "Corporate",
+    "region": "",
+    "link": "https://www.datarobot.com/wiki/feature-impact/",
+    "workType": "Assessment tool",
+    "category": "Tools",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "Google",
+    "activity": "What if",
+    "domain": "Model comparison",
+    "type": "Corporate",
+    "region": "",
+    "link": "https://pair-code.github.io/what-if-tool/",
+    "workType": "Assessment tool",
+    "category": "Tools",
+    "date": "",
+    "notes": ""
+  },
+  {
+    "organization": "NITI Aayog, Government of India",
+    "activity": "National Strategy for AI Discussion Paper",
+    "domain": "",
+    "type": "Government",
+    "region": "India",
+    "link": "https://www.niti.gov.in/writereaddata/files/document_publication/NationalStrategy-for-AI-Discussion-Paper.pdf",
+    "workType": "Strategy",
+    "category": "Reporting/Strategies",
+    "date": "",
+    "notes": ""
   }
 ];

@@ -15,7 +15,7 @@
   position: absolute;
   left: 0;
   bottom: 60px;
-  background-color: #1A2c37;
+  background-color: #272727;
   color: #ffffff;
   z-index: 1 !important;
   padding: 6px;
@@ -41,7 +41,7 @@
   left: 0;
   right: 0;
   margin: auto;
-  color: #eeeeee;
+  color: #272727;
   z-index: 2 !important;
   padding: 6px;
   border-radius: 3px;

@@ -93,7 +93,7 @@ class Map extends React.Component {
     this.state = {
       width: window.innerWidth,
       height: window.innerHeight,
-      selected: domains,
+      selected: ['Society', 'Law Enforcement', 'Business'],
       lng: 5,
       lat: 34,
       zoom: 1.7

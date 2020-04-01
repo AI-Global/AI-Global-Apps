@@ -10,6 +10,7 @@ const COLORS = [
   [242, 145, 0],
   [255, 92, 92],
   [174, 92, 255],
+  [133, 80, 80],
 
   [0, 173, 159],
   [0, 173, 242],
@@ -29,36 +30,12 @@ let itemsByType = db.reduce((acc, item) => {
 let typeToColor = {};
 Object.keys(itemsByType).map((type, i) => typeToColor[type] = COLORS[i]);
 
-let nodesByType = db.reduce((acc, item) => {
-  if (!(item.type in acc)) {
-    acc[item.type] = {
-      id: item.type,
-      type: item.type,
-      value: 0,
-      children: []
-    };
-  }
-  acc[item.type].value += 1;
-  acc[item.type].children.push({
-    id: item.name,
-    type: item.type,
-    value: 1
-  });
-  return acc;
-}, {});
-let root = {
-  id: 'Responsible AI',
-  value: 1,
-  color: "root",
-  children: Object.values(nodesByType)
-};
-
 class Chart extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      selected: null
+      selected: Object.keys(itemsByType)
     };
   }
 
@@ -74,7 +51,7 @@ class Chart extends React.Component {
   getLabel(node) {
     let { selected } = this.state
     if (node.id == selected) {
-      return node.id;
+      return node.data.org;
     }
     return "";
   }
@@ -92,7 +69,55 @@ class Chart extends React.Component {
     return `rgb(${c[0]}, ${c[1]}, ${c[2]})`;
   }
 
+  getTooltip({node}) {
+    if(node.depth == 1) {
+      return node.data.type;
+    } else if(node.depth == 2) {
+      return node.data.org;
+    }
+    return '...';
+  }
+
+  onCheckClick(type) {
+    this.setState(state => {
+      if(state.selected.includes(type)) {
+        state.selected = state.selected.filter(x => x != type);
+      } else {
+        state.selected.push(type);
+      }
+      return state;
+    });
+  }
+
   render() {
+    let {selected} = this.state;
+    let nodesByType = db.reduce((acc, item) => {
+      if(!selected.includes(item.type)) {
+        return acc;
+      }
+      if (!(item.type in acc)) {
+        acc[item.type] = {
+          id: item.type,
+          type: item.type,
+          value: 0,
+          children: []
+        };
+      }
+      acc[item.type].value += 1;
+      acc[item.type].children.push({
+        id: acc[item.type].children.length + ' ' + item.activity,
+        type: item.type,
+        org: item.organization,
+        value: 1
+      });
+      return acc;
+    }, {});
+    let root = {
+      id: 'Responsible AI',
+      value: 1,
+      color: "root",
+      children: Object.values(nodesByType)
+    };
     return (
       <div style={{ height: (window.innerHeight - 10) + 'px' }}>
         <div className="title-box">
@@ -102,12 +127,13 @@ class Chart extends React.Component {
         <div className="legend-box">
           <p>Types</p>
           {Object.keys(itemsByType).map((type) => <div>
-            <input type="checkbox" />
+            <input type="checkbox" checked={selected.includes(type)} onClick={() => this.onCheckClick(type)}/>
             <div style={{backgroundColor: 'rgb(' + typeToColor[type].join(',') + ')'}} className="color-block"></div> {type}</div>)}
           <br />
           <a target="_blank" href="https://google.com">View Dataset</a>
         </div>
         <ResponsiveBubble
+          padding={30}
           margin={{ top: 100, right: 0, bottom: 0, left: 0 }}
           leavesOnly={false}
           colors={(n) => this.getColor(n)}
@@ -117,8 +143,9 @@ class Chart extends React.Component {
           labelTextColor={{ from: "color", modifiers: [["darker", 2]] }}
           root={root}
           animate={true}
-          motionStiffness={90}
-          motionDamping={12}
+          motionStiffness={100}
+          motionDamping={20}
+          tooltip={(n) => this.getTooltip(n)}
         />
       </div>
     );
