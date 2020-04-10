@@ -11,14 +11,7 @@ const COLORS = [
   [255, 92, 92],
   [174, 92, 255],
   [133, 80, 80],
-
-  [0, 173, 159],
-  [0, 173, 242],
-  [45, 65, 255],
-  [242, 232, 0],
-  [242, 145, 0],
-  [255, 92, 92],
-  [174, 92, 255]
+  [0, 87, 24]
 ];
 let itemsByType = db.reduce((acc, item) => {
   if (!(item.type in acc)) {
@@ -42,18 +35,14 @@ class Chart extends React.Component {
 
   onClick(node) {
     let { selected } = this.state
-    if (selected == node.id) {
+    if (selected && selected.id == node.id || node.depth == 1) {
       this.setState({ selected: null });
     } else {
-      this.setState({ selected: node.id });
+      this.setState({ selected: node });
     }
   }
 
   getLabel(node) {
-    let { selected } = this.state
-    if (node.id == selected) {
-      return node.data.org;
-    }
     return "";
   }
 
@@ -70,10 +59,10 @@ class Chart extends React.Component {
     return `rgb(${c[0]}, ${c[1]}, ${c[2]})`;
   }
 
-  getTooltip({node}) {
-    if(node.depth == 1) {
+  getTooltip({ node }) {
+    if (node.depth == 1) {
       return node.data.type;
-    } else if(node.depth == 2) {
+    } else if (node.depth == 2) {
       return node.data.org;
     }
     return '...';
@@ -81,7 +70,7 @@ class Chart extends React.Component {
 
   onCheckClick(type) {
     this.setState(state => {
-      if(state.selectedTypes.includes(type)) {
+      if (state.selectedTypes.includes(type)) {
         state.selectedTypes = state.selectedTypes.filter(x => x != type);
       } else {
         state.selectedTypes.push(type);
@@ -91,9 +80,9 @@ class Chart extends React.Component {
   }
 
   render() {
-    let {selectedTypes} = this.state;
+    let { selectedTypes, selected } = this.state;
     let nodesByType = db.reduce((acc, item) => {
-      if(!selectedTypes.includes(item.type)) {
+      if (!selectedTypes.includes(item.type)) {
         return acc;
       }
       if (!(item.type in acc)) {
@@ -109,6 +98,7 @@ class Chart extends React.Component {
         id: acc[item.type].children.length + ' ' + item.activity,
         type: item.type,
         org: item.organization,
+        link: item.link,
         value: 1
       });
       return acc;
@@ -128,11 +118,15 @@ class Chart extends React.Component {
         <div className="legend-box">
           <p>Types</p>
           {Object.keys(itemsByType).map((type) => <div>
-            <input type="checkbox" checked={selectedTypes.includes(type)} onClick={() => this.onCheckClick(type)}/>
-            <div style={{backgroundColor: 'rgb(' + typeToColor[type].join(',') + ')'}} className="color-block"></div> {type}</div>)}
+            <input type="checkbox" checked={selectedTypes.includes(type)} onClick={() => this.onCheckClick(type)} />
+            <div style={{ backgroundColor: 'rgb(' + typeToColor[type].join(',') + ')' }} className="color-block"></div> {type}</div>)}
           <br />
           <a target="_blank" href="https://google.com">View Dataset</a>
         </div>
+        {selected && <div style={{ position: 'fixed', zIndex: 10, top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+          <p><b>{selected.data.org}</b></p>
+          <a href={selected.data.link}>More Info</a>
+        </div>}
         <ResponsiveBubble
           padding={30}
           margin={{ top: 100, right: 0, bottom: 0, left: 0 }}
