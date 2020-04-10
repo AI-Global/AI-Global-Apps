@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  overflow: hidden;
 }
 
 .color-block {
@@ -7,6 +8,14 @@
   height: 10px;
   display: inline-block;
   background-color:#ff0000;
+}
+
+.logo-box {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 9999;
 }
 
 .legend-box {

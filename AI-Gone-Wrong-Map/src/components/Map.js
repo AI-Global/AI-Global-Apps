@@ -9,7 +9,7 @@ function renderPulse(map, context, size, offset, domain, colors) {
   let radius = (size / 2) * 0.3;
   let outerRadius = (size / 2) * 0.7 * t + radius;
   context.clearRect(0, 0, size, size);
-  if(!domainToVisable[domain]) {
+  if (!domainToVisable[domain]) {
     return;
   }
   context.beginPath();
@@ -66,10 +66,16 @@ for (let dIdx in domains) {
 };
 
 let eventToFeatureJSON = (event) => {
-  let { title, issue, lat, lng, link, isInternet, domain } = event;
-  if (isInternet) {
-    lat = Math.random();
-    lng = Math.random();
+  let { title, issue, lat, lng, link, isInternet, domain, city, state, country } = event;
+  let loc = "";
+  if (city && state && country) {
+    loc = `${city} ${state}, ${country}`;
+  } else if (city && state) {
+    loc = `${city}, ${state}`;
+  } else if (state && country) {
+    loc = `${state}, ${country}`;
+  } else {
+    loc = `${country || state || city}`;
   }
   return {
     'type': 'Feature',
@@ -77,6 +83,7 @@ let eventToFeatureJSON = (event) => {
       'category': domain,
       'title': title,
       'description': issue,
+      'location': loc,
       'link': link
     },
     'geometry': {
@@ -125,7 +132,7 @@ class Map extends React.Component {
         let offset = Math.random() * 1000;
         let colors = domainToColors[item.domain];
         let popUpHTML = `<h3>${marker.properties.title}</h3>
-          <p><i>${marker.properties.category}</i></p>
+          <p><i>${marker.properties.category}</i><br/>${marker.properties.location}</p>
           <p>${marker.properties.description}</p>`;
         if (marker.properties.link) {
           popUpHTML += `<a target="_blank" href="${marker.properties.link}">More Info</a>`;
@@ -151,7 +158,7 @@ class Map extends React.Component {
 
   onClickDomain(domain) {
     this.setState(state => {
-      if(state.selected.includes(domain)) {
+      if (state.selected.includes(domain)) {
         domainToVisable[domain] = false;
         state.selected = state.selected.filter(x => x != domain);
       } else {
@@ -166,14 +173,21 @@ class Map extends React.Component {
     let { width, height, zoom, selected } = this.state;
     return (
       <div>
+        <div className="logo-box">
+          <img src="/transparent-rect-logo.png" />
+        </div>
         <div className="legend-box">
           <p>Domains</p>
           {domains.map(domain =>
             <div>
-              <input type="checkbox" checked={selected.includes(domain)} onClick={() => this.onClickDomain(domain)}/>
+              <input type="checkbox" checked={selected.includes(domain)} onClick={() => this.onClickDomain(domain)} />
               <div style={{ backgroundColor: domainToColors[domain][2] }} className="color-block"></div> {domain}</div>)}
           <br />
-          <a target="_blank" href="https://portal.ai-global.org/dataset/ai-violation-use-cases">View Dataset</a>
+          <div style={{textAlign: 'center'}}>
+            <a target="_blank" href="https://portal.ai-global.org/dataset/ai-violation-use-cases">View Dataset</a>
+            <br />
+            <a target="_blank" href="https://portal.ai-global.org/dataset/ai-violation-use-cases">Contribute to Dataset</a>
+          </div>
         </div>
         <div className="title-box">
           <h1 style={{ margin: 'auto', width: '40%', marginBottom: '20px' }}>Where AI Has Gone Wrong</h1>
