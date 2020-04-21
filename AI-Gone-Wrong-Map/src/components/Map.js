@@ -185,8 +185,6 @@ class Map extends React.Component {
           <br />
           <div style={{textAlign: 'center'}}>
             <a target="_blank" href="https://portal.ai-global.org/dataset/ai-violation-use-cases">View Dataset</a>
-            <br />
-            <a target="_blank" href="https://portal.ai-global.org/dataset/ai-violation-use-cases">Contribute to Dataset</a>
           </div>
         </div>
         {/* <div className="title-box">
