@@ -185,12 +185,13 @@ class Map extends React.Component {
           <br />
           <div style={{textAlign: 'center'}}>
             <a target="_blank" href="https://portal.ai-global.org/dataset/ai-violation-use-cases">View Dataset</a>
+            <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeo4ZcT48qYDA3Z4GgRF8TjNLVuHpAvt9I1rVDX87usskLoVQ/viewform">Submit a use case</a>
           </div>
         </div>
-        { <div className="title-box">
+        <div className="title-box">
           <h1 style={{ margin: 'auto', width: '40%', marginBottom: '20px' }}>Where AI Has Gone Wrong</h1>
           {zoom < 3.55 && <h5 style={{ margin: 'auto', width: '40%' }}>Where AI Has Gone Wrong represents historical instances of where AI has adversely impacted society in a specific domain. Click on a dot for a brief description and a link for more information! If a dot is traveling, it means the case impacts society across country borders on the Internet.</h5>}
-        </div> }
+        </div> 
         <div id="#map" ref={elem => this.mapContainer = elem}
           style={{ width: width + 'px', height: height + 'px' }} />
       </div>
