@@ -111,10 +111,10 @@ class Chart extends React.Component {
     };
     return (
       <div style={{ height: (window.innerHeight - 10) + 'px' }}>
-        {/* <div className="title-box">
+        { <div className="title-box">
           <h1 style={{ margin: 'auto', width: '40%', marginBottom: '20px' }}>AI Documentation Across Organization Type</h1>
           <h5 style={{ margin: 'auto', width: '40%' }}>Hover over a small bubble to see the specific organization and click on the link to learn more.</h5>
-        </div> */}
+        </div> }
         <div className="legend-box">
           <p>Types</p>
           {Object.keys(itemsByType).map((type) => <div>
