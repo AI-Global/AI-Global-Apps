@@ -111,17 +111,20 @@ class Chart extends React.Component {
     };
     return (
       <div style={{ height: (window.innerHeight - 10) + 'px' }}>
-        {/* <div className="title-box">
+        <div className="title-box">
           <h1 style={{ margin: 'auto', width: '40%', marginBottom: '20px' }}>AI Documentation Across Organization Type</h1>
           <h5 style={{ margin: 'auto', width: '40%' }}>Hover over a small bubble to see the specific organization and click on the link to learn more.</h5>
-        </div> */}
+        </div> 
         <div className="legend-box">
           <p>Types</p>
           {Object.keys(itemsByType).map((type) => <div>
             <input type="checkbox" checked={selectedTypes.includes(type)} onClick={() => this.onCheckClick(type)} />
             <div style={{ backgroundColor: 'rgb(' + typeToColor[type].join(',') + ')' }} className="color-block"></div> {type}</div>)}
           <br />
-          <a target="_blank" href="https://portal.ai-global.org/dataset/ai-documentation-across-organization-types">View Dataset</a>
+          <div style={{textAlign: 'center'}}>
+            <a target="_blank" href="https://portal.ai-global.org/dataset/ai-documentation-across-organization-types">View Dataset</a><br/>
+            <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSe7E8R_tWxqpko8zaMASTmjUonD9438XlFlP6IA238dMtYkqg/viewform">Submit a Documentation</a>
+          </div>
         </div>
         {selected && <div style={{ position: 'fixed', zIndex: 10, top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
           <p><b>{selected.data.org}</b></p>
