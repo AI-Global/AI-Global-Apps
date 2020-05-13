@@ -121,8 +121,10 @@ class Chart extends React.Component {
             <input type="checkbox" checked={selectedTypes.includes(type)} onClick={() => this.onCheckClick(type)} />
             <div style={{ backgroundColor: 'rgb(' + typeToColor[type].join(',') + ')' }} className="color-block"></div> {type}</div>)}
           <br />
-          <a target="_blank" href="https://portal.ai-global.org/dataset/ai-documentation-across-organization-types">View Dataset</a>
-          <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSe7E8R_tWxqpko8zaMASTmjUonD9438XlFlP6IA238dMtYkqg/viewform">Submit a Documentation</a>
+          <div style={{textAlign: 'center'}}>
+            <a target="_blank" href="https://portal.ai-global.org/dataset/ai-documentation-across-organization-types">View Dataset</a><br/>
+            <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSe7E8R_tWxqpko8zaMASTmjUonD9438XlFlP6IA238dMtYkqg/viewform">Submit a Documentation</a>
+          </div>
         </div>
         {selected && <div style={{ position: 'fixed', zIndex: 10, top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
           <p><b>{selected.data.org}</b></p>

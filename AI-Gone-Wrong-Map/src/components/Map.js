@@ -185,6 +185,7 @@ class Map extends React.Component {
           <br />
           <div style={{textAlign: 'center'}}>
             <a target="_blank" href="https://portal.ai-global.org/dataset/ai-violation-use-cases">View Dataset</a>
+            <br/>
             <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeo4ZcT48qYDA3Z4GgRF8TjNLVuHpAvt9I1rVDX87usskLoVQ/viewform">Submit a use case</a>
           </div>
         </div>
