@@ -138,6 +138,8 @@ class Map extends React.Component {
           popUpHTML += `<a target="_blank" href="${marker.properties.link}">More Info</a>`;
         }
         let [x, y] = marker.geometry.coordinates;
+        x = parseFloat(x);
+        y = parseFloat(y);
         x += Math.random() * 0.5 - 0.25;
         y += Math.random() * 0.5 - 0.25;
         let mkr = new mapboxgl.Marker(canvas)

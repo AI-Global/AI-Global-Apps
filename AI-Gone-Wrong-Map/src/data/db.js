@@ -1,4 +1,4 @@
-[
+export default [
     {
         "title": "Phone Call - Faking Voice",
         "issue": "Criminals used AI-based sotware to copy a German CEO and requested to transfer over $243,000 to a supplier",
