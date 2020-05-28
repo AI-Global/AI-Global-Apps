@@ -138,6 +138,8 @@ class Map extends React.Component {
           popUpHTML += `<a target="_blank" href="${marker.properties.link}">More Info</a>`;
         }
         let [x, y] = marker.geometry.coordinates;
+        x = parseFloat(x);
+        y = parseFloat(y);
         x += Math.random() * 0.5 - 0.25;
         y += Math.random() * 0.5 - 0.25;
         let mkr = new mapboxgl.Marker(canvas)
@@ -186,6 +188,7 @@ class Map extends React.Component {
           <div style={{textAlign: 'center'}}>
             {/* <a target="_blank" href="https://portal.ai-global.org/dataset/ai-violation-use-cases">View Dataset</a> */}
             <a target="_blank" href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0">View Dataset</a>
+            <br/>
             <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeo4ZcT48qYDA3Z4GgRF8TjNLVuHpAvt9I1rVDX87usskLoVQ/viewform">Submit a use case</a>
           </div>
         </div>
