@@ -127,7 +127,7 @@ class Chart extends React.Component {
             <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSe7E8R_tWxqpko8zaMASTmjUonD9438XlFlP6IA238dMtYkqg/viewform">Submit a Documentation</a>
           </div>
         </div>
-        {selected && <div style={{ position: 'fixed', zIndex: 10, top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
+        {selected && selected.data.org && <div style={{ position: 'fixed', zIndex: 10, top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
           <p><b>{selected.data.org}</b></p>
           <a href={selected.data.link}>More Info</a>
         </div>}
