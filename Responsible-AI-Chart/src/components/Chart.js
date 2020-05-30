@@ -113,6 +113,7 @@ class Chart extends React.Component {
       <div style={{ height: (window.innerHeight - 10) + 'px' }}>
         <div className="title-box">
           <h1 style={{ margin: 'auto', width: '40%', marginBottom: '20px' }}>AI Documentation Across Organization Type</h1>
+          <h5 style={{ margin: 'auto', width: '50%', marginBottom: '10px' }}>The AI Documentation Across Organization Type Visualization explores various types of organizations from civil to regional organizations and their publications on AI</h5>
           <h5 style={{ margin: 'auto', width: '40%' }}>Hover over a small bubble to see the specific organization and click on the link to learn more.</h5>
         </div> 
         <div className="legend-box">
