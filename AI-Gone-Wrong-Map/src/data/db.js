@@ -943,5 +943,50 @@ export default [
         "action": "",
         "reading": "",
         "insights": ""
+    },
+    {
+        "title": "Gender Stereotypes in Chatbot",
+        "issue": "Gender prejudices found in bots start impacting women such as boys barking orders at girls named Alexa and engaging in dirty conversations with bots",
+        "domain": "Society",
+        "city": "San Francisco",
+        "state": "California",
+        "country": "USA",
+        "lat": "37.7749",
+        "lng": "-122.4194",
+        "internet": "0",
+        "link": "https://www.theguardian.com/careers/2020/may/07/ai-and-me-friendship-chatbots-are-on-the-rise-but-is-there-a-gendered-design-flaw",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "Bias in Pothole Detection",
+        "issue": "The recording of potholes was skewed as it disadvantaged populations without smartphones",
+        "domain": "Society",
+        "city": "Boston",
+        "state": "Massachusetts",
+        "country": "USA",
+        "lat": "42.360081",
+        "lng": "-71.058884",
+        "internet": "0",
+        "link": "https://thesumisgreater.wordpress.com/2016/09/21/big-data-has-unconscious-bias-too/",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "Police Facial Recognition Could Misidentify People after Protests",
+        "issue": "The AI being used to detect protestors of racial injustice is trained primarily on white males which means that the probability of misdetecting people of color is higher. ",
+        "domain": "Society",
+        "city": "Minneapolis",
+        "state": "Minnesota",
+        "country": "USA",
+        "lat": "44.986656",
+        "lng": "-93.258133",
+        "internet": "0",
+        "link": "https://www.digitaltrends.com/news/police-protests-facial-recognition-misidentification/",
+        "action": "",
+        "reading": "",
+        "insights": ""
     }
 ]
