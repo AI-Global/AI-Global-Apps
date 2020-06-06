@@ -12,16 +12,16 @@ function renderPulse(map, context, size, offset, domain, colors) {
   if (!domainToVisable[domain]) {
     return;
   }
-  context.beginPath();
-  context.arc(
-    size / 2,
-    size / 2,
-    outerRadius,
-    0,
-    Math.PI * 2
-  );
-  context.fillStyle = `rgba(${colors[0][0]}, ${colors[0][1]}, ${colors[0][2]}, ${1 - t})`;
-  context.fill();
+  //context.beginPath();
+  // context.arc(
+  //   size / 2,
+  //   size / 2,
+  //   outerRadius,
+  //   0,
+  //   Math.PI * 2
+  // );
+  //context.fillStyle = `rgba(${colors[0][0]}, ${colors[0][1]}, ${colors[0][2]}, ${1 - t})`;
+  //context.fill();
   context.beginPath();
   context.arc(
     size / 2,
