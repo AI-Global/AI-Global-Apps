@@ -1,4 +1,4 @@
-export default[
+export default [
     {
         "title": "Phone Call - Faking Voice",
         "issue": "Criminals used AI-based software to copy a German CEO and requested to transfer over $243,000 to a supplier",
@@ -1015,6 +1015,51 @@ export default[
         "lng": "-122.272781",
         "internet": "0",
         "link": "https://www.sciencemag.org/news/2019/10/hospital-risk-scores-prioritize-white-patients",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "Microsoft Bot Confuses Little Mix Singers",
+        "issue": "The Guardian planned on firing human editors and implementing Microsoft's Bot which later selected the wrong Little Mix singer for an article.",
+        "domain": "Society",
+        "city": "Seattle",
+        "state": "Washington",
+        "country": "USA",
+        "lat": "47.606209",
+        "lng": "-122.332069",
+        "internet": "0",
+        "link": "https://www.theguardian.com/technology/2020/jun/09/microsofts-robot-journalist-confused-by-mixed-race-little-mix-singers",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "Data Privacy Concerns wiht Tim Hortons",
+        "issue": "Tim Hortons records longitude and latitude of app users outside of the app",
+        "domain": "Business ",
+        "city": "",
+        "state": "Oakville",
+        "country": "Canada",
+        "lat": "43.466789",
+        "lng": "-79.6903",
+        "internet": "0",
+        "link": "https://business.financialpost.com/technology/tim-hortons-app-tracking-customers-intimate-data",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "Criminal Risk Assessment Algorithms are biased",
+        "issue": "The risk assessment tools are based on historical crime data that show correlations rather than causations which turn correlative insights into causual scoring mechanisms.",
+        "domain": "Law Enforcement",
+        "city": "Boston ",
+        "state": "Massachusetts",
+        "country": "USA",
+        "lat": "42.00081",
+        "lng": "-71",
+        "internet": "0",
+        "link": "https://www.technologyreview.com/2019/01/21/137783/algorithms-criminal-justice-ai/",
         "action": "",
         "reading": "",
         "insights": ""
