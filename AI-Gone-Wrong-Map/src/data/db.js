@@ -1,7 +1,7 @@
-export default [
+export default[
     {
         "title": "Phone Call - Faking Voice",
-        "issue": "Criminals used AI-based sotware to copy a German CEO and requested to transfer over $243,000 to a supplier",
+        "issue": "Criminals used AI-based software to copy a German CEO and requested to transfer over $243,000 to a supplier",
         "domain": "Business",
         "city": "London",
         "state": "",
@@ -985,6 +985,36 @@ export default [
         "lng": "-93.258133",
         "internet": "0",
         "link": "https://www.digitaltrends.com/news/police-protests-facial-recognition-misidentification/",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "Unequal Access to Amazon's Prime Free Same-Day Delivery",
+        "issue": "At first, Amazon did not consider race in their predictive algorithm for areas that should have same-day Prime Delivery. The algorithim still picked up on race and discriminated against minority urban neighborhoods. Since this article has been released, Amazon has extended same day delivery after political figures urged them in Boston, Chicago adn New York.",
+        "domain": "Society",
+        "city": "Seattle",
+        "state": "Washington",
+        "country": "USA",
+        "lat": "47.606209",
+        "lng": "-122.332069",
+        "internet": "0",
+        "link": "https://www.bloomberg.com/graphics/2016-amazon-same-day/",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "Hospital Risk Scores Prioritize White Patients",
+        "issue": "The risks scores assigned to patients by hospitals and insurance companies was giving low risk scores to Black patients because the algorithm was using bills and insurance payouts as a proxy for human health. However, health care costs tend to be lower for Black patients because they tend to live farther away from hospitals or less flexible job schedules. Therefore, Black Patients who had the highest risk scores actually had more severe chronic condition. By tweaking the algorithm to predict amount of illness rather than cost, racial disparity was reduced by 84%.",
+        "domain": "Society",
+        "city": "Berkeley",
+        "state": "California",
+        "country": "USA",
+        "lat": "37.871666",
+        "lng": "-122.272781",
+        "internet": "0",
+        "link": "https://www.sciencemag.org/news/2019/10/hospital-risk-scores-prioritize-white-patients",
         "action": "",
         "reading": "",
         "insights": ""
