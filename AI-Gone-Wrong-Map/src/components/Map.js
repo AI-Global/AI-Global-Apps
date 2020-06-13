@@ -176,7 +176,7 @@ class Map extends React.Component {
     return (
       <div>
         <div className="logo-box">
-          <img src="/transparent-rect-logo.png" />
+          <a target="_blank" href="https://ai-global.org/"><img src="/transparent-rect-logo.png" /></a>
         </div>
         <div className="legend-box">
           <p>Domains</p>
