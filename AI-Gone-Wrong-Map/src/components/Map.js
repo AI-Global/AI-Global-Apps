@@ -7,7 +7,7 @@ function renderPulse(map, context, size, offset, domain, colors) {
   let t = (offset + performance.now() % duration) / duration;
   t = 0.8; // TODO remove animation
   let radius = (size / 2) * 0.3;
-  let outerRadius = (size / 2) * 0.7 * t + radius;
+  // let outerRadius = (size / 2) * 0.7 * t + radius;
   context.clearRect(0, 0, size, size);
   if (!domainToVisable[domain]) {
     return;
@@ -66,7 +66,7 @@ for (let dIdx in domains) {
 };
 
 let eventToFeatureJSON = (event) => {
-  let { title, issue, lat, lng, link, isInternet, domain, city, state, country } = event;
+  let { title, issue, lat, lng, link, domain, city, state, country } = event;
   let loc = "";
   if (city && state && country) {
     loc = `${city} ${state}, ${country}`;
@@ -142,7 +142,7 @@ class Map extends React.Component {
         y = parseFloat(y);
         x += Math.random() * 0.5 - 0.25;
         y += Math.random() * 0.5 - 0.25;
-        let mkr = new mapboxgl.Marker(canvas)
+        new mapboxgl.Marker(canvas)
           .setLngLat([x, y])
           .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popUpHTML))
           .addTo(map);
@@ -162,7 +162,7 @@ class Map extends React.Component {
     this.setState(state => {
       if (state.selected.includes(domain)) {
         domainToVisable[domain] = false;
-        state.selected = state.selected.filter(x => x != domain);
+        state.selected = state.selected.filter(x => x !== domain);
       } else {
         domainToVisable[domain] = true;
         state.selected.push(domain);
@@ -176,7 +176,7 @@ class Map extends React.Component {
     return (
       <div>
         <div className="logo-box">
-          <a target="_blank" href="https://ai-global.org/"><img src="/transparent-rect-logo.png" /></a>
+          <a target="_blank" rel="noopener noreferrer" href="https://ai-global.org/"><img alt="AI Global Logo" src="/transparent-rect-logo.png" /></a>
         </div>
         <div className="legend-box">
           <p>Domains</p>
@@ -187,9 +187,9 @@ class Map extends React.Component {
           <br />
           <div style={{textAlign: 'center'}}>
             {/* <a target="_blank" href="https://portal.ai-global.org/dataset/ai-violation-use-cases">View Dataset</a> */}
-            <a target="_blank" href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0">View Dataset</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0">View Dataset</a>
             <br/>
-            <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSeo4ZcT48qYDA3Z4GgRF8TjNLVuHpAvt9I1rVDX87usskLoVQ/viewform">Submit a use case</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeo4ZcT48qYDA3Z4GgRF8TjNLVuHpAvt9I1rVDX87usskLoVQ/viewform">Submit a use case</a>
           </div>
         </div>
         <div className="title-box">
