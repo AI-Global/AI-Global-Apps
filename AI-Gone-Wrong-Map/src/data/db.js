@@ -1,4 +1,4 @@
-export default [
+export default[
     {
         "title": "Phone Call - Faking Voice",
         "issue": "Criminals used AI-based software to copy a German CEO and requested to transfer over $243,000 to a supplier",
@@ -30,7 +30,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Amazon AI Recruiting",
+        "title": "Amazon Ai Recruiting",
         "issue": "Amazon AI Recruting tool favored male applicates over female. The software downgraded resumes that had the word \"women\"",
         "domain": "Business",
         "city": "Seattle",
@@ -60,7 +60,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Cambridge Analytica voter targeting",
+        "title": "Cambridge Analytica Voter Targeting",
         "issue": "Influenced public through individualized ads and messaging that played a signicant role in political campaigns in the US. Micro-targeting individuals in political campaigns.",
         "domain": "Business",
         "city": "",
@@ -75,7 +75,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Facebook chatbot",
+        "title": "Facebook Chatbot",
         "issue": "Facebook shut down its virtual assistant chatbot experiment when it couldn't perform tasks",
         "domain": "Business",
         "city": "Menlo Park",
@@ -90,7 +90,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Unmanned catering cart broke bad",
+        "title": "Unmanned Catering Cart Broke Bad",
         "issue": "Cart was not AI equipped but started conversations on how robots combat along",
         "domain": "Business",
         "city": "Chicago",
@@ -120,7 +120,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Purchase Decision without Human input",
+        "title": "Purchase Decision Without Human Input",
         "issue": "A TV advert created by Amazon triggered Alexa devices in the US to order a Dolls House on behalf of 100s of Customers.",
         "domain": "Business",
         "city": "",
@@ -150,7 +150,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "IBM Watson Health giving dangerous recommendations",
+        "title": "Ibm Watson Health Giving Dangerous Recommendations",
         "issue": "IBM's Wtson for Oncology has been shown to have made dangerous errors in treatment recommendations and has been criticised for the system being trained on a small batch of doctors from one hospital in America.",
         "domain": "Health Services",
         "city": "Armonk",
@@ -165,7 +165,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "IBM Watson and MD Anderson Cancer project",
+        "title": "Ibm Watson And Md Anderson Cancer Project",
         "issue": "IBM product did not work with Anderson's new electronic medical systems.",
         "domain": "Health Services",
         "city": "Austin",
@@ -180,7 +180,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "LG Cloi",
+        "title": "Lg Cloi",
         "issue": "Bot fails to demonstrate the enhance use of kitchen appliances",
         "domain": "Housing",
         "city": "Yeouido-dong, Yeongdeungpo District",
@@ -240,7 +240,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Twitter and Google Housing Ad Discrimination",
+        "title": "Twitter And Google Housing Ad Discrimination",
         "issue": "HUD is reviewing Twitter\u00e2\u20ac\u2122s and Google\u00e2\u20ac\u2122s ad practices as part of housing discrimination probe",
         "domain": "Housing",
         "city": "San Francisco",
@@ -255,7 +255,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "PredPol",
+        "title": "Predpol",
         "issue": "A Predictive policing software that started with LAPD and now is being used accross the US. A lot of controversy on its use because of bias and feedback loops that reinforce targeting target minority neighborhoods",
         "domain": "Law Enforcement",
         "city": "San Francisco",
@@ -270,7 +270,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "COMPAS",
+        "title": "Compas",
         "issue": "Case Management and Decision Support tool used in some U.S. courts to assess the likelihood of a defendant becoming a recidivist",
         "domain": "Law Enforcement",
         "city": "New York   ",
@@ -285,7 +285,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "COMPAS",
+        "title": "Compas",
         "issue": "Case Management and Decision Support tool used in some U.S. courts to assess the likelihood of a defendant becoming a recidivist",
         "domain": "Law Enforcement",
         "city": "Madison",
@@ -300,7 +300,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "COMPAS",
+        "title": "Compas",
         "issue": "Case Management and Decision Support tool used in some U.S. courts to assess the likelihood of a defendant becoming a recidivist",
         "domain": "Law Enforcement",
         "city": "Sacremento",
@@ -315,7 +315,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "COMPAS",
+        "title": "Compas",
         "issue": "Case Management and Decision Support tool used in some U.S. courts to assess the likelihood of a defendant becoming a recidivist",
         "domain": "Law Enforcement",
         "city": "Broward County",
@@ -330,7 +330,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "South Wales Police facial recognition",
+        "title": "South Wales Police Facial Recognition",
         "issue": "Facial recognition software to \"catch\" criminals in crowded settings had a 92% false-positive rate of identifying criminals.",
         "domain": "Law Enforcement",
         "city": "",
@@ -345,7 +345,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Youtube Promotion of Conspiracy Videos",
+        "title": "Youtube Promotion Of Conspiracy Videos",
         "issue": "Youtube's alogrithms tend to promote videos with high engagemetn including conspiracy videos",
         "domain": "Media",
         "city": "Mountain View",
@@ -360,7 +360,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Extremist Content on Social Media",
+        "title": "Extremist Content On Social Media",
         "issue": "Christchurch terrorist attack was livestreamed on Facebook",
         "domain": "Media",
         "city": "",
@@ -390,7 +390,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "DeepNude ",
+        "title": "Deepnude ",
         "issue": "Neural networks disrobe images of women",
         "domain": "Society",
         "city": "Berkeley",
@@ -420,7 +420,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Microsoft's Tay bot",
+        "title": "Microsoft'S Tay Bot",
         "issue": "Tay bot project canceled after bot generated sexist and racist comments online",
         "domain": "Society",
         "city": "Redmond",
@@ -435,7 +435,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Chinese Gov. Facial recognition",
+        "title": "Chinese Gov. Facial Recognition",
         "issue": "Goverment's facial recognition mistook woman's face on a bus ad for someone jaywalking.",
         "domain": "Society",
         "city": "Ningbo",
@@ -450,7 +450,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Youtube Algorithm incident",
+        "title": "Youtube Algorithm Incident",
         "issue": "Youtube Algorithm's potentially endagers kids",
         "domain": "Society",
         "city": "Mountain View",
@@ -465,7 +465,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Cadillac Fairview facial recognition",
+        "title": "Cadillac Fairview Facial Recognition",
         "issue": "Suspends use of facial recognition software to track people's genders and ages",
         "domain": "Society",
         "city": "",
@@ -480,7 +480,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "US Dep. of Homeland Security illegal immigrant lie detector",
+        "title": "Us Dep. Of Homeland Security Illegal Immigrant Lie Detector",
         "issue": "Questionability of ethical use in immigration, noticed flaws.",
         "domain": "Society",
         "city": "",
@@ -540,7 +540,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Minority Homebuyers discrimination",
+        "title": "Minority Homebuyers Discrimination",
         "issue": "Minority homebuyers face widespread statistical lending discrimination,",
         "domain": "Society",
         "city": "Berkeley",
@@ -555,7 +555,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Racial Discimination in targeted housing ads",
+        "title": "Racial Discimination In Targeted Housing Ads",
         "issue": "U.S. charges Facebook with racial discrimination in targeted housing ads",
         "domain": "Society",
         "city": "Menlo Park",
@@ -585,7 +585,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Facial Recognition software ",
+        "title": "Facial Recognition Software ",
         "issue": "Facial recognition software used at checkpoints was rejecting people of Asian decent due to the shape of their eyes.",
         "domain": "Society",
         "city": "",
@@ -615,7 +615,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Clearview AI Facial Recognition",
+        "title": "Clearview Ai Facial Recognition",
         "issue": "Clearview AI uses any public image online to identify people",
         "domain": "Society",
         "city": "",
@@ -645,7 +645,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Predict IQ from faces",
+        "title": "Predict Iq From Faces",
         "issue": "Faception released AI technology that could analyze facial images and bone structure to reveal person IQ and violent tendencies.",
         "domain": "Vision",
         "city": "Jerusalem",
@@ -690,7 +690,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Tesla autopilot crash Model X",
+        "title": "Tesla Autopilot Crash Model X",
         "issue": "Defects on Model X cause crash",
         "domain": "Vision",
         "city": "Mountain View",
@@ -705,7 +705,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Weaponized AI",
+        "title": "Weaponized Ai",
         "issue": "Weaponized AI can produce many unintended impacts from unwanted deaths to bombings",
         "domain": "Law Enforcement",
         "city": "",
@@ -765,7 +765,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Arms Race Dynamic with AI Weapons",
+        "title": "Arms Race Dynamic With Ai Weapons",
         "issue": "China fears that AI arms race can cause war",
         "domain": "Law Enforcement",
         "city": "",
@@ -780,7 +780,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "University Admissions decided by AI",
+        "title": "University Admissions Decided By Ai",
         "issue": "Salesforce has a contract with a few schools to predict sutdent outcomes and make decisions on financial aid.",
         "domain": "Education",
         "city": "San Francisco",
@@ -795,7 +795,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Focus of AI in Education",
+        "title": "Focus Of Ai In Education",
         "issue": "The main focus when thinking about AI is looking at how to automate school, not thinking about what is useful for students",
         "domain": "Education",
         "city": "",
@@ -810,7 +810,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Facial Recognition to Measure Attention",
+        "title": "Facial Recognition To Measure Attention",
         "issue": "A school utilizes AI to track students' attention in class",
         "domain": "Education",
         "city": "",
@@ -825,7 +825,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Using AI to Track Student's Feelings",
+        "title": "Using Ai To Track Student'S Feelings",
         "issue": "Algebra Nation's software tracks students down to keystrokes and long in",
         "domain": "Education",
         "city": "",
@@ -840,7 +840,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Lack of Transparency in Avaliable Health Data",
+        "title": "Lack Of Transparency In Avaliable Health Data",
         "issue": "McKinsey states that there is slow adoption on health insurers utilizing AI because of a lack of transparency regarding available data",
         "domain": "Health Services",
         "city": "",
@@ -855,7 +855,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "AI in Hospital Wait Times",
+        "title": "Ai In Hospital Wait Times",
         "issue": "AI can mirror decisons made by human physicians without a human deciding them",
         "domain": "Health Services",
         "city": "",
@@ -885,7 +885,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Prospect of Adversarial Attacks",
+        "title": "Prospect Of Adversarial Attacks",
         "issue": "One can trick an AI system by manipulating pixels to thinking there is a disease",
         "domain": "Health Services",
         "city": "Boston ",
@@ -900,7 +900,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "AI Systems Deployed in Different Hospitals Fail",
+        "title": "Ai Systems Deployed In Different Hospitals Fail",
         "issue": "Mildred Cho found that software developed in one hospital often fails at other hospitals. It also discriminates against minorites and is dependent on factors such as the brand of MRI machines",
         "domain": "Health Services",
         "city": "Palo Alto",
@@ -915,7 +915,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Health AI App produces wrong predictions",
+        "title": "Health Ai App Produces Wrong Predictions",
         "issue": "The application was unable to take contextual infomration and had doctors send patients home when they should not have",
         "domain": "Health Services",
         "city": "",
@@ -930,7 +930,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Mishandling NHS Data",
+        "title": "Mishandling Nhs Data",
         "issue": "The Royal Free London NHS Foundation Trust mishandled 1.6 million patient's data after they supplied it to DeepMind without their consent",
         "domain": "Health Services",
         "city": "",
@@ -945,7 +945,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Gender Stereotypes in Chatbot",
+        "title": "Gender Stereotypes In Chatbot",
         "issue": "Gender prejudices found in bots start impacting women such as boys barking orders at girls named Alexa and engaging in dirty conversations with bots",
         "domain": "Society",
         "city": "San Francisco",
@@ -960,7 +960,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Bias in Pothole Detection",
+        "title": "Bias In Pothole Detection",
         "issue": "The recording of potholes was skewed as it disadvantaged populations without smartphones",
         "domain": "Society",
         "city": "Boston",
@@ -975,7 +975,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Police Facial Recognition Could Misidentify People after Protests",
+        "title": "Police Facial Recognition Could Misidentify People After Protests",
         "issue": "The AI being used to detect protestors of racial injustice is trained primarily on white males which means that the probability of misdetecting people of color is higher. ",
         "domain": "Society",
         "city": "Minneapolis",
@@ -990,7 +990,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Unequal Access to Amazon's Prime Free Same-Day Delivery",
+        "title": "Unequal Access To Amazon'S Prime Free Same-Day Delivery",
         "issue": "At first, Amazon did not consider race in their predictive algorithm for areas that should have same-day Prime Delivery. The algorithim still picked up on race and discriminated against minority urban neighborhoods. Since this article has been released, Amazon has extended same day delivery after political figures urged them in Boston, Chicago adn New York.",
         "domain": "Society",
         "city": "Seattle",
@@ -1035,7 +1035,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Data Privacy Concerns wiht Tim Hortons",
+        "title": "Data Privacy Concerns Wiht Tim Hortons",
         "issue": "Tim Hortons records longitude and latitude of app users outside of the app",
         "domain": "Business ",
         "city": "",
@@ -1050,7 +1050,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Criminal Risk Assessment Algorithms are biased",
+        "title": "Criminal Risk Assessment Algorithms Are Biased",
         "issue": "The risk assessment tools are based on historical crime data that show correlations rather than causations which turn correlative insights into causual scoring mechanisms.",
         "domain": "Law Enforcement",
         "city": "Boston ",
@@ -1060,6 +1060,51 @@ export default [
         "lng": "-71",
         "internet": "0",
         "link": "https://www.technologyreview.com/2019/01/21/137783/algorithms-criminal-justice-ai/",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "Contact Tracing Apps Must Consider Data Privacy",
+        "issue": "The rise of contract tracing apps raises data privacy concerns and legal ramifications.",
+        "domain": "Health Services",
+        "city": "Cambridge",
+        "state": "Massachusetts",
+        "country": "USA",
+        "lat": "42.373611",
+        "lng": "-71.110558",
+        "internet": "0",
+        "link": "https://www.informationweek.com/strategic-cio/security-and-risk-strategy/why-ai-ethics-is-even-more-important-now/a/d-id/1337922",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "Cardiology Ai Protocol: Life And Death Ramifications Exist",
+        "issue": "Ramifications exist if a cardiology AI protocol does not have the right inputs and parameters.",
+        "domain": "Health Services",
+        "city": "Armonk ",
+        "state": "New York",
+        "country": "USA",
+        "lat": "41.1264849",
+        "lng": "-73.7140195",
+        "internet": "0",
+        "link": "https://www.forbes.com/sites/jeffgorke/2020/06/18/ai-and-machine-learning-in-healthcare-garbage-in-garbage-out/#1bce77cc50a7",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "Ai Can Amplify Medical Mistakes",
+        "issue": "AI can amplify medical mistakes by overtesting, overdiagnosis, and overtreatment",
+        "domain": "Health Services",
+        "city": "Mountain View",
+        "state": "California",
+        "country": "USA",
+        "lat": "38.009838",
+        "lng": "-122.119232",
+        "internet": "0",
+        "link": "https://www.wired.com/story/artificial-intelligence-makes-bad-medicine-even-worse/",
         "action": "",
         "reading": "",
         "insights": ""
