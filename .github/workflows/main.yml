@@ -15,9 +15,9 @@ jobs:
     - run: yarn --cwd AI-Gone-Wrong-Map install
     - run: yarn --cwd AI-Gone-Wrong-Map build
     - if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-      uses: jsmrcaga/action-netlify-deploy@v1
+      uses: jsmrcaga/action-netlify-deploy@v1.1.0
       with:
         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID_MAP }}
+        NETLIFY_SITE_ID: 286f304e-a943-4381-977c-678b65ece36a
         NETLIFY_DEPLOY_TO_PROD: true
         build_directory: AI-Gone-Wrong-Map/build
