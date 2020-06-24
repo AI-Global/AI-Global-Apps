@@ -193,8 +193,8 @@ class Map extends React.Component {
           </div>
         </div>
         <div className="title-box">
-          <h1 style={{ margin: 'auto', width: '40%', marginBottom: '20px' }}>Where AI Has Gone Wrong</h1>
-          {zoom < 3.55 && <h5 style={{ margin: 'auto', width: '40%' }}>Where AI Has Gone Wrong represents historical instances of where AI has adversely impacted society in a specific domain. Click on a dot for a brief description and a link for more information! If a dot is traveling, it means the case impacts society across country borders on the Internet.</h5>}
+          <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px' }}>Where Poorly Designed AI Has Had Adverse Impacts</h1>
+          {zoom < 3.55 && <h5 style={{ margin: 'auto', width: '40%' }}>Our world has been so focused on technology that we believe it’s time to be human centric. By examining the adverse impacts of poorly designed AI, you are one step closer to helping us design a world of responsible AI.</h5>}
         </div> 
         <a target="_blank" rel="noopener noreferrer"  href="https://oproma.github.io/rai-trustindex/">  
           <button className="call-to-action-button" type="submit" >

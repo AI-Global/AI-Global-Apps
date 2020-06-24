@@ -66,6 +66,7 @@
 
 
 .call-to-action-button{
+  font-weight: bold;
   position: absolute;
   right: 15px;
   bottom: 25px;
