@@ -63,3 +63,33 @@
 .mapboxgl-popup {
   z-index: 999 !important;
 }
+
+
+.call-to-action-button{
+  position: absolute;
+  right: 15px;
+  bottom: 25px;
+  width: 300px;
+  background-color: white;
+  border: none;
+  outline: none;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  z-index: 999;
+  border-radius: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  padding-top: 10px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  cursor: pointer;
+}
+
+.call-to-action-button:active {
+  background-color:white;
+  box-shadow: black;
+  transform: translateY(4px);
+}
+
