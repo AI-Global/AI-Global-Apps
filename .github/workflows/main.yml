@@ -21,3 +21,19 @@ jobs:
         NETLIFY_SITE_ID: 286f304e-a943-4381-977c-678b65ece36a
         NETLIFY_DEPLOY_TO_PROD: true
         build_directory: AI-Gone-Wrong-Map/build
+  build-bubble:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12'
+    - run: yarn --cwd Responsible-AI-Chart install
+    - run: yarn --cwd Responsible-AI-Chart build
+    - if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+      uses: jsmrcaga/action-netlify-deploy@v1.1.0
+      with:
+        NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        NETLIFY_SITE_ID: b6ae88cc-2c68-405e-a280-b6b51b7cb63e
+        NETLIFY_DEPLOY_TO_PROD: true
+        build_directory: Responsible-AI-Chart/build
