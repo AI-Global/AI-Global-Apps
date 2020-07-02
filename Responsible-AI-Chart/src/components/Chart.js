@@ -35,7 +35,7 @@ class Chart extends React.Component {
 
   onClick(node) {
     let { selected } = this.state
-    if (selected && selected.id == node.id || node.depth == 1) {
+    if ((selected && selected.id === node.id) || node.depth === 1) {
       this.setState({ selected: null });
     } else {
       this.setState({ selected: node });
@@ -48,9 +48,9 @@ class Chart extends React.Component {
 
   getColor(node) {
     let c;
-    if (node.depth == 0) {
+    if (node.depth === 0) {
       c = [255, 255, 255];
-    } else if (node.depth == 1) {
+    } else if (node.depth === 1) {
       c = typeToColor[node.type];
     } else {
       let tc = typeToColor[node.type];
@@ -60,9 +60,9 @@ class Chart extends React.Component {
   }
 
   getTooltip({ node }) {
-    if (node.depth == 1) {
+    if (node.depth === 1) {
       return node.data.type;
-    } else if (node.depth == 2) {
+    } else if (node.depth === 2) {
       return node.data.org;
     }
     return '...';
@@ -71,7 +71,7 @@ class Chart extends React.Component {
   onCheckClick(type) {
     this.setState(state => {
       if (state.selectedTypes.includes(type)) {
-        state.selectedTypes = state.selectedTypes.filter(x => x != type);
+        state.selectedTypes = state.selectedTypes.filter(x => x !== type);
       } else {
         state.selectedTypes.push(type);
       }
@@ -123,8 +123,8 @@ class Chart extends React.Component {
             <div style={{ backgroundColor: 'rgb(' + typeToColor[type].join(',') + ')' }} className="color-block"></div> {type}</div>)}
           <br />
           <div style={{textAlign: 'center'}}>
-            <a target="_blank" href="https://portal.ai-global.org/dataset/ai-documentation-across-organization-types">View Dataset</a><br/>
-            <a target="_blank" href="https://docs.google.com/forms/d/e/1FAIpQLSe7E8R_tWxqpko8zaMASTmjUonD9438XlFlP6IA238dMtYkqg/viewform">Submit a Documentation</a>
+            <a target="_blank" rel="noopener noreferrer" href="https://portal.ai-global.org/dataset/ai-documentation-across-organization-types">View Dataset</a><br/>
+            <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSe7E8R_tWxqpko8zaMASTmjUonD9438XlFlP6IA238dMtYkqg/viewform">Submit a Documentation</a>
           </div>
         </div>
         {selected && selected.data.org && <div style={{ position: 'fixed', zIndex: 10, top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }}>
