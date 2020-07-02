@@ -33,7 +33,8 @@ function renderPulse(map, context, size, offset, domain, colors) {
   return true;
 }
 
-let domains = [...new Set(db.map((item) => item.domain))];
+let domainsSelected = ['Society', 'Law Enforcement', 'Business'];
+let domains = [...new Set(db.map((item) => item.domain.trim()))];
 let domainColors = [
   [148, 189, 255],
   [4, 236, 217],
@@ -52,7 +53,7 @@ let domainToVisable = {};
 for (let dIdx in domains) {
   let [r, g, b] = domainColors[dIdx];
   domainToColors[domains[dIdx]] = [[r, g, b], [r + 50, g + 50, b + 50], `rgba(${r}, ${g}, ${b}, 1)`];
-  domainToVisable[domains[dIdx]] = true;
+  domainToVisable[domains[dIdx]] = domainsSelected.includes(domains[dIdx]);
 }
 
 let eventToFeatureJSON = (event) => {
@@ -89,7 +90,7 @@ class Map extends React.Component {
     this.state = {
       width: window.innerWidth,
       height: window.innerHeight,
-      selected: ['Society', 'Law Enforcement', 'Business'],
+      selected: domainsSelected,
       lng: 5,
       lat: 34,
       zoom: 1.7,
