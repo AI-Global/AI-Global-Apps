@@ -7,7 +7,7 @@
   width: 10px;
   height: 10px;
   display: inline-block;
-  background-color:#ff0000;
+  background-color: #ff0000;
 }
 
 .logo-box {
@@ -56,7 +56,8 @@
   border-radius: 3px;
 }
 
-.title-box h1, .title-box h5 {
+.title-box h1,
+.title-box h5 {
   backdrop-filter: blur(6px);
 }
 
@@ -64,8 +65,7 @@
   z-index: 999 !important;
 }
 
-
-.call-to-action-button{
+.call-to-action-button {
   font-weight: bold;
   position: absolute;
   right: 15px;
@@ -84,13 +84,12 @@
   padding-bottom: 10px;
   padding-left: 10px;
   padding-top: 10px;
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   cursor: pointer;
 }
 
 .call-to-action-button:active {
-  background-color:white;
+  background-color: white;
   box-shadow: black;
   transform: translateY(4px);
 }
-

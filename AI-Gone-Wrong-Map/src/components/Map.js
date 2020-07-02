@@ -4,7 +4,7 @@ import db from '../data/db';
 
 function renderPulse(map, context, size, offset, domain, colors) {
   let duration = 1300;
-  let t = (offset + performance.now() % duration) / duration;
+  let t = (offset + (performance.now() % duration)) / duration;
   t = 0.8; // TODO remove animation
   let radius = (size / 2) * 0.3;
   // let outerRadius = (size / 2) * 0.7 * t + radius;
@@ -23,13 +23,7 @@ function renderPulse(map, context, size, offset, domain, colors) {
   //context.fillStyle = `rgba(${colors[0][0]}, ${colors[0][1]}, ${colors[0][2]}, ${1 - t})`;
   //context.fill();
   context.beginPath();
-  context.arc(
-    size / 2,
-    size / 2,
-    radius,
-    0,
-    Math.PI * 2
-  );
+  context.arc(size / 2, size / 2, radius, 0, Math.PI * 2);
   context.fillStyle = `rgba(${colors[1][0]}, ${colors[1][1]}, ${colors[1][2]}, 1)`;
   context.strokeStyle = 'white';
   context.lineWidth = 2 + 4 * (1 - t);
@@ -37,9 +31,9 @@ function renderPulse(map, context, size, offset, domain, colors) {
   context.stroke();
   map.triggerRepaint();
   return true;
-};
+}
 
-let domains = [...new Set(db.map(item => item.domain))];
+let domains = [...new Set(db.map((item) => item.domain))];
 let domainColors = [
   [148, 189, 255],
   [4, 236, 217],
@@ -50,24 +44,20 @@ let domainColors = [
   [79, 34, 1],
   [0, 86, 31],
   [104, 110, 153],
-  [255, 97, 105]
+  [255, 97, 105],
 ];
 
 let domainToColors = {};
 let domainToVisable = {};
 for (let dIdx in domains) {
   let [r, g, b] = domainColors[dIdx];
-  domainToColors[domains[dIdx]] = [
-    [r, g, b],
-    [r + 50, g + 50, b + 50],
-    `rgba(${r}, ${g}, ${b}, 1)`
-  ];
+  domainToColors[domains[dIdx]] = [[r, g, b], [r + 50, g + 50, b + 50], `rgba(${r}, ${g}, ${b}, 1)`];
   domainToVisable[domains[dIdx]] = true;
-};
+}
 
 let eventToFeatureJSON = (event) => {
   let { title, issue, lat, lng, link, domain, city, state, country } = event;
-  let loc = "";
+  let loc = '';
   if (city && state && country) {
     loc = `${city} ${state}, ${country}`;
   } else if (city && state) {
@@ -78,23 +68,22 @@ let eventToFeatureJSON = (event) => {
     loc = `${country || state || city}`;
   }
   return {
-    'type': 'Feature',
-    'properties': {
-      'category': domain,
-      'title': title,
-      'description': issue,
-      'location': loc,
-      'link': link
+    type: 'Feature',
+    properties: {
+      category: domain,
+      title: title,
+      description: issue,
+      location: loc,
+      link: link,
     },
-    'geometry': {
-      'type': 'Point',
-      'coordinates': [lng, lat]
-    }
+    geometry: {
+      type: 'Point',
+      coordinates: [lng, lat],
+    },
   };
 };
 
 class Map extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -103,7 +92,7 @@ class Map extends React.Component {
       selected: ['Society', 'Law Enforcement', 'Business'],
       lng: 5,
       lat: 34,
-      zoom: 1.7
+      zoom: 1.7,
     };
   }
 
@@ -112,18 +101,18 @@ class Map extends React.Component {
       container: this.mapContainer,
       style: 'mapbox://styles/marthacz/ck6kzsm6h0m4g1imnbigf7xlz',
       center: [this.state.lng, this.state.lat],
-      zoom: this.state.zoom
+      zoom: this.state.zoom,
     });
     map.addControl(new mapboxgl.NavigationControl());
     map.on('move', () => {
       this.setState({
         lng: map.getCenter().lng.toFixed(4),
         lat: map.getCenter().lat.toFixed(4),
-        zoom: map.getZoom().toFixed(2)
+        zoom: map.getZoom().toFixed(2),
       });
     });
     map.on('load', () => {
-      db.map(item => eventToFeatureJSON(item)).forEach((marker, i) => {
+      db.map((item) => eventToFeatureJSON(item)).forEach((marker, i) => {
         let item = db[i];
         let canvas = document.createElement('canvas');
         canvas.width = 50;
@@ -159,10 +148,10 @@ class Map extends React.Component {
   }
 
   onClickDomain(domain) {
-    this.setState(state => {
+    this.setState((state) => {
       if (state.selected.includes(domain)) {
         domainToVisable[domain] = false;
-        state.selected = state.selected.filter(x => x !== domain);
+        state.selected = state.selected.filter((x) => x !== domain);
       } else {
         domainToVisable[domain] = true;
         state.selected.push(domain);
@@ -176,39 +165,66 @@ class Map extends React.Component {
     return (
       <div>
         <div className="logo-box">
-          <a target="_blank" rel="noopener noreferrer" href="https://ai-global.org/"><img alt="AI Global Logo" src="/transparent-rect-logo.png" /></a>
+          <a target="_blank" rel="noopener noreferrer" href="https://ai-global.org/">
+            <img alt="AI Global Logo" src="/transparent-rect-logo.png" />
+          </a>
         </div>
         <div className="legend-box">
           <p>Domains</p>
-          {domains.map(domain =>
+          {domains.map((domain) => (
             <div>
               <input type="checkbox" checked={selected.includes(domain)} onClick={() => this.onClickDomain(domain)} />
-              <div style={{ backgroundColor: domainToColors[domain][2] }} className="color-block"></div> {domain}</div>)}
+              <div style={{ backgroundColor: domainToColors[domain][2] }} className="color-block"></div> {domain}
+            </div>
+          ))}
           <br />
-          <div style={{textAlign: 'center'}}>
+          <div style={{ textAlign: 'center' }}>
             {/* <a target="_blank" href="https://portal.ai-global.org/dataset/ai-violation-use-cases">View Dataset</a> */}
-            <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0">View Dataset</a>
-            <br/>
-            <a target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSeo4ZcT48qYDA3Z4GgRF8TjNLVuHpAvt9I1rVDX87usskLoVQ/viewform">Submit a use case</a>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0"
+            >
+              View Dataset
+            </a>
+            <br />
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://docs.google.com/forms/d/e/1FAIpQLSeo4ZcT48qYDA3Z4GgRF8TjNLVuHpAvt9I1rVDX87usskLoVQ/viewform"
+            >
+              Submit a use case
+            </a>
           </div>
         </div>
         <div className="title-box">
-          <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px' }}>Where Poorly Designed AI Has Had Adverse Impacts</h1>
-          {zoom < 3.55 && <h5 style={{ margin: 'auto', width: '40%' }}>Our world has been so focused on technology that we believe it’s time to be human centric. By examining the adverse impacts of poorly designed AI, you are one step closer to helping us design a world of responsible AI.</h5>}
-        </div> 
-        <a target="_blank" rel="noopener noreferrer"  href="https://oproma.github.io/rai-trustindex/">  
-          <button className="call-to-action-button" type="submit" >
-            These consequences can be avoided by improving the design of AI.<br />
+          <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px' }}>
+            Where Poorly Designed AI Has Had Adverse Impacts
+          </h1>
+          {zoom < 3.55 && (
+            <h5 style={{ margin: 'auto', width: '40%' }}>
+              Our world has been so focused on technology that we believe it’s time to be human centric. By examining
+              the adverse impacts of poorly designed AI, you are one step closer to helping us design a world of
+              responsible AI.
+            </h5>
+          )}
+        </div>
+        <a target="_blank" rel="noopener noreferrer" href="https://oproma.github.io/rai-trustindex/">
+          <button className="call-to-action-button" type="submit">
+            These consequences can be avoided by improving the design of AI.
             <br />
-            Check your AI with our <em>Design Assistant</em>          
+            <br />
+            Check your AI with our <em>Design Assistant</em>
           </button>
         </a>
-        <div id="#map" ref={elem => this.mapContainer = elem}
-          style={{ width: width + 'px', height: height + 'px' }} />
+        <div
+          id="#map"
+          ref={(elem) => (this.mapContainer = elem)}
+          style={{ width: width + 'px', height: height + 'px' }}
+        />
       </div>
     );
   }
-
 }
 
 export default Map;
