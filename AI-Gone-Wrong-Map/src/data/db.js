@@ -1,4 +1,4 @@
-export default [
+export default[
     {
         "title": "Phone Call - Faking Voice",
         "issue": "Criminals used AI-based software to copy a German CEO and requested to transfer over $243,000 to a supplier",
@@ -1105,6 +1105,66 @@ export default [
         "lng": "-122.119232",
         "internet": "0",
         "link": "https://www.wired.com/story/artificial-intelligence-makes-bad-medicine-even-worse/",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "A Black Man is Wrongly Accused of a Crime by an Algorithm ",
+        "issue": "Mr.Williams is wrongly accused of shoplifting after an algorithm suggested his face matched the phone in the photo.",
+        "domain": "Law Enforcement",
+        "city": "Detroit",
+        "state": "Michigan",
+        "country": "USA",
+        "lat": "42.331429",
+        "lng": "-83.045753",
+        "internet": "0",
+        "link": "https://www.nytimes.com/2020/06/24/technology/facial-recognition-arrest.html , https://www.reuters.com/article/us-michigan-facial-recognition/face-recognition-vendor-vows-new-rules-after-wrongful-arrest-in-us-using-its-technology-idUSKBN23V1KJ , https://www.washingtonpost.com/opinions/2020/06/24/i-was-wrongfully-arrested-because-facial-recognition-why-are-police-allowed-use-this-technology/",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "Google's AI Hate Speech Detector is Racially Biased",
+        "issue": "This tool profiled tweets by African-Americans as hate speech.",
+        "domain": "Law Enforcement",
+        "city": "Mountain View",
+        "state": "California",
+        "country": "USA",
+        "lat": "38.009838",
+        "lng": "-122.119232",
+        "internet": "1",
+        "link": "https://www.forbes.com/sites/nicolemartin1/2019/08/13/googles-artificial-intelligence-hate-speech-detector-is-racially-biased/#2fd08795326c",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "YOLO Creator Quits AI Research because of AI Ethical Concerns",
+        "issue": "Due to the possible military applications of YOLO computer vision algorithm, Joe Redmon stops his research.",
+        "domain": "",
+        "city": "Seattle ",
+        "state": "Washington",
+        "country": "USA",
+        "lat": "47.006209",
+        "lng": "-122.002069",
+        "internet": "0",
+        "link": "https://analyticsindiamag.com/yolo-creator-joe-redmon-computer-vision-research-ethical-concern/",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "IBM Watson team had to scrape the Urban Dictionary from Watson memory",
+        "issue": "IBM Watson is unable to distinguish between polite and rude words.",
+        "domain": "Society",
+        "city": "Armonk",
+        "state": "New York",
+        "country": "USA",
+        "lat": "37.45322",
+        "lng": "-122.18322",
+        "internet": "0",
+        "link": "https://www.theatlantic.com/technology/archive/2013/01/ibms-watson-memorized-the-entire-urban-dictionary-then-his-overlords-had-to-delete-it/267047/",
         "action": "",
         "reading": "",
         "insights": ""
