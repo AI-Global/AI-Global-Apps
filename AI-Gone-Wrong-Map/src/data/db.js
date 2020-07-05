@@ -1142,7 +1142,7 @@ export default[
     {
         "title": "YOLO Creator Quits AI Research because of AI Ethical Concerns",
         "issue": "Due to the possible military applications of YOLO computer vision algorithm, Joe Redmon stops his research.",
-        "domain": "",
+        "domain": "Law Enforcement",
         "city": "Seattle ",
         "state": "Washington",
         "country": "USA",
