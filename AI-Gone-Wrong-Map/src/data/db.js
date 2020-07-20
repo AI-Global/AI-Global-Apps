@@ -1231,7 +1231,7 @@ export default[
     },
     {
         "title": "Women are less likely to be shown ads for high-paid jobs on Google",
-        "issue": "A Carnegie Mellon team build AdFisher ( a system of male and female job seekers) and found maeles were shown ads to seek high paying jobs more than females.",
+        "issue": "A Carnegie Mellon team build AdFisher ( a system of male and female job seekers) and found males were shown ads to seek high paying jobs more than females.",
         "domain": "Society",
         "city": "Pittsburgh",
         "state": "Pennsylvania",
@@ -1258,5 +1258,36 @@ export default[
         "action": "",
         "reading": "",
         "insights": ""
+    },
+    {
+        "title": "Research shows that AI is likely to pick the unethical strategy",
+        "issue": "Researchers show that AI has an unethical optimization principle",
+        "domain": "Society",
+        "city": "Lausanne",
+        "state": "",
+        "country": "Switzerland",
+        "lat": "46.51963",
+        "lng": "6.63213",
+        "internet": "",
+        "link": "https://www.eurekalert.org/pub_releases/2020-06/epfd-eaa063020.php",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "UK Polices uses AI that amplifies human bias",
+        "issue": "Predictive Policing tools in UK use datasets with human bias. Furthermore, individuals from a disadvantaged sociodemographic background are likely to engage more with public services which leads to more data and calculates them as posing a greater risk.",
+        "domain": "Law Enforcement",
+        "city": "London",
+        "state": "",
+        "country": "UK",
+        "lat": "51.507351",
+        "lng": "-0.127758",
+        "internet": "",
+        "link": "https://www.mirror.co.uk/tech/artificial-intelligence-used-uk-police-20078716",
+        "action": "",
+        "reading": "",
+        "insights": ""
     }
 ]
+
