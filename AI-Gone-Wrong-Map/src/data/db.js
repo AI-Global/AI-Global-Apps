@@ -1,4 +1,4 @@
-export default [
+export default[
     {
         "title": "Phone Call - Faking Voice",
         "issue": "Criminals used AI-based software to copy a German CEO and requested to transfer over $243,000 to a supplier",
@@ -1521,8 +1521,8 @@ export default [
         "city": "Springfield",
         "state": "Illinois",
         "country": "USA",
-        "lat": "37.210388",
-        "lng": "-93.297256",
+        "lat": "39.99936",
+        "lng": "-89.04362",
         "internet": "",
         "link": "https://www.reuters.com/article/us-facebook-privacy-lawsuit/facebook-raises-settlement-to-650-million-in-facial-recognition-lawsuit-idUSKCN24W313",
         "action": "",
@@ -1551,8 +1551,8 @@ export default [
         "city": "Springfield",
         "state": "Illinois",
         "country": "USA",
-        "lat": "37.010388",
-        "lng": "-93.097256",
+        "lat": "39.79936",
+        "lng": "-89.34362",
         "internet": "",
         "link": "https://techcrunch.com/2020/07/15/facial-recognition-lawsuit-vance-janecyk-bipa/",
         "action": "",
