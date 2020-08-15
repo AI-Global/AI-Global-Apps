@@ -3,25 +3,12 @@ import mapboxgl from 'mapbox-gl';
 import db from '../data/db';
 
 function renderPulse(map, context, size, offset, domain, colors) {
-  let duration = 1300;
-  let t = (offset + (performance.now() % duration)) / duration;
-  t = 0.8; // TODO remove animation
+  let t = 0.8;
   let radius = (size / 2) * 0.3;
-  // let outerRadius = (size / 2) * 0.7 * t + radius;
   context.clearRect(0, 0, size, size);
   if (!domainToVisable[domain]) {
     return;
   }
-  //context.beginPath();
-  // context.arc(
-  //   size / 2,
-  //   size / 2,
-  //   outerRadius,
-  //   0,
-  //   Math.PI * 2
-  // );
-  //context.fillStyle = `rgba(${colors[0][0]}, ${colors[0][1]}, ${colors[0][2]}, ${1 - t})`;
-  //context.fill();
   context.beginPath();
   context.arc(size / 2, size / 2, radius, 0, Math.PI * 2);
   context.fillStyle = `rgba(${colors[1][0]}, ${colors[1][1]}, ${colors[1][2]}, 1)`;
@@ -52,10 +39,12 @@ let domainColors = [
 
 let domainToColors = {};
 let domainToVisable = {};
+let domainsToMarkers = {};
 for (let dIdx in domains) {
   let [r, g, b] = domainColors[dIdx];
   domainToColors[domains[dIdx]] = [[r, g, b], [r + 50, g + 50, b + 50], `rgba(${r}, ${g}, ${b}, 1)`];
   domainToVisable[domains[dIdx]] = domainsSelected.includes(domains[dIdx]);
+  domainsToMarkers[domains[dIdx]] = [];
 }
 
 let eventToFeatureJSON = (event) => {
@@ -106,6 +95,7 @@ class Map extends React.Component {
       center: [this.state.lng, this.state.lat],
       zoom: this.state.zoom,
     });
+    window.map = map;
     map.addControl(new mapboxgl.NavigationControl());
     map.on('move', () => {
       this.setState({
@@ -130,14 +120,19 @@ class Map extends React.Component {
           popUpHTML += `<a target="_blank" href="${marker.properties.link}">More Info</a>`;
         }
         let [x, y] = marker.geometry.coordinates;
-        x = parseFloat(x);
-        y = parseFloat(y);
-        x += Math.random() * 0.5 - 0.25;
-        y += Math.random() * 0.5 - 0.25;
-        new mapboxgl.Marker(canvas)
+        if (!item.dontShift) {
+          x = parseFloat(x);
+          y = parseFloat(y);
+          x += Math.random() * 0.25 - 0.12;
+          y += Math.random() * 0.25 - 0.12;
+        }
+        let mrkr = new mapboxgl.Marker(canvas)
           .setLngLat([x, y])
-          .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popUpHTML))
-          .addTo(map);
+          .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popUpHTML));
+        domainsToMarkers[item.domain.trim()].push(mrkr);
+        if (domainsSelected.includes(item.domain.trim())) {
+          mrkr.addTo(map);
+        }
         let markerRender = () => {
           renderPulse(map, context, 50, offset, item.domain, colors);
           requestAnimationFrame(markerRender);
@@ -155,9 +150,19 @@ class Map extends React.Component {
       if (state.selected.includes(domain)) {
         domainToVisable[domain] = false;
         state.selected = state.selected.filter((x) => x !== domain);
+        for (let dm in domainToVisable) {
+          if (!domainToVisable[dm]) {
+            for (let marker of domainsToMarkers[dm]) {
+              marker.remove();
+            }
+          }
+        }
       } else {
         domainToVisable[domain] = true;
         state.selected.push(domain);
+        for (let marker of domainsToMarkers[domain]) {
+          marker.addTo(window.map);
+        }
       }
       return state;
     });

@@ -1,4 +1,4 @@
-export default[
+export default [
     {
         "title": "Phone Call - Faking Voice",
         "issue": "Criminals used AI-based software to copy a German CEO and requested to transfer over $243,000 to a supplier",
@@ -282,7 +282,8 @@ export default[
         "link": "https://www.natlawreview.com/article/would-you-trust-artificially-intelligent-expert",
         "action": "",
         "reading": "",
-        "insights": ""
+        "insights": "",
+        "dontShift": true
     },
     {
         "title": "COMPAS",
