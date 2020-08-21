@@ -207,13 +207,15 @@ class Map extends React.Component {
         </div>
         <div className="title-box">
           <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px' }}>
-            Where Poorly Designed AI Has Had Adverse Impacts
+            Where AI Has Gone Wrong
           </h1>
           {zoom < 3.55 && (
             <h5 style={{ margin: 'auto', width: '40%' }}>
+        
               Our world has been so focused on technology that we believe it’s time to be human centric. By examining
               the adverse impacts of poorly designed AI, you are one step closer to helping us design a world of
-              responsible AI.
+              responsible AI. Cases are aggregated by AI Global and Charlie Pownall/CPC & Associates <a href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814">(AI & Algorithmic Controversy Repository)</a>
+           
             </h5>
           )}
         </div>
