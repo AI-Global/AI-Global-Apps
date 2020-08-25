@@ -207,14 +207,13 @@ class Map extends React.Component {
         </div>
         <div className="title-box">
           <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px' }}>
-            Where AI Has Gone Wrong
+            Where in the World has AI Gone Wrong? 
           </h1>
           {zoom < 3.55 && (
             <h5 style={{ margin: 'auto', width: '40%' }}>
         
-              Our world has been so focused on technology that we believe it’s time to be human centric. By examining
-              the adverse impacts of poorly designed AI, you are one step closer to helping us design a world of
-              responsible AI. Cases are aggregated by AI Global and Charlie Pownall/CPC & Associates <a href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814">(AI & Algorithmic Controversy Repository)</a>
+              Everyone is talking about AI, but how and where is it actually being used? This map shows that AI is all around us, often where we don’t even see it. Since our mission is to ensure AI is protecting us instead of harming us we’ve mapped out some cases where AI has gone wrong. 
+ Cases are aggregated by AI Global and Charlie Pownall/CPC & Associates <a href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814">(AI & Algorithmic Controversy Repository)</a>
            
             </h5>
           )}
