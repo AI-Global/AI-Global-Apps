@@ -90,6 +90,7 @@ db.map((item, i) => {
   item.isGood = item.is_good.trim();
   item.year = parseInt(item.year);
   item.id = i;
+  return item;
 });
 
 let eventToFeatureJSON = (event) => {
