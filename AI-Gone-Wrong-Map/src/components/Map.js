@@ -2,6 +2,7 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import db from '../data/db';
 
+// renderPulse - Function to render dot -regardless if bad/good
 function renderPulse(map, context, size, offset, domain, colors) {
   let t = 0.8;
   let radius = (size / 2) * 0.3;
@@ -19,9 +20,46 @@ function renderPulse(map, context, size, offset, domain, colors) {
   map.triggerRepaint();
   return true;
 }
+// renderPulseGood - function for drawing a star
+// think of size as the plot, "can only be in this space"
+// always need map, context,size,offset
+function renderPulseGood(map, context, size, offset, domain, colors, is_good) {
+  let alpha = (2 * Math.PI) / 10;
+  let radius = size * 0.2;
+  let starXY = [size / 2, size / 2];
+  context.clearRect(0, 0, size, size);
+  if (!is_goodToVisable[is_good]) {
+    return;
+  }
+  context.beginPath();
+  // Star Formula
+  for (let i = 11; i !== 0; i--) {
+    let r = (radius * ((i % 2) + 1.0)) / 2.0;
+    let omega = alpha * i;
+    context.lineTo(r * Math.sin(omega) + starXY[0], r * Math.cos(omega) + starXY[1]);
+  }
 
+  context.closePath();
+  // Fills in color of the domain
+  context.fillStyle = `rgba(${colors[1][0]}, ${colors[1][1]}, ${colors[1][2]}, 1)`;
+  context.strokeStyle = 'white';
+  context.fill();
+  context.stroke();
+  map.triggerRepaint();
+  return true;
+}
+
+// Define variables
 let domainsSelected = ['Society', 'Law Enforcement', 'Business'];
+
 let domains = [...new Set(db.map((item) => item.domain.trim()))];
+
+let goodnessSelected = ['Right', 'Wrong'];
+
+let goodness = [...new Set(db.map((item) => item.is_good.trim()))];
+
+// UX DESIGN: if you ever need to change the colors
+//Add the hex triplet
 let domainColors = [
   [148, 189, 255],
   [4, 236, 217],
@@ -40,6 +78,10 @@ let domainColors = [
 let domainToColors = {};
 let domainToVisable = {};
 let domainsToMarkers = {};
+//Initilaized for colors
+let is_goodToVisable = {};
+let is_goodToMarkers = {};
+
 for (let dIdx in domains) {
   let [r, g, b] = domainColors[dIdx];
   domainToColors[domains[dIdx]] = [[r, g, b], [r + 50, g + 50, b + 50], `rgba(${r}, ${g}, ${b}, 1)`];
@@ -47,8 +89,13 @@ for (let dIdx in domains) {
   domainsToMarkers[domains[dIdx]] = [];
 }
 
+for (let gIdx in goodness) {
+  is_goodToVisable[goodness[gIdx]] = goodnessSelected.includes(goodness[gIdx]);
+  is_goodToMarkers[goodness[gIdx]] = [];
+}
+
 let eventToFeatureJSON = (event) => {
-  let { title, issue, lat, lng, link, domain, city, state, country } = event;
+  let { title, issue, lat, lng, link, domain, city, state, country, is_good } = event;
   let loc = '';
   if (city && state && country) {
     loc = `${city} ${state}, ${country}`;
@@ -67,6 +114,7 @@ let eventToFeatureJSON = (event) => {
       description: issue,
       location: loc,
       link: link,
+      is_good: is_good,
     },
     geometry: {
       type: 'Point',
@@ -82,6 +130,7 @@ class Map extends React.Component {
       width: window.innerWidth,
       height: window.innerHeight,
       selected: domainsSelected,
+      selectedgood: goodnessSelected,
       lng: 5,
       lat: 34,
       zoom: 1.7,
@@ -114,7 +163,7 @@ class Map extends React.Component {
         let offset = Math.random() * 1000;
         let colors = domainToColors[item.domain];
         let popUpHTML = `<h3>${marker.properties.title}</h3>
-          <p><i>${marker.properties.category}</i><br/>${marker.properties.location}</p>
+          <p><i>${marker.properties.category}</i><p><i>${marker.properties.is_good}</i><br/>${marker.properties.location}</p>
           <p>${marker.properties.description}</p>`;
         if (marker.properties.link) {
           popUpHTML += `<a target="_blank" href="${marker.properties.link}">More Info</a>`;
@@ -133,9 +182,20 @@ class Map extends React.Component {
         if (domainsSelected.includes(item.domain.trim())) {
           mrkr.addTo(map);
         }
+
+        // For filter to work! (Functionality on legend)
+        is_goodToMarkers[item.is_good.trim()].push(mrkr);
+        if (goodnessSelected.includes(item.is_good.trim())) {
+          mrkr.addTo(map);
+        }
         let markerRender = () => {
-          renderPulse(map, context, 50, offset, item.domain, colors);
           requestAnimationFrame(markerRender);
+          // If the value in is_good ever changes, need to edit here
+          if (item.is_good === 'Right') {
+            renderPulseGood(map, context, 50, offset, item.domain, colors, item.is_good);
+          } else {
+            renderPulse(map, context, 50, offset, item.domain, colors);
+          }
         };
         requestAnimationFrame(markerRender);
       });
@@ -168,8 +228,32 @@ class Map extends React.Component {
     });
   }
 
+  //onClickGoodness - Function to get legend filtering to work
+  onClickGoodness(is_good) {
+    this.setState((state) => {
+      if (state.selectedgood.includes(is_good)) {
+        is_goodToVisable[is_good] = false;
+        state.selectedgood = state.selectedgood.filter((x) => x !== is_good);
+        for (let ig in is_goodToVisable) {
+          if (!is_goodToVisable[ig]) {
+            for (let marker of is_goodToMarkers[ig]) {
+              marker.remove();
+            }
+          }
+        }
+      } else {
+        is_goodToVisable[is_good] = true;
+        state.selectedgood.push(is_good);
+        for (let marker of is_goodToMarkers[is_good]) {
+          marker.addTo(window.map);
+        }
+      }
+      return state;
+    });
+  }
+
   render() {
-    let { width, height, zoom, selected } = this.state;
+    let { width, height, zoom, selected, selectedgood } = this.state;
     return (
       <div>
         <div className="logo-box">
@@ -185,6 +269,19 @@ class Map extends React.Component {
               <div style={{ backgroundColor: domainToColors[domain][2] }} className="color-block"></div> {domain}
             </div>
           ))}
+          <br />
+          <p> Where AI Has Gone...</p>
+          {goodness.map((is_good) => (
+            <div>
+              <input
+                type="checkbox"
+                checked={selectedgood.includes(is_good)}
+                onClick={() => this.onClickGoodness(is_good)}
+              />
+              {is_good}
+            </div>
+          ))}
+
           <br />
           <div style={{ textAlign: 'center' }}>
             {/* <a target="_blank" href="https://portal.ai-global.org/dataset/ai-violation-use-cases">View Dataset</a> */}
@@ -206,16 +303,15 @@ class Map extends React.Component {
           </div>
         </div>
         <div className="title-box">
-          <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px' }}>
-            Where in the World is AI?
-          </h1>
+          <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px' }}>Where in the World is AI?</h1>
           {zoom < 3.55 && (
             <h5 style={{ margin: 'auto', width: '40%' }}>
-        
-              Everyone is talking about AI, but how and where is it actually being used? This map shows that AI is all around us, often where we don’t even see it. Since our mission is to ensure AI is protecting us instead of harming us we’ve mapped out some cases where AI is being used well, and times where it has gone wrong.
-              Our AI Gone Right cases show how AI can help augment and advance our daily lives. It also highlights responsible actions taken when there have been serious issues with AI systems. Our AI Gone Wrong cases represent historical instances of where AI has adversely impacted society in a specific domain.
- Cases are aggregated by AI Global and Charlie Pownall/CPC & Associates <a href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814">(AI & Algorithmic Controversy Repository)</a>
-           
+              Everyone is talking about AI, but how and where is it actually being used? Since our mission is to ensure
+              AI is protecting us instead of harming us, we’ve mapped out some cases where AI is being used well, and
+              times where it has gone wrong. Cases are aggregated by AI Global and Charlie Pownall/CPC & Associates{' '}
+              <a href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814">
+                (AI & Algorithmic Controversy Repository)
+              </a>
             </h5>
           )}
         </div>
