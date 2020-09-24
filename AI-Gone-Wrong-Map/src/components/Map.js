@@ -89,6 +89,7 @@ db.map((item, i) => {
   item.domain = item.domain.trim();
   item.isGood = item.is_good.trim();
   item.year = parseInt(item.year);
+  item.yearFormatted = '' + item.year;
   item.id = i;
   return item;
 });
@@ -202,7 +203,11 @@ class Map extends React.Component {
 
   updateMarkersShown(selected, selectedGood, selectedYears) {
     for (let item of db) {
-      if (selectedGood.includes(item.isGood) && selected.includes(item.domain) && selectedYears.includes(item.year)) {
+      if (
+        selectedGood.includes(item.isGood) &&
+        selected.includes(item.domain) &&
+        selectedYears.includes(item.yearFormatted)
+      ) {
         item.mrkr.addTo(window.map);
       } else {
         item.mrkr.remove();
