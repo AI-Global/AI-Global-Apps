@@ -139,7 +139,7 @@ class Chart extends React.Component {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://portal.ai-global.org/dataset/ai-documentation-across-organization-types"
+              href="https://docs.google.com/spreadsheets/d/1KXVMgjclZvcoO1elkSS28d0f4evoCJs-24HvqifxBeA/edit?usp=sharing"
             >
               View Dataset
             </a>
