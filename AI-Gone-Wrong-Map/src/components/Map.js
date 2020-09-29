@@ -202,12 +202,9 @@ class Map extends React.Component {
   }
 
   updateMarkersShown(selected, selectedGood, selectedYears) {
+    console.log(selected, selectedGood, selectedYears);
     for (let item of db) {
-      if (
-        selectedGood.includes(item.isGood) &&
-        selected.includes(item.domain) &&
-        selectedYears.includes(item.yearFormatted)
-      ) {
+      if (selectedGood.includes(item.isGood) && selected.includes(item.domain) && selectedYears.includes(item.year)) {
         item.mrkr.addTo(window.map);
       } else {
         item.mrkr.remove();
