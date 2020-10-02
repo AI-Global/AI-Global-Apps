@@ -320,7 +320,7 @@ function Legend({ selected, selectedGood, onClickDomain, onClickGoodness }) {
           rel="noopener noreferrer"
           href="https://docs.google.com/forms/d/e/1FAIpQLSeo4ZcT48qYDA3Z4GgRF8TjNLVuHpAvt9I1rVDX87usskLoVQ/viewform"
         >
-          Submit a use case
+          Submit a case
         </a>
       </div>
     </div>
