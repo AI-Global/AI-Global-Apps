@@ -131,7 +131,7 @@ class Map extends React.Component {
       height: window.innerHeight,
       selected: initialDomainsSelected,
       selectedGood: initialGoodnessSelected,
-      selectedYears: Object.keys(yearMarks),
+      selectedYears: Object.keys(yearMarks).map((yr) => parseInt(yr)),
       lng: 5,
       lat: 34,
       zoom: 1.7,
@@ -202,7 +202,6 @@ class Map extends React.Component {
   }
 
   updateMarkersShown(selected, selectedGood, selectedYears) {
-    console.log(selected, selectedGood, selectedYears);
     for (let item of db) {
       if (selectedGood.includes(item.isGood) && selected.includes(item.domain) && selectedYears.includes(item.year)) {
         item.mrkr.addTo(window.map);
