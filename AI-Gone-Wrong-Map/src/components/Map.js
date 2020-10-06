@@ -348,7 +348,7 @@ function InfoBox() {
   return (
     <a target="_blank" rel="noopener noreferrer" href="https://oproma.github.io/rai-trustindex/">
       <button className="call-to-action-button" type="submit">
-        These consequences can be avoided by improving the design of AI.
+        The negative consequences of AI can be prevented by focusing on a responsible design, development and implementation of AI.
         <br />
         <br />
         Check your AI with our <em>Design Assistant</em>
