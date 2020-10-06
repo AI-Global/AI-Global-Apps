@@ -2,10 +2,14 @@
 
 > Visualizations for AI Global.
 
-## AI Gone Wrong Map
+## Where in the World is AI?
+An interactive visualization to explore responsible and unethical cases of AI around the world. 
+Explore by year, by various domains, and where AI has "Gone Right" or "Gone Wrong".
 
-![sc](https://user-images.githubusercontent.com/6625384/76899732-22eafd80-6866-11ea-810b-e902591b6ff5.png)
+https://map.ai-global.org/
 
-## Responsible AI Chart
+
+## Voices of Responsible AI
+Discover the conversations from various organizations on responsible AI.
 
 ![sc2](https://user-images.githubusercontent.com/6625384/81812392-ac781e00-94eb-11ea-8736-f63fddcd4412.png)
