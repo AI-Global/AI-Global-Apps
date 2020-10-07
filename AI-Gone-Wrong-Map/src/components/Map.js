@@ -256,6 +256,7 @@ class Map extends React.Component {
           <a target="_blank" rel="noopener noreferrer" href="https://ai-global.org/">
             <img alt="AI Global Logo" src="/transparent-rect-logo.png" />
           </a>
+          <License />
         </div>
         <Legend
           selected={selected}
@@ -284,6 +285,23 @@ class Map extends React.Component {
       </div>
     );
   }
+}
+
+function License() {
+  return (
+    <div>
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+        <img
+          title={
+            'Where in the World is AI? AI Global is licensed under a Creative Commons Attribution 4.0 International License'
+          }
+          alt="Creative Commons License"
+          style={{ borderWidth: 0 }}
+          src="https://i.creativecommons.org/l/by/4.0/88x31.png"
+        />
+      </a>
+    </div>
+  );
 }
 
 function Legend({ selected, selectedGood, onClickDomain, onClickGoodness }) {
