@@ -139,6 +139,7 @@ class Map extends React.Component {
   }
 
   componentDidMount() {
+    window.gtag('send', 'mapview');
     const map = new mapboxgl.Map({
       container: this.mapContainer,
       style: 'mapbox://styles/marthacz/ck6kzsm6h0m4g1imnbigf7xlz',
@@ -160,6 +161,12 @@ class Map extends React.Component {
         let canvas = document.createElement('canvas');
         canvas.width = 50;
         canvas.height = 50;
+        canvas.addEventListener('click', () => {
+          window.gtag('send', 'click', {
+            event_category: 'marker',
+            event_label: item.title,
+          });
+        });
         let context = canvas.getContext('2d');
         let offset = Math.random() * 1000;
         let colors = domainToColors[item.domain];
@@ -212,6 +219,10 @@ class Map extends React.Component {
   }
 
   onClickDomain(domain) {
+    window.gtag('send', 'click', {
+      event_category: 'domain',
+      event_label: domain,
+    });
     this.setState((state) => {
       if (state.selected.includes(domain)) {
         state.selected = state.selected.filter((x) => x !== domain);
@@ -225,6 +236,10 @@ class Map extends React.Component {
 
   //onClickGoodness - Function to get legend filtering to work
   onClickGoodness(isGood) {
+    window.gtag('send', 'click', {
+      event_category: 'goodness',
+      event_label: isGood,
+    });
     this.setState((state) => {
       if (state.selectedGood.includes(isGood)) {
         state.selectedGood = state.selectedGood.filter((x) => x !== isGood);
@@ -366,7 +381,8 @@ function InfoBox() {
   return (
     <a target="_blank" rel="noopener noreferrer" href="https://oproma.github.io/rai-trustindex/">
       <button className="call-to-action-button" type="submit">
-        The negative consequences of AI can be prevented by focusing on a responsible design, development and implementation of AI.
+        The negative consequences of AI can be prevented by focusing on a responsible design, development and
+        implementation of AI.
         <br />
         <br />
         Check your AI with our <em>Design Assistant</em>
