@@ -344,7 +344,7 @@ function Legend({ selected, selectedGood, onClickDomain, onClickGoodness }) {
           rel="noopener noreferrer"
           href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0"
         >
-          View Dataset
+          View Dataset & Stats
         </a>
         <br />
         <a
