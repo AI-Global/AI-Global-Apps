@@ -49,7 +49,7 @@ let initialDomainsSelected = ['Society', 'Law Enforcement', 'Business'];
 
 let domains = [...new Set(db.map((item) => item.domain.trim()))];
 
-let initialGoodnessSelected = ['Right', 'Wrong'];
+let initialGoodnessSelected = ['Helpful', 'Harmful'];
 
 let goodness = [...new Set(db.map((item) => item.is_good.trim()))];
 
@@ -194,7 +194,7 @@ class Map extends React.Component {
         let markerRender = () => {
           requestAnimationFrame(markerRender);
           // If the value in isGood ever changes, need to edit here
-          if (item.isGood === 'Right') {
+          if (item.isGood === 'Helpful') {
             renderPulseGood(map, context, 50, offset, item.domain, colors, item.isGood);
           } else {
             renderPulse(map, context, 50, offset, item.domain, colors);
