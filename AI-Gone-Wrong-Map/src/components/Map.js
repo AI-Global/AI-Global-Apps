@@ -462,10 +462,10 @@ function TitleBox({ zoom }) {
           Everyone is talking about AI, but <strong>how and where is it actually being used?</strong> Since our mission is to ensure AI
           is protecting us instead of harming us, we’ve mapped out some cases where AI is being used well, and times
           where it has gone wrong. Cases are aggregated by AI Global, Awful AI, and Charlie Pownall/CPC & Associates 
-          (Link at Bottom of the Page).
+          (<em>https://tinyurl.com/AIControversy</em>).
           
         </p>
-        } placement="bottom" arrow leaveDelay={500} href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814" target="_blank" rel="noopener noreferrer">
+        } placement="bottom" arrow leaveDelay={1000} href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814" target="_blank" rel="noopener noreferrer">
          <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px', marginTop: '10px' }}>
            Where in the World is AI? 
           <HelpOutlineIcon style={{color: "#00ADEE"}}/>
@@ -526,12 +526,12 @@ function DataBox() {
     <div className="data-box-button">
       <LightTooltip 
         title={
-          <p style={{textAlign: "center"}}>Check out our AI & Algorithmic Controversy Repository</p>
+          <p style={{textAlign: "center"}}>Check out our Working Dataset</p>
         }
         arrow placement="top">
-        <Fab href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814" target="_blank" rel="noopener noreferrer" variant="extended" style={{backgroundColor: '#00ADEE'}} >
+        <Fab href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0" target="_blank" rel="noopener noreferrer" variant="extended" style={{backgroundColor: '#00ADEE'}} >
           <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
-            <StorageIcon />&nbsp; <strong >DATASET</strong>
+            <StorageIcon />&nbsp; <strong >DATASET & STATS</strong>
           </div>
         </Fab>
       </LightTooltip>
