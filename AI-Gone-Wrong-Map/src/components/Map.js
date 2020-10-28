@@ -2,6 +2,21 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import db from '../data/db';
 import { Slider } from 'antd';
+import { withStyles } from '@material-ui/core/styles';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import Favorite from '@material-ui/icons/Favorite';
+import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
+import { makeStyles } from '@material-ui/core/styles';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 // renderPulse - Function to render dot -regardless if bad/good
 function renderPulse(map, context, size, offset, domain, colors) {
@@ -27,6 +42,7 @@ function renderPulseGood(map, context, size, offset, domain, colors, isGood) {
   let starXY = [size / 2, size / 2];
   context.clearRect(0, 0, size, size);
   context.beginPath();
+
   // Star Formula
   for (let i = 11; i !== 0; i--) {
     let r = (radius * ((i % 2) + 1.0)) / 2.0;
@@ -35,6 +51,7 @@ function renderPulseGood(map, context, size, offset, domain, colors, isGood) {
   }
 
   context.closePath();
+
   // Fills in color of the domain
   context.fillStyle = `rgba(${colors[1][0]}, ${colors[1][1]}, ${colors[1][2]}, 1)`;
   context.strokeStyle = 'white';
@@ -273,7 +290,14 @@ class Map extends React.Component {
           </a>
           <License />
         </div>
-        <Legend
+        {/* <Legend
+          selected={selected}
+          selectedGood={selectedGood}
+          onClickDomain={this.onClickDomain.bind(this)}
+          onClickGoodness={this.onClickGoodness.bind(this)} 
+        /> */}
+
+        <CheckboxLabels
           selected={selected}
           selectedGood={selectedGood}
           onClickDomain={this.onClickDomain.bind(this)}
@@ -305,7 +329,7 @@ class Map extends React.Component {
 function License() {
   return (
     <div>
-      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
         <img
           title={
             'Where in the World is AI? AI Global is licensed under a Creative Commons Attribution 4.0 International License'
@@ -319,6 +343,73 @@ function License() {
   );
 }
 
+// Custom Checkbox with AI Global Colors
+const CustomCheckbox = withStyles({
+  root: {
+    color: '#00ADEE',
+    '&$checked': {
+      color: '#00ADEE',
+    },
+  },
+  checked: {},
+})((props) => <Checkbox color="#00ADEE" {...props} />);
+
+// Alternative Legend
+function CheckboxLabels({ selected, selectedGood, onClickDomain, onClickGoodness }) {
+  return (
+    <FormGroup className="legend-box custom-legend" style={{ width: '15%'}}>
+      <Accordion className="legend-box" style={{paddingLeft: '10px', paddingRight: '10px'}} defaultExpanded>
+        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" style={{margin: '0', padding: '0'}}>
+            <strong style={{margin: '0'}}>Filters</strong>
+        </AccordionSummary>
+        <AccordionDetails style={{ display: 'flex', flexDirection: 'column', margin: '0', padding: '0'}}>
+          <p style={{margin: "0"}}><strong><em>Domains</em></strong></p>
+          {domains.map((domain) => (
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <FormControlLabel
+                style={{ marginRight: '0', padding: '0' }}
+                control={<CustomCheckbox checked={selected.includes(domain)} onChange={() => onClickDomain(domain)} />}
+              />
+              <p>
+                <div style={{ backgroundColor: domainToColors[domain][2] }} className="color-block"></div>
+                &nbsp;{domain}
+              </p>
+            </div>
+          ))}
+          <p style={{margin: "0", paddingTop: '15px', borderTop: 'solid lightgrey 1px'}}><strong><em>Where AI has Gone...</em></strong></p>
+          {goodness.map((isGood) => (
+            <FormControlLabel
+              style={{ fontSize: '0.6rem', marginRight: '0', padding: '0' }}
+              control={
+                <CustomCheckbox checked={selectedGood.includes(isGood)} onChange={() => onClickGoodness(isGood)} />
+              }
+              label={isGood}
+            />
+          ))}
+        </AccordionDetails>
+      </Accordion>
+      {/* <Accordion className="legend-box custom-legend" style={{paddingLeft: '10px', paddingRight: '10px', marginTop: '0'}}>
+        <AccordionSummary expandIcon={<ExpandMoreIcon style={{padding: '0'}}/>} aria-controls="panel1a-content" id="panel1a-header" style={{ margin: '0'}}>
+          <Typography style={{margin: '0'}}>
+            <strong style={{margin: '0', fontSize: '0.85em'}}>Where AI has Gone...</strong>
+          </Typography>
+        </AccordionSummary>
+        <AccordionDetails style={{ display: 'flex', flexDirection: 'column', margin: '0', padding: '0' }}>
+          {goodness.map((isGood) => (
+            <FormControlLabel
+              style={{ fontSize: '0.6rem', marginRight: '0', padding: '0' }}
+              control={
+                <CustomCheckbox checked={selectedGood.includes(isGood)} onChange={() => onClickGoodness(isGood)} />
+              }
+              label={isGood}
+            />
+          ))}
+        </AccordionDetails>
+      </Accordion> */}
+    </FormGroup>
+  );
+}
+
 function Legend({ selected, selectedGood, onClickDomain, onClickGoodness }) {
   return (
     <div className="legend-box">
@@ -326,7 +417,8 @@ function Legend({ selected, selectedGood, onClickDomain, onClickGoodness }) {
       {domains.map((domain) => (
         <div>
           <input type="checkbox" checked={selected.includes(domain)} onClick={() => onClickDomain(domain)} />
-          <div style={{ backgroundColor: domainToColors[domain][2] }} className="color-block"></div> {domain}
+          <div style={{ backgroundColor: domainToColors[domain][2] }} className="color-block"></div> &nbsp; &nbsp;{' '}
+          {domain}
         </div>
       ))}
       <br />
