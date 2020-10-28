@@ -11,10 +11,11 @@ import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
-import NavigationIcon from '@material-ui/icons/Navigation';
 import BeenhereIcon from '@material-ui/icons/Beenhere';
 import Tooltip from '@material-ui/core/Tooltip';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import StorageIcon from '@material-ui/icons/Storage';
 
 // renderPulse - Function to render dot -regardless if bad/good
 function renderPulse(map, context, size, offset, domain, colors) {
@@ -185,8 +186,11 @@ class Map extends React.Component {
         let context = canvas.getContext('2d');
         let offset = Math.random() * 1000;
         let colors = domainToColors[item.domain];
-        let popUpHTML = `<h3>${marker.properties.title}</h3>
-          <p><i>${marker.properties.category}</i><p><i>${marker.properties.isGood}</i><br/>${marker.properties.location}</p>
+        let popUpHTML = 
+          `<h3>${marker.properties.title}</h3>
+          <hr/>
+          <p><em><strong>${marker.properties.category} &#183; ${marker.properties.isGood}</strong></em></p>
+          <p>${marker.properties.location}</p>
           <p>${marker.properties.description}</p>`;
         if (marker.properties.link) {
           popUpHTML += `<a target="_blank" href="${marker.properties.link}">More Info</a>`;
@@ -296,6 +300,7 @@ class Map extends React.Component {
         />
         <TitleBox zoom={zoom} />
         <InfoBox />
+        <DataBox/>
         <div className="slider-box">
           <Slider
             onChange={(v) => this.onYearSliderChange(v)}
@@ -371,8 +376,12 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
             [classes.fullList]: anchor === 'top' || anchor === 'bottom',
           })}
           role="presentation"
+          style={{display: "flex", flexDirection: "column", alignItems: "center"}}
         >
-          <FormGroup className="legend-box" style={{zIndex: '10000'}}>
+           <a style={{marginTop: "20px"}} target="_blank" rel="noopener noreferrer" href="https://ai-global.org/">
+            <img alt="AI Global Logo" src="/transparent-rect-logo.png" />
+          </a>
+          <FormGroup className="legend-box">
               <h3 style={{margin: '0', marginTop:'20px'}}><strong>Domains</strong></h3>
               {domains.map((domain) => (
                 <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -399,7 +408,6 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
           </FormGroup>
           </div>
     </ClickAwayListener>
-    
   );
 
   const LightTooltip = withStyles((theme) => ({
@@ -409,7 +417,6 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
     tooltip: {
       backgroundColor: "white",
       color: '#00ADEE',
-      fontWeight: "bold",
       boxShadow: theme.shadows[1],
       fontSize: 15,
       width: "120px"
@@ -419,7 +426,7 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
   return (
     <div class="legend-box-button" style={{zIndex: '10000'}}>
         <React.Fragment key={'left'}>
-          <LightTooltip title="Add Filter to the Cases Displayed" arrow placement="top">
+          <LightTooltip open="true" title="Add Filter to the Cases Displayed" arrow placement="top">
             <Fab variant="extended" style={{backgroundColor: '#00ADEE'}} onClick={toggleDrawer('left', true)}>
               <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
                 <AddIcon />&nbsp; <strong >Add Filter</strong>
@@ -435,19 +442,35 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
 }
 
 function TitleBox({ zoom }) {
+   const LightTooltip = withStyles((theme) => ({
+    arrow: {
+    color: 'white',
+  },
+    tooltip: {
+      backgroundColor: "white",
+      color: '#00ADEE',
+      boxShadow: theme.shadows[1],
+      fontSize: 13,
+      width: "1000px",
+    },
+    }))(Tooltip);
+
   return (
     <div className="title-box">
-      <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px' }}>Where in the World is AI?</h1>
-      {zoom < 3.55 && (
-        <h5 style={{ margin: 'auto', width: '40%' }}>
-          Everyone is talking about AI, but how and where is it actually being used? Since our mission is to ensure AI
+      <LightTooltip title={
+          <p>
+          Everyone is talking about AI, but <strong>how and where is it actually being used?</strong> Since our mission is to ensure AI
           is protecting us instead of harming us, we’ve mapped out some cases where AI is being used well, and times
-          where it has gone wrong. Cases are aggregated by AI Global, Awful AI, and Charlie Pownall/CPC & Associates{' '}
-          <a href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814">
-            (AI & Algorithmic Controversy Repository)
-          </a>
-        </h5>
-      )}
+          where it has gone wrong. Cases are aggregated by AI Global, Awful AI, and Charlie Pownall/CPC & Associates 
+          (Link at Bottom of the Page).
+          
+        </p>
+        } placement="bottom" arrow leaveDelay={500} href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814" target="_blank">
+         <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px', marginTop: '10px' }}>
+           Where in the World is AI? 
+          <HelpOutlineIcon style={{color: "#00ADEE"}}/>
+        </h1>
+      </LightTooltip>
     </div>
   );
 }
@@ -462,7 +485,7 @@ function InfoBox() {
       color: '#00ADEE',
       boxShadow: theme.shadows[1],
       fontSize: 15,
-      width: "200px"
+      width: "500px"
     },
     }))(Tooltip);
 
@@ -471,27 +494,48 @@ function InfoBox() {
     <div className="info-box-button">
       <LightTooltip 
         title={
-          <p>Check how your AI System performs with curated responsibility metrics from our <strong><em>Design Assistant</em></strong></p>
+          <p style={{textAlign: "center"}}>Check how your AI System performs with curated responsibility metrics from our <strong><em>Responsible AI Design Assistant</em></strong></p>
         }
         arrow placement="top">
         <Fab href="https://oproma.github.io/rai-trustindex/" target="_blank" variant="extended" style={{backgroundColor: '#00ADEE'}} >
           <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
-            <BeenhereIcon />&nbsp; <strong >Design Assistant</strong>
+            <BeenhereIcon />&nbsp; <strong >Responsible AI Design Assistant</strong>
           </div>
         </Fab>
       </LightTooltip>
     </div>
-    
-    
-    // <a target="_blank" rel="noopener noreferrer" href="https://oproma.github.io/rai-trustindex/">
-    //   <button className="call-to-action-button" type="submit">
-    //     The negative consequences of AI can be prevented by focusing on a responsible design, development and
-    //     implementation of AI.
-    //     <br />
-    //     <br />
-    //     Check your AI with our <em>Design Assistant</em>
-    //   </button>
-    // </a>
+  );
+}
+
+function DataBox() {
+  const LightTooltip = withStyles((theme) => ({
+    arrow: {
+    color: '#00ADEE',
+  },
+    tooltip: {
+      backgroundColor: "white",
+      color: '#00ADEE',
+      boxShadow: theme.shadows[1],
+      fontSize: 15,
+      width: "125px"
+    },
+    }))(Tooltip);
+
+  return (
+
+    <div className="data-box-button">
+      <LightTooltip 
+        title={
+          <p style={{textAlign: "center"}}>Check out our AI & Algorithmic Controversy Repository</p>
+        }
+        arrow placement="top">
+        <Fab href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814" target="_blank" variant="extended" style={{backgroundColor: '#00ADEE'}} >
+          <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
+            <StorageIcon />&nbsp; <strong >DATASET</strong>
+          </div>
+        </Fab>
+      </LightTooltip>
+    </div>
   );
 }
 

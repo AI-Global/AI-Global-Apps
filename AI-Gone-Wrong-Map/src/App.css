@@ -44,8 +44,6 @@ body {
 .legend-box {
   display: inline-block;
   text-align: left;
-  position: absolute;
-  z-index: 10000;
   padding: 6px;
   border-radius: 10px;
   margin-left: 10px;
@@ -68,6 +66,18 @@ body {
   text-align: left;
   position: absolute;
   right: 10px;
+  bottom: 50px;
+  z-index: 10000;
+  padding: 6px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.data-box-button{
+  display: inline-block;
+  text-align: left;
+  position: absolute;
+  right: 390px;
   bottom: 50px;
   z-index: 10000;
   padding: 6px;
