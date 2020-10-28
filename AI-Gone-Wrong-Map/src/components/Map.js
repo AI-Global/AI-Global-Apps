@@ -325,7 +325,7 @@ class Map extends React.Component {
 function License() {
   return (
     <div>
-      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
+      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
         <img
           title={
             'Where in the World is AI? AI Global is licensed under a Creative Commons Attribution 4.0 International License'
@@ -465,7 +465,7 @@ function TitleBox({ zoom }) {
           (Link at Bottom of the Page).
           
         </p>
-        } placement="bottom" arrow leaveDelay={500} href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814" target="_blank">
+        } placement="bottom" arrow leaveDelay={500} href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814" target="_blank" rel="noopener noreferrer">
          <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px', marginTop: '10px' }}>
            Where in the World is AI? 
           <HelpOutlineIcon style={{color: "#00ADEE"}}/>
@@ -497,7 +497,7 @@ function InfoBox() {
           <p style={{textAlign: "center"}}>Check how your AI System performs with curated responsibility metrics from our <strong><em>Responsible AI Design Assistant</em></strong></p>
         }
         arrow placement="top">
-        <Fab href="https://oproma.github.io/rai-trustindex/" target="_blank" variant="extended" style={{backgroundColor: '#00ADEE'}} >
+        <Fab href="https://oproma.github.io/rai-trustindex/" target="_blank" rel="noopener noreferrer" variant="extended" style={{backgroundColor: '#00ADEE'}} >
           <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
             <BeenhereIcon />&nbsp; <strong >Responsible AI Design Assistant</strong>
           </div>
@@ -529,7 +529,7 @@ function DataBox() {
           <p style={{textAlign: "center"}}>Check out our AI & Algorithmic Controversy Repository</p>
         }
         arrow placement="top">
-        <Fab href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814" target="_blank" variant="extended" style={{backgroundColor: '#00ADEE'}} >
+        <Fab href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814" target="_blank" rel="noopener noreferrer" variant="extended" style={{backgroundColor: '#00ADEE'}} >
           <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
             <StorageIcon />&nbsp; <strong >DATASET</strong>
           </div>
