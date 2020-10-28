@@ -325,7 +325,7 @@ class Map extends React.Component {
 function License() {
   return (
     <div>
-      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">
+      <a rel="license noopener noreferrer" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
         <img
           title={
             'Where in the World is AI? AI Global is licensed under a Creative Commons Attribution 4.0 International License'
