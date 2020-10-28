@@ -16,6 +16,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import StorageIcon from '@material-ui/icons/Storage';
+import FilterListIcon from '@material-ui/icons/FilterList';
 
 // renderPulse - Function to render dot -regardless if bad/good
 function renderPulse(map, context, size, offset, domain, colors) {
@@ -300,7 +301,8 @@ class Map extends React.Component {
         />
         <TitleBox zoom={zoom} />
         <InfoBox />
-        <DataBox/>
+        <DataBox />
+        <CaseBox />
         <div className="slider-box">
           <Slider
             onChange={(v) => this.onYearSliderChange(v)}
@@ -429,7 +431,7 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
           <LightTooltip open="true" title="Add Filter to the Cases Displayed" arrow placement="top">
             <Fab variant="extended" style={{backgroundColor: '#00ADEE'}} onClick={toggleDrawer('left', true)}>
               <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
-                <AddIcon />&nbsp; <strong >Add Filter</strong>
+                <FilterListIcon />&nbsp; <strong >Add Filter</strong>
               </div>
             </Fab>
           </LightTooltip>
@@ -532,6 +534,39 @@ function DataBox() {
         <Fab href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0" target="_blank" rel="noopener noreferrer" variant="extended" style={{backgroundColor: '#00ADEE'}} >
           <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
             <StorageIcon />&nbsp; <strong >DATASET & STATS</strong>
+          </div>
+        </Fab>
+      </LightTooltip>
+    </div>
+  );
+}
+
+
+function CaseBox() {
+  const LightTooltip = withStyles((theme) => ({
+    arrow: {
+    color: '#00ADEE',
+  },
+    tooltip: {
+      backgroundColor: "white",
+      color: '#00ADEE',
+      boxShadow: theme.shadows[1],
+      fontSize: 15,
+      width: "100px"
+    },
+    }))(Tooltip);
+
+  return (
+
+    <div className="case-box-button">
+      <LightTooltip 
+        title={
+          <p style={{textAlign: "center"}}>Submit a case to add to our Map Dataset</p>
+        }
+        arrow placement="top">
+        <Fab href="https://docs.google.com/forms/d/e/1FAIpQLSeo4ZcT48qYDA3Z4GgRF8TjNLVuHpAvt9I1rVDX87usskLoVQ/viewform" target="_blank" rel="noopener noreferrer" variant="extended" style={{backgroundColor: '#00ADEE'}} >
+          <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
+            <AddIcon />&nbsp; <strong >ADD CASE</strong>
           </div>
         </Fab>
       </LightTooltip>
