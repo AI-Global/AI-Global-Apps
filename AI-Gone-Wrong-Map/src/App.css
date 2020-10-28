@@ -63,6 +63,18 @@ body {
   margin-left: 10px;
 }
 
+.info-box-button{
+  display: inline-block;
+  text-align: left;
+  position: absolute;
+  right: 10px;
+  bottom: 50px;
+  z-index: 10000;
+  padding: 6px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
 .legend-box a {
   text-decoration: none;
   color: #ffffff;

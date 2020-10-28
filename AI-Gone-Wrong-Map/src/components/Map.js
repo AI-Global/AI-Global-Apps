@@ -11,6 +11,8 @@ import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import NavigationIcon from '@material-ui/icons/Navigation';
+import BeenhereIcon from '@material-ui/icons/Beenhere';
 import Tooltip from '@material-ui/core/Tooltip';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
@@ -410,7 +412,7 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
       fontWeight: "bold",
       boxShadow: theme.shadows[1],
       fontSize: 15,
-      width: "100px"
+      width: "120px"
     },
     }))(Tooltip);
 
@@ -420,7 +422,7 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
           <LightTooltip title="Add Filter to the Cases Displayed" arrow placement="top">
             <Fab variant="extended" style={{backgroundColor: '#00ADEE'}} onClick={toggleDrawer('left', true)}>
               <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
-                <AddIcon /> <strong >Add Filter</strong>
+                <AddIcon />&nbsp; <strong >Add Filter</strong>
               </div>
             </Fab>
           </LightTooltip>
@@ -451,16 +453,45 @@ function TitleBox({ zoom }) {
 }
 
 function InfoBox() {
+  const LightTooltip = withStyles((theme) => ({
+    arrow: {
+    color: '#00ADEE',
+  },
+    tooltip: {
+      backgroundColor: "white",
+      color: '#00ADEE',
+      boxShadow: theme.shadows[1],
+      fontSize: 15,
+      width: "200px"
+    },
+    }))(Tooltip);
+
   return (
-    <a target="_blank" rel="noopener noreferrer" href="https://oproma.github.io/rai-trustindex/">
-      <button className="call-to-action-button" type="submit">
-        The negative consequences of AI can be prevented by focusing on a responsible design, development and
-        implementation of AI.
-        <br />
-        <br />
-        Check your AI with our <em>Design Assistant</em>
-      </button>
-    </a>
+
+    <div className="info-box-button">
+      <LightTooltip 
+        title={
+          <p>Check how your AI System performs with curated responsibility metrics from our <strong><em>Design Assistant</em></strong></p>
+        }
+        arrow placement="top">
+        <Fab href="https://oproma.github.io/rai-trustindex/" target="_blank" variant="extended" style={{backgroundColor: '#00ADEE'}} >
+          <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
+            <BeenhereIcon />&nbsp; <strong >Design Assistant</strong>
+          </div>
+        </Fab>
+      </LightTooltip>
+    </div>
+    
+    
+    // <a target="_blank" rel="noopener noreferrer" href="https://oproma.github.io/rai-trustindex/">
+    //   <button className="call-to-action-button" type="submit">
+    //     The negative consequences of AI can be prevented by focusing on a responsible design, development and
+    //     implementation of AI.
+    //     <br />
+    //     <br />
+    //     Check your AI with our <em>Design Assistant</em>
+    //   </button>
+    // </a>
   );
 }
 
