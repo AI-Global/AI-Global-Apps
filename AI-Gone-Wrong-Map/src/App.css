@@ -32,6 +32,7 @@ body {
 }
 
 .logo-box {
+  /* display: inline-block; */
   display: flex;
   align-items: center;
   position: absolute;
@@ -44,11 +45,19 @@ body {
   display: inline-block;
   text-align: left;
   position: absolute;
-  left: 0;
-  bottom: 25px;
-  /* background-color: #272727; */
-  color: #ffffff;
-  z-index: 1 !important;
+  z-index: 10000;
+  padding: 6px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.legend-box-button {
+  display: inline-block;
+  text-align: left;
+  position: absolute;
+  left: 10px;
+  bottom: 50px;
+  z-index: 10000;
   padding: 6px;
   border-radius: 10px;
   margin-left: 10px;

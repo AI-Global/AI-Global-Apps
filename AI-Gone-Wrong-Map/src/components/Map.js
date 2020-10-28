@@ -6,17 +6,13 @@ import { withStyles } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
-import Favorite from '@material-ui/icons/Favorite';
-import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import { makeStyles } from '@material-ui/core/styles';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import clsx from 'clsx';
+import Drawer from '@material-ui/core/Drawer';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import Tooltip from '@material-ui/core/Tooltip';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 
 // renderPulse - Function to render dot -regardless if bad/good
 function renderPulse(map, context, size, offset, domain, colors) {
@@ -290,14 +286,7 @@ class Map extends React.Component {
           </a>
           <License />
         </div>
-        {/* <Legend
-          selected={selected}
-          selectedGood={selectedGood}
-          onClickDomain={this.onClickDomain.bind(this)}
-          onClickGoodness={this.onClickGoodness.bind(this)} 
-        /> */}
-
-        <CheckboxLabels
+        <SideDrawer
           selected={selected}
           selectedGood={selectedGood}
           onClickDomain={this.onClickDomain.bind(this)}
@@ -354,99 +343,91 @@ const CustomCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="#00ADEE" {...props} />);
 
-// Alternative Legend
-function CheckboxLabels({ selected, selectedGood, onClickDomain, onClickGoodness }) {
-  return (
-    <FormGroup className="legend-box custom-legend" style={{ width: '15%'}}>
-      <Accordion className="legend-box" style={{paddingLeft: '10px', paddingRight: '10px'}} defaultExpanded>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="panel1a-content" id="panel1a-header" style={{margin: '0', padding: '0'}}>
-            <strong style={{margin: '0'}}>Filters</strong>
-        </AccordionSummary>
-        <AccordionDetails style={{ display: 'flex', flexDirection: 'column', margin: '0', padding: '0'}}>
-          <p style={{margin: "0"}}><strong><em>Domains</em></strong></p>
-          {domains.map((domain) => (
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <FormControlLabel
-                style={{ marginRight: '0', padding: '0' }}
-                control={<CustomCheckbox checked={selected.includes(domain)} onChange={() => onClickDomain(domain)} />}
-              />
-              <p>
-                <div style={{ backgroundColor: domainToColors[domain][2] }} className="color-block"></div>
-                &nbsp;{domain}
-              </p>
-            </div>
-          ))}
-          <p style={{margin: "0", paddingTop: '15px', borderTop: 'solid lightgrey 1px'}}><strong><em>Where AI has Gone...</em></strong></p>
-          {goodness.map((isGood) => (
-            <FormControlLabel
-              style={{ fontSize: '0.6rem', marginRight: '0', padding: '0' }}
-              control={
-                <CustomCheckbox checked={selectedGood.includes(isGood)} onChange={() => onClickGoodness(isGood)} />
-              }
-              label={isGood}
-            />
-          ))}
-        </AccordionDetails>
-      </Accordion>
-      {/* <Accordion className="legend-box custom-legend" style={{paddingLeft: '10px', paddingRight: '10px', marginTop: '0'}}>
-        <AccordionSummary expandIcon={<ExpandMoreIcon style={{padding: '0'}}/>} aria-controls="panel1a-content" id="panel1a-header" style={{ margin: '0'}}>
-          <Typography style={{margin: '0'}}>
-            <strong style={{margin: '0', fontSize: '0.85em'}}>Where AI has Gone...</strong>
-          </Typography>
-        </AccordionSummary>
-        <AccordionDetails style={{ display: 'flex', flexDirection: 'column', margin: '0', padding: '0' }}>
-          {goodness.map((isGood) => (
-            <FormControlLabel
-              style={{ fontSize: '0.6rem', marginRight: '0', padding: '0' }}
-              control={
-                <CustomCheckbox checked={selectedGood.includes(isGood)} onChange={() => onClickGoodness(isGood)} />
-              }
-              label={isGood}
-            />
-          ))}
-        </AccordionDetails>
-      </Accordion> */}
-    </FormGroup>
-  );
-}
+const useStyles = makeStyles({
+  list: {
+    width: 250,
+  },
+});
 
-function Legend({ selected, selectedGood, onClickDomain, onClickGoodness }) {
+function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) {
+  const classes = useStyles();
+  const [state, setState] = React.useState({
+    left: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setState({ ...state, [anchor]: open });
+  };
+
+  const list = (anchor) => (
+    <ClickAwayListener onClickAway={toggleDrawer('left', false)}>
+      <div
+          className={clsx(classes.list, {
+            [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+          })}
+          role="presentation"
+        >
+          <FormGroup className="legend-box" style={{zIndex: '10000'}}>
+              <h3 style={{margin: '0', marginTop:'20px'}}><strong>Domains</strong></h3>
+              {domains.map((domain) => (
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  <FormControlLabel
+                    control={<CustomCheckbox checked={selected.includes(domain)} onChange={() => onClickDomain(domain)} />}
+                  />
+                  <p style={{fontWeight: 'normal'}}>
+                    <div style={{ backgroundColor: domainToColors[domain][2] }} className="color-block"></div>
+                    &nbsp;{domain}
+                  </p>
+                </div>
+              ))}
+              <hr/>
+              <h3 style={{margin: '0', marginTop:'20px'}}><strong>Where AI Has Gone...</strong></h3>
+              {goodness.map((isGood) => (
+                <FormControlLabel
+                  style={{ fontSize: '0.6rem', marginRight: '0', padding: '0' }}
+                  control={
+                    <CustomCheckbox checked={selectedGood.includes(isGood)} onChange={() => onClickGoodness(isGood)} />
+                  }
+                  label={isGood}
+                />
+              ))}
+          </FormGroup>
+          </div>
+    </ClickAwayListener>
+    
+  );
+
+  const LightTooltip = withStyles((theme) => ({
+    arrow: {
+    color: '#00ADEE',
+  },
+    tooltip: {
+      backgroundColor: "white",
+      color: '#00ADEE',
+      fontWeight: "bold",
+      boxShadow: theme.shadows[1],
+      fontSize: 15,
+      width: "100px"
+    },
+    }))(Tooltip);
+
   return (
-    <div className="legend-box">
-      <p>Domains</p>
-      {domains.map((domain) => (
-        <div>
-          <input type="checkbox" checked={selected.includes(domain)} onClick={() => onClickDomain(domain)} />
-          <div style={{ backgroundColor: domainToColors[domain][2] }} className="color-block"></div> &nbsp; &nbsp;{' '}
-          {domain}
-        </div>
-      ))}
-      <br />
-      <p> Where AI Has Gone...</p>
-      {goodness.map((isGood) => (
-        <div>
-          <input type="checkbox" checked={selectedGood.includes(isGood)} onClick={() => onClickGoodness(isGood)} />
-          {isGood}
-        </div>
-      ))}
-      <br />
-      <div style={{ textAlign: 'center' }}>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0"
-        >
-          View Dataset & Stats
-        </a>
-        <br />
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSeo4ZcT48qYDA3Z4GgRF8TjNLVuHpAvt9I1rVDX87usskLoVQ/viewform"
-        >
-          Submit a case
-        </a>
-      </div>
+    <div class="legend-box-button" style={{zIndex: '10000'}}>
+        <React.Fragment key={'left'}>
+          <LightTooltip title="Add Filter to the Cases Displayed" arrow placement="top">
+            <Fab variant="extended" style={{backgroundColor: '#00ADEE'}} onClick={toggleDrawer('left', true)}>
+              <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
+                <AddIcon /> <strong >Add Filter</strong>
+              </div>
+            </Fab>
+          </LightTooltip>
+          <Drawer anchor={'left'} open={state['left']} onClose={toggleDrawer('left', false)} style={{zIndex: '10000'}}>
+            {list('left')}
+          </Drawer>
+        </React.Fragment>
     </div>
   );
 }
