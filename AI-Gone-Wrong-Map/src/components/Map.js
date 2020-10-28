@@ -528,7 +528,7 @@ function DataBox() {
     <div className="data-box-button">
       <LightTooltip 
         title={
-          <p style={{textAlign: "center"}}>Check out our Working Dataset</p>
+          <p style={{textAlign: "center"}}>Check out our Dataset</p>
         }
         arrow placement="top">
         <Fab href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0" target="_blank" rel="noopener noreferrer" variant="extended" style={{backgroundColor: '#00ADEE'}} >
