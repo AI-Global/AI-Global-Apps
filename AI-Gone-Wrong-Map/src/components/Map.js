@@ -71,7 +71,7 @@ let initialGoodnessSelected = ['Helpful', 'Harmful'];
 let goodness = [...new Set(db.map((item) => item.is_good.trim()))];
 
 // UX DESIGN: if you ever need to change the colors
-//Add the hex triplet
+// Add the hex triplet
 let domainColors = [
   [148, 189, 255],
   [4, 236, 217],
@@ -138,6 +138,10 @@ let eventToFeatureJSON = (event) => {
       coordinates: [lng, lat],
     },
   };
+};
+
+let rgbToHex = (r, g, b) => {
+  return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 };
 
 class Map extends React.Component {
@@ -444,33 +448,40 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
 }
 
 function TitleBox({ zoom }) {
-   const LightTooltip = withStyles((theme) => ({
+  const LightTooltip = withStyles((theme) => ({
     arrow: {
-    color: 'white',
-  },
+      color: 'white',
+    },
     tooltip: {
-      backgroundColor: "white",
+      backgroundColor: 'white',
       color: '#00ADEE',
       boxShadow: theme.shadows[1],
       fontSize: 13,
-      width: "1000px",
+      width: '1000px',
     },
-    }))(Tooltip);
+  }))(Tooltip);
 
   return (
     <div className="title-box">
-      <LightTooltip title={
-          <p style={{textAlign: "center"}}>
-          Everyone is talking about AI, but <strong>how and where is it actually being used?</strong> Since our mission is to ensure AI
-          is protecting us instead of harming us, we’ve mapped out some cases where AI is being used well, and times
-          where it has gone wrong. Cases are aggregated by AI Global, Awful AI, and Charlie Pownall/CPC & Associates 
-          (<em>https://tinyurl.com/AIControversy</em>).
-          
-        </p>
-        } placement="bottom" arrow leaveDelay={1000} href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814" target="_blank" rel="noopener noreferrer">
-         <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px', marginTop: '10px' }}>
-           Where in the World is AI? 
-          <HelpOutlineIcon style={{color: "#00ADEE"}}/>
+      <LightTooltip
+        title={
+          <p style={{ textAlign: 'center' }}>
+            Everyone is talking about AI, but <strong>how and where is it actually being used?</strong> Since our
+            mission is to ensure AI is protecting us instead of harming us, we’ve mapped out some cases where AI is
+            being used well, and times where it has gone wrong. Cases are aggregated by AI Global, Awful AI, and Charlie
+            Pownall/CPC &amp; Associates (<em>https://tinyurl.com/AIControversy</em>).
+          </p>
+        }
+        placement="bottom"
+        arrow
+        leaveDelay={1000}
+        href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px', marginTop: '10px' }}>
+          Where in the World is AI?
+          <HelpOutlineIcon style={{ color: '#00ADEE' }} />
         </h1>
       </LightTooltip>
     </div>
@@ -480,28 +491,41 @@ function TitleBox({ zoom }) {
 function InfoBox() {
   const LightTooltip = withStyles((theme) => ({
     arrow: {
-    color: '#00ADEE',
-  },
+      color: '#00ADEE',
+    },
     tooltip: {
-      backgroundColor: "white",
+      backgroundColor: 'white',
       color: '#00ADEE',
       boxShadow: theme.shadows[1],
       fontSize: 15,
-      width: "500px"
+      width: '500px',
     },
-    }))(Tooltip);
+  }))(Tooltip);
 
   return (
-
     <div className="info-box-button">
-      <LightTooltip 
+      <LightTooltip
         title={
-          <p style={{textAlign: "center"}}>Check how your AI System performs with curated responsibility metrics from our <strong><em>Responsible AI Design Assistant</em></strong></p>
+          <p style={{ textAlign: 'center' }}>
+            Check how your AI System performs with curated responsibility metrics from our{' '}
+            <strong>
+              <em>Responsible AI Design Assistant</em>
+            </strong>
+          </p>
         }
-        arrow placement="top">
-        <Fab href="https://oproma.github.io/rai-trustindex/" target="_blank" rel="noopener noreferrer" variant="extended" style={{backgroundColor: '#00ADEE'}} >
-          <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
-            <BeenhereIcon />&nbsp; <strong >Responsible AI Design Assistant</strong>
+        arrow
+        placement="top"
+      >
+        <Fab
+          href="https://oproma.github.io/rai-trustindex/"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="extended"
+          style={{ backgroundColor: '#00ADEE' }}
+        >
+          <div style={{ color: 'white', fontSize: '1.2em', display: 'flex', alignItems: 'center' }}>
+            <BeenhereIcon />
+            &nbsp; <strong>Responsible AI Design Assistant</strong>
           </div>
         </Fab>
       </LightTooltip>
@@ -512,28 +536,30 @@ function InfoBox() {
 function DataBox() {
   const LightTooltip = withStyles((theme) => ({
     arrow: {
-    color: '#00ADEE',
-  },
+      color: '#00ADEE',
+    },
     tooltip: {
-      backgroundColor: "white",
+      backgroundColor: 'white',
       color: '#00ADEE',
       boxShadow: theme.shadows[1],
       fontSize: 15,
-      width: "125px"
+      width: '125px',
     },
-    }))(Tooltip);
+  }))(Tooltip);
 
   return (
-
     <div className="data-box-button">
-      <LightTooltip 
-        title={
-          <p style={{textAlign: "center"}}>Check out our Dataset</p>
-        }
-        arrow placement="top">
-        <Fab href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0" target="_blank" rel="noopener noreferrer" variant="extended" style={{backgroundColor: '#00ADEE'}} >
-          <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
-            <StorageIcon />&nbsp; <strong >DATASET & STATS</strong>
+      <LightTooltip title={<p style={{ textAlign: 'center' }}>Check out our Dataset</p>} arrow placement="top">
+        <Fab
+          href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="extended"
+          style={{ backgroundColor: '#00ADEE' }}
+        >
+          <div style={{ color: 'white', fontSize: '1.2em', display: 'flex', alignItems: 'center' }}>
+            <StorageIcon />
+            &nbsp; <strong>DATASET &amp; STATS</strong>
           </div>
         </Fab>
       </LightTooltip>
@@ -541,32 +567,37 @@ function DataBox() {
   );
 }
 
-
 function CaseBox() {
   const LightTooltip = withStyles((theme) => ({
     arrow: {
-    color: '#00ADEE',
-  },
+      color: '#00ADEE',
+    },
     tooltip: {
-      backgroundColor: "white",
+      backgroundColor: 'white',
       color: '#00ADEE',
       boxShadow: theme.shadows[1],
       fontSize: 15,
-      width: "130px"
+      width: '100px',
     },
-    }))(Tooltip);
+  }))(Tooltip);
 
   return (
-
     <div className="case-box-button">
-      <LightTooltip 
-        title={
-          <p style={{textAlign: "center"}}>Submit a case to add to our Map Dataset</p>
-        }
-        arrow placement="top">
-        <Fab href="https://docs.google.com/forms/d/e/1FAIpQLSeo4ZcT48qYDA3Z4GgRF8TjNLVuHpAvt9I1rVDX87usskLoVQ/viewform" target="_blank" rel="noopener noreferrer" variant="extended" style={{backgroundColor: '#00ADEE'}} >
-          <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
-            <AddIcon />&nbsp; <strong >ADD CASE</strong>
+      <LightTooltip
+        title={<p style={{ textAlign: 'center' }}>Submit a case to add to our Map Dataset</p>}
+        arrow
+        placement="top"
+      >
+        <Fab
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeo4ZcT48qYDA3Z4GgRF8TjNLVuHpAvt9I1rVDX87usskLoVQ/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="extended"
+          style={{ backgroundColor: '#00ADEE' }}
+        >
+          <div style={{ color: 'white', fontSize: '1.2em', display: 'flex', alignItems: 'center' }}>
+            <AddIcon />
+            &nbsp; <strong>ADD CASE</strong>
           </div>
         </Fab>
       </LightTooltip>
