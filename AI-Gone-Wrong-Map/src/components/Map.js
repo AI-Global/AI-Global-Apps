@@ -428,10 +428,10 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
   return (
     <div class="legend-box-button" style={{zIndex: '10000'}}>
         <React.Fragment key={'left'}>
-          <LightTooltip open="true" title="Add Filter to the Cases Displayed" arrow placement="top">
+          <LightTooltip title="Add Filter to the Cases Displayed" arrow placement="top">
             <Fab variant="extended" style={{backgroundColor: '#00ADEE'}} onClick={toggleDrawer('left', true)}>
               <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
-                <FilterListIcon />&nbsp; <strong >Add Filter</strong>
+                <FilterListIcon />&nbsp; <strong >Filter</strong>
               </div>
             </Fab>
           </LightTooltip>
@@ -552,7 +552,7 @@ function CaseBox() {
       color: '#00ADEE',
       boxShadow: theme.shadows[1],
       fontSize: 15,
-      width: "100px"
+      width: "130px"
     },
     }))(Tooltip);
 
