@@ -14,9 +14,9 @@ import AddIcon from '@material-ui/icons/Add';
 import BeenhereIcon from '@material-ui/icons/Beenhere';
 import Tooltip from '@material-ui/core/Tooltip';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import StorageIcon from '@material-ui/icons/Storage';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import TitleBox from "../components/TitleBox";
 
 // renderPulse - Function to render dot -regardless if bad/good
 function renderPulse(map, context, size, offset, domain, colors) {
@@ -98,7 +98,12 @@ let yearMarks = {};
 let startYear = 2005;
 let endYear = 2020;
 for (let yr = startYear; yr <= endYear; yr += 1) {
-  yearMarks[yr] = '' + yr;
+  yearMarks[yr] = {
+    style: {
+      fontSize: "1.3em",
+    },
+  label: <strong>{yr}</strong>,
+  };
 }
 
 // Clean input data inplace
@@ -191,8 +196,7 @@ class Map extends React.Component {
         let context = canvas.getContext('2d');
         let offset = Math.random() * 1000;
         let colors = domainToColors[item.domain];
-        let popUpHTML = 
-          `<h3>${marker.properties.title}</h3>
+        let popUpHTML = `<h3>${marker.properties.title}</h3>
           <hr/>
           <p><em><strong>${marker.properties.category} &#183; ${marker.properties.isGood}</strong></em></p>
           <p>${marker.properties.location}</p>
@@ -288,7 +292,7 @@ class Map extends React.Component {
   }
 
   render() {
-    let { width, height, zoom, selected, selectedGood } = this.state;
+    let { width, height, selected, selectedGood } = this.state;
     return (
       <div>
         <div className="logo-box">
@@ -303,12 +307,13 @@ class Map extends React.Component {
           onClickDomain={this.onClickDomain.bind(this)}
           onClickGoodness={this.onClickGoodness.bind(this)}
         />
-        <TitleBox zoom={zoom} />
+        <TitleBox />
         <InfoBox />
         <DataBox />
         <CaseBox />
         <div className="slider-box">
           <Slider
+            style= {{width: "95%", margin: "auto"}}
             onChange={(v) => this.onYearSliderChange(v)}
             range
             marks={yearMarks}
@@ -356,6 +361,19 @@ const CustomCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="#00ADEE" {...props} />);
 
+const CustomColorCheckbox = (props) => {
+  const CustomizedCheckbox = withStyles({
+    root: {
+      color: props.color,
+      '&$checked': {
+        color: props.color,
+      },
+    },
+    checked: {},
+  })((props) => <Checkbox {...props} />);
+  return <CustomizedCheckbox {...props} />;
+};
+
 const useStyles = makeStyles({
   list: {
     width: 250,
@@ -378,112 +396,79 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
   const list = (anchor) => (
     <ClickAwayListener onClickAway={toggleDrawer('left', false)}>
       <div
-          className={clsx(classes.list, {
-            [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-          })}
-          role="presentation"
-          style={{display: "flex", flexDirection: "column", alignItems: "center"}}
-        >
-           <a style={{marginTop: "20px"}} target="_blank" rel="noopener noreferrer" href="https://ai-global.org/">
-            <img alt="AI Global Logo" src="/transparent-rect-logo.png" />
-          </a>
-          <FormGroup className="legend-box">
-              <h3 style={{margin: '0', marginTop:'20px'}}><strong>Domains</strong></h3>
-              {domains.map((domain) => (
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  <FormControlLabel
-                    control={<CustomCheckbox checked={selected.includes(domain)} onChange={() => onClickDomain(domain)} />}
+        className={clsx(classes.list, {
+          [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+        })}
+        role="presentation"
+        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+      >
+        <a style={{ marginTop: '20px' }} target="_blank" rel="noopener noreferrer" href="https://ai-global.org/">
+          <img alt="AI Global Logo" src="/transparent-rect-logo.png" />
+        </a>
+        <FormGroup className="legend-box">
+          <h3 style={{ margin: '0', marginTop: '20px' }}>
+            <strong>Domains</strong>
+          </h3>
+          {domains.map((domain) => (
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <FormControlLabel
+                control={
+                  <CustomColorCheckbox
+                    color={rgbToHex(...domainToColors[domain][0])}
+                    checked={selected.includes(domain)}
+                    onChange={() => onClickDomain(domain)}
                   />
-                  <p style={{fontWeight: 'normal'}}>
-                    <div style={{ backgroundColor: domainToColors[domain][2] }} className="color-block"></div>
-                    &nbsp;{domain}
-                  </p>
-                </div>
-              ))}
-              <hr/>
-              <h3 style={{margin: '0', marginTop:'20px'}}><strong>Where AI Has Gone...</strong></h3>
-              {goodness.map((isGood) => (
-                <FormControlLabel
-                  style={{ fontSize: '0.6rem', marginRight: '0', padding: '0' }}
-                  control={
-                    <CustomCheckbox checked={selectedGood.includes(isGood)} onChange={() => onClickGoodness(isGood)} />
-                  }
-                  label={isGood}
-                />
-              ))}
-          </FormGroup>
-          </div>
+                }
+              />
+              <p style={{ fontWeight: 'normal' }}>{domain}</p>
+            </div>
+          ))}
+          <hr />
+          <h3 style={{ margin: '0', marginTop: '20px' }}>
+            <strong>Where AI Has Gone...</strong>
+          </h3>
+          {goodness.map((isGood) => (
+            <FormControlLabel
+              style={{ fontSize: '0.6rem', marginRight: '0', padding: '0' }}
+              control={
+                <CustomCheckbox checked={selectedGood.includes(isGood)} onChange={() => onClickGoodness(isGood)} />
+              }
+              label={isGood}
+            />
+          ))}
+        </FormGroup>
+      </div>
     </ClickAwayListener>
   );
 
   const LightTooltip = withStyles((theme) => ({
     arrow: {
-    color: '#00ADEE',
-  },
-    tooltip: {
-      backgroundColor: "white",
       color: '#00ADEE',
-      boxShadow: theme.shadows[1],
-      fontSize: 15,
-      width: "120px"
-    },
-    }))(Tooltip);
-
-  return (
-    <div class="legend-box-button" style={{zIndex: '10000'}}>
-        <React.Fragment key={'left'}>
-          <LightTooltip title="Add Filter to the Cases Displayed" arrow placement="top">
-            <Fab variant="extended" style={{backgroundColor: '#00ADEE'}} onClick={toggleDrawer('left', true)}>
-              <div style={{color: "white", fontSize: "1.2em", display: "flex", alignItems: "center"}}>
-                <FilterListIcon />&nbsp; <strong >Filter</strong>
-              </div>
-            </Fab>
-          </LightTooltip>
-          <Drawer anchor={'left'} open={state['left']} onClose={toggleDrawer('left', false)} style={{zIndex: '10000'}}>
-            {list('left')}
-          </Drawer>
-        </React.Fragment>
-    </div>
-  );
-}
-
-function TitleBox({ zoom }) {
-  const LightTooltip = withStyles((theme) => ({
-    arrow: {
-      color: 'white',
     },
     tooltip: {
       backgroundColor: 'white',
       color: '#00ADEE',
       boxShadow: theme.shadows[1],
-      fontSize: 13,
-      width: '1000px',
+      fontSize: 15,
+      width: '120px',
     },
   }))(Tooltip);
 
   return (
-    <div className="title-box">
-      <LightTooltip
-        title={
-          <p style={{ textAlign: 'center' }}>
-            Everyone is talking about AI, but <strong>how and where is it actually being used?</strong> Since our
-            mission is to ensure AI is protecting us instead of harming us, we’ve mapped out some cases where AI is
-            being used well, and times where it has gone wrong. Cases are aggregated by AI Global, Awful AI, and Charlie
-            Pownall/CPC &amp; Associates (<em>https://tinyurl.com/AIControversy</em>).
-          </p>
-        }
-        placement="bottom"
-        arrow
-        leaveDelay={1000}
-        href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px', marginTop: '10px' }}>
-          Where in the World is AI?
-          <HelpOutlineIcon style={{ color: '#00ADEE' }} />
-        </h1>
-      </LightTooltip>
+    <div class="legend-box-button" style={{ zIndex: '10000' }}>
+      <React.Fragment key={'left'}>
+        <LightTooltip title={<p style={{ textAlign: 'center' }}>Add Filter to the Cases Displayed</p>} arrow placement="top">
+          <Fab variant="extended" style={{ backgroundColor: '#00ADEE' }} onClick={toggleDrawer('left', true)}>
+            <div style={{ color: 'white', fontSize: '1.2em', display: 'flex', alignItems: 'center' }}>
+              <FilterListIcon />
+              &nbsp; <strong>Filter</strong>
+            </div>
+          </Fab>
+        </LightTooltip>
+        <Drawer anchor={'left'} open={state['left']} onClose={toggleDrawer('left', false)} style={{ zIndex: '10000' }}>
+          {list('left')}
+        </Drawer>
+      </React.Fragment>
     </div>
   );
 }
@@ -543,7 +528,7 @@ function DataBox() {
       color: '#00ADEE',
       boxShadow: theme.shadows[1],
       fontSize: 15,
-      width: '125px',
+      width: '175px',
     },
   }))(Tooltip);
 
@@ -577,7 +562,7 @@ function CaseBox() {
       color: '#00ADEE',
       boxShadow: theme.shadows[1],
       fontSize: 15,
-      width: '100px',
+      width: '120px',
     },
   }))(Tooltip);
 

@@ -16,12 +16,16 @@ body {
 
 .slider-box {
   position: absolute;
-  left: 10px;
-  right: 10px;
-  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 5px;
   z-index: 100;
-  backdrop-filter: blur(6px);
-  padding: 3px 8px 2px 8px;
+  backdrop-filter: blur(5px);
+  padding: 5px 10px 10px 10px;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .color-block {
@@ -32,10 +36,6 @@ body {
 }
 
 .logo-box {
-<<<<<<< HEAD
-  /* display: inline-block; */
-=======
->>>>>>> 75ca35282546bc7b37bd004a9c9dbf4ae3ffc73b
   display: flex;
   align-items: center;
   position: absolute;
@@ -57,59 +57,43 @@ body {
   text-align: left;
   position: absolute;
   left: 10px;
-  bottom: 50px;
+  bottom: 60px;
   z-index: 10000;
   padding: 6px;
   border-radius: 10px;
   margin-left: 10px;
 }
 
-<<<<<<< HEAD
-.info-box-button{
-=======
 .info-box-button {
->>>>>>> 75ca35282546bc7b37bd004a9c9dbf4ae3ffc73b
   display: inline-block;
   text-align: left;
   position: absolute;
   right: 10px;
-  bottom: 50px;
+  bottom: 60px;
   z-index: 10000;
   padding: 6px;
   border-radius: 10px;
   margin-right: 10px;
 }
 
-<<<<<<< HEAD
-.data-box-button{
-=======
 .data-box-button {
->>>>>>> 75ca35282546bc7b37bd004a9c9dbf4ae3ffc73b
   display: inline-block;
   text-align: left;
   position: absolute;
   right: 390px;
-  bottom: 50px;
+  bottom: 60px;
   z-index: 10000;
   padding: 6px;
   border-radius: 10px;
   margin-right: 10px;
 }
 
-<<<<<<< HEAD
-.case-box-button{
-  display: inline-block;
-  text-align: left;
-  position: absolute;
-  left: 150px;
-=======
 .case-box-button {
   display: inline-block;
   text-align: left;
   position: absolute;
-  left: 195px;
->>>>>>> 75ca35282546bc7b37bd004a9c9dbf4ae3ffc73b
-  bottom: 50px;
+  left: 155px;
+  bottom: 60px;
   z-index: 10000;
   padding: 6px;
   border-radius: 10px;
@@ -135,10 +119,14 @@ body {
   left: 0;
   right: 0;
   margin: auto;
-  color: #272727;
-  z-index: 2 !important;
+    z-index: 2 !important;
   padding: 6px;
   border-radius: 3px;
+}
+
+.title-box button:hover{
+  color: #00ADEE;
+  cursor: pointer;
 }
 
 .title-box h1,
