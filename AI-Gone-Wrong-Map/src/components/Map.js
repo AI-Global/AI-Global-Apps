@@ -321,6 +321,7 @@ class Map extends React.Component {
             max={endYear}
             step={null}
             defaultValue={[startYear, endYear]}
+            tipFormatter={null}
           />
         </div>
         <div
