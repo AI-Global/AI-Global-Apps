@@ -537,7 +537,7 @@ function InfoBox() {
         placement="top"
       >
         <Fab
-          href="http://ai-global.org/design-assistant/"
+          href="https://oproma.github.io/rai-trustindex/"
           target="_blank"
           rel="noopener noreferrer"
           variant="extended"
