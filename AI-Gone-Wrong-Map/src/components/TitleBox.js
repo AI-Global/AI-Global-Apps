@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Button } from 'antd';
 import 'antd/dist/antd.css';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
-import RoomIcon from '@material-ui/icons/Room';
+import PublicIcon from '@material-ui/icons/Public';
 
 class TitleBox extends React.Component {
   state = {
@@ -18,10 +18,12 @@ class TitleBox extends React.Component {
     return (
       <div class="title-box">
         <button style={{color: "#272727", fontSize: "2.5em", outline: "none", backgroundColor: "transparent", border: "none"}} onClick={() => this.setModalVisible(true)}>
-          <strong>Where in the World is AI? <HelpOutlineIcon/></strong> 
+          <p><strong>Where in the World is AI? <HelpOutlineIcon/></strong></p>
         </button>
         <Modal
-          title={<strong><RoomIcon style={{fontSize: "0.95em", color: "#00ADEE"}}/> Welcome to the Where in the World is AI Map!</strong>}
+          title={<div style={{display: "flex", alignItems: "center"}}>
+             <PublicIcon style={{color: "#00ADEE"}}/> <p style={{margin: "0"}}>&nbsp;<strong>Welcome to the Where in the World is AI Map!</strong></p>
+            </div>}
           centered
           visible={this.state.modalVisible}
           onCancel={() => this.setModalVisible(false)}
@@ -37,7 +39,7 @@ class TitleBox extends React.Component {
             target="_blank"
             rel="noopener noreferrer">Link</a>).
            </p>
-           <p style={{marginBottom: "0"}}><strong>How does this Work?</strong></p>
+           <p style={{marginBottom: "0"}}><strong>How does the Map work?</strong></p>
            <ul>
                <li>Configure desired time period on bottom by <strong>dragging the slider</strong></li>
                <li><strong>Click on points</strong> to see individual cases</li>
