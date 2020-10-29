@@ -1,8 +1,12 @@
 @import '~antd/lib/slider/style/index.css';
 
+/* import Google Fonts: Roboto */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
 html,
 body {
   overflow: hidden;
+  font-family: 'Roboto', sans-serif;
 }
 
 .App {
@@ -28,7 +32,8 @@ body {
 }
 
 .logo-box {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   position: absolute;
   left: 0;
   top: 0;
@@ -38,14 +43,57 @@ body {
 .legend-box {
   display: inline-block;
   text-align: left;
-  position: absolute;
-  left: 0;
-  bottom: 60px;
-  background-color: #272727;
-  color: #ffffff;
-  z-index: 1 !important;
   padding: 6px;
   border-radius: 10px;
+  margin-left: 10px;
+}
+
+.legend-box-button {
+  display: inline-block;
+  text-align: left;
+  position: absolute;
+  left: 10px;
+  bottom: 50px;
+  z-index: 10000;
+  padding: 6px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+
+.info-box-button {
+  display: inline-block;
+  text-align: left;
+  position: absolute;
+  right: 10px;
+  bottom: 50px;
+  z-index: 10000;
+  padding: 6px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.data-box-button {
+  display: inline-block;
+  text-align: left;
+  position: absolute;
+  right: 390px;
+  bottom: 50px;
+  z-index: 10000;
+  padding: 6px;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+.case-box-button {
+  display: inline-block;
+  text-align: left;
+  position: absolute;
+  left: 195px;
+  bottom: 50px;
+  z-index: 10000;
+  padding: 6px;
+  border-radius: 10px;
+  margin-right: 10px;
 }
 
 .legend-box a {

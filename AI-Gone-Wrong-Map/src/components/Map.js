@@ -2,6 +2,21 @@ import React from 'react';
 import mapboxgl from 'mapbox-gl';
 import db from '../data/db';
 import { Slider } from 'antd';
+import { withStyles } from '@material-ui/core/styles';
+import FormGroup from '@material-ui/core/FormGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import { makeStyles } from '@material-ui/core/styles';
+import clsx from 'clsx';
+import Drawer from '@material-ui/core/Drawer';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
+import BeenhereIcon from '@material-ui/icons/Beenhere';
+import Tooltip from '@material-ui/core/Tooltip';
+import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
+import StorageIcon from '@material-ui/icons/Storage';
+import FilterListIcon from '@material-ui/icons/FilterList';
 
 // renderPulse - Function to render dot -regardless if bad/good
 function renderPulse(map, context, size, offset, domain, colors) {
@@ -27,6 +42,7 @@ function renderPulseGood(map, context, size, offset, domain, colors, isGood) {
   let starXY = [size / 2, size / 2];
   context.clearRect(0, 0, size, size);
   context.beginPath();
+
   // Star Formula
   for (let i = 11; i !== 0; i--) {
     let r = (radius * ((i % 2) + 1.0)) / 2.0;
@@ -35,6 +51,7 @@ function renderPulseGood(map, context, size, offset, domain, colors, isGood) {
   }
 
   context.closePath();
+
   // Fills in color of the domain
   context.fillStyle = `rgba(${colors[1][0]}, ${colors[1][1]}, ${colors[1][2]}, 1)`;
   context.strokeStyle = 'white';
@@ -54,7 +71,7 @@ let initialGoodnessSelected = ['Helpful', 'Harmful'];
 let goodness = [...new Set(db.map((item) => item.is_good.trim()))];
 
 // UX DESIGN: if you ever need to change the colors
-//Add the hex triplet
+// Add the hex triplet
 let domainColors = [
   [148, 189, 255],
   [4, 236, 217],
@@ -123,6 +140,10 @@ let eventToFeatureJSON = (event) => {
   };
 };
 
+let rgbToHex = (r, g, b) => {
+  return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+};
+
 class Map extends React.Component {
   constructor(props) {
     super(props);
@@ -171,7 +192,9 @@ class Map extends React.Component {
         let offset = Math.random() * 1000;
         let colors = domainToColors[item.domain];
         let popUpHTML = `<h3>${marker.properties.title}</h3>
-          <p><i>${marker.properties.category}</i><p><i>${marker.properties.isGood}</i><br/>${marker.properties.location}</p>
+          <hr/>
+          <p><em><strong>${marker.properties.category} &#183; ${marker.properties.isGood}</strong></em></p>
+          <p>${marker.properties.location}</p>
           <p>${marker.properties.description}</p>`;
         if (marker.properties.link) {
           popUpHTML += `<a target="_blank" href="${marker.properties.link}">More Info</a>`;
@@ -273,7 +296,7 @@ class Map extends React.Component {
           </a>
           <License />
         </div>
-        <Legend
+        <SideDrawer
           selected={selected}
           selectedGood={selectedGood}
           onClickDomain={this.onClickDomain.bind(this)}
@@ -281,6 +304,8 @@ class Map extends React.Component {
         />
         <TitleBox zoom={zoom} />
         <InfoBox />
+        <DataBox />
+        <CaseBox />
         <div className="slider-box">
           <Slider
             onChange={(v) => this.onYearSliderChange(v)}
@@ -305,7 +330,7 @@ class Map extends React.Component {
 function License() {
   return (
     <div>
-      <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">
+      <a rel="license noopener noreferrer" href="http://creativecommons.org/licenses/by/4.0/" target="_blank">
         <img
           title={
             'Where in the World is AI? AI Global is licensed under a Creative Commons Attribution 4.0 International License'
@@ -319,75 +344,284 @@ function License() {
   );
 }
 
-function Legend({ selected, selectedGood, onClickDomain, onClickGoodness }) {
-  return (
-    <div className="legend-box">
-      <p>Domains</p>
-      {domains.map((domain) => (
-        <div>
-          <input type="checkbox" checked={selected.includes(domain)} onClick={() => onClickDomain(domain)} />
-          <div style={{ backgroundColor: domainToColors[domain][2] }} className="color-block"></div> {domain}
-        </div>
-      ))}
-      <br />
-      <p> Where AI Has Gone...</p>
-      {goodness.map((isGood) => (
-        <div>
-          <input type="checkbox" checked={selectedGood.includes(isGood)} onClick={() => onClickGoodness(isGood)} />
-          {isGood}
-        </div>
-      ))}
-      <br />
-      <div style={{ textAlign: 'center' }}>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0"
-        >
-          View Dataset & Stats
+// Custom Checkbox with AI Global Colors
+const CustomCheckbox = withStyles({
+  root: {
+    color: '#00ADEE',
+    '&$checked': {
+      color: '#00ADEE',
+    },
+  },
+  checked: {},
+})((props) => <Checkbox color="#00ADEE" {...props} />);
+
+const CustomColorCheckbox = (props) => {
+  const CustomizedCheckbox = withStyles({
+    root: {
+      color: props.color,
+      '&$checked': {
+        color: props.color,
+      },
+    },
+    checked: {},
+  })((props) => <Checkbox {...props} />);
+  return <CustomizedCheckbox {...props} />;
+};
+
+const useStyles = makeStyles({
+  list: {
+    width: 250,
+  },
+});
+
+function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) {
+  const classes = useStyles();
+  const [state, setState] = React.useState({
+    left: false,
+  });
+
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+      return;
+    }
+    setState({ ...state, [anchor]: open });
+  };
+
+  const list = (anchor) => (
+    <ClickAwayListener onClickAway={toggleDrawer('left', false)}>
+      <div
+        className={clsx(classes.list, {
+          [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+        })}
+        role="presentation"
+        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+      >
+        <a style={{ marginTop: '20px' }} target="_blank" rel="noopener noreferrer" href="https://ai-global.org/">
+          <img alt="AI Global Logo" src="/transparent-rect-logo.png" />
         </a>
-        <br />
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://docs.google.com/forms/d/e/1FAIpQLSeo4ZcT48qYDA3Z4GgRF8TjNLVuHpAvt9I1rVDX87usskLoVQ/viewform"
-        >
-          Submit a case
-        </a>
+        <FormGroup className="legend-box">
+          <h3 style={{ margin: '0', marginTop: '20px' }}>
+            <strong>Domains</strong>
+          </h3>
+          {domains.map((domain) => (
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <FormControlLabel
+                control={
+                  <CustomColorCheckbox
+                    color={rgbToHex(...domainToColors[domain][0])}
+                    checked={selected.includes(domain)}
+                    onChange={() => onClickDomain(domain)}
+                  />
+                }
+              />
+              <p style={{ fontWeight: 'normal' }}>{domain}</p>
+            </div>
+          ))}
+          <hr />
+          <h3 style={{ margin: '0', marginTop: '20px' }}>
+            <strong>Where AI Has Gone...</strong>
+          </h3>
+          {goodness.map((isGood) => (
+            <FormControlLabel
+              style={{ fontSize: '0.6rem', marginRight: '0', padding: '0' }}
+              control={
+                <CustomCheckbox checked={selectedGood.includes(isGood)} onChange={() => onClickGoodness(isGood)} />
+              }
+              label={isGood}
+            />
+          ))}
+        </FormGroup>
       </div>
+    </ClickAwayListener>
+  );
+
+  const LightTooltip = withStyles((theme) => ({
+    arrow: {
+      color: '#00ADEE',
+    },
+    tooltip: {
+      backgroundColor: 'white',
+      color: '#00ADEE',
+      boxShadow: theme.shadows[1],
+      fontSize: 15,
+      width: '120px',
+    },
+  }))(Tooltip);
+
+  return (
+    <div class="legend-box-button" style={{ zIndex: '10000' }}>
+      <React.Fragment key={'left'}>
+        <LightTooltip open="true" title="Add Filter to the Cases Displayed" arrow placement="top">
+          <Fab variant="extended" style={{ backgroundColor: '#00ADEE' }} onClick={toggleDrawer('left', true)}>
+            <div style={{ color: 'white', fontSize: '1.2em', display: 'flex', alignItems: 'center' }}>
+              <FilterListIcon />
+              &nbsp; <strong>Add Filter</strong>
+            </div>
+          </Fab>
+        </LightTooltip>
+        <Drawer anchor={'left'} open={state['left']} onClose={toggleDrawer('left', false)} style={{ zIndex: '10000' }}>
+          {list('left')}
+        </Drawer>
+      </React.Fragment>
     </div>
   );
 }
 
 function TitleBox({ zoom }) {
+  const LightTooltip = withStyles((theme) => ({
+    arrow: {
+      color: 'white',
+    },
+    tooltip: {
+      backgroundColor: 'white',
+      color: '#00ADEE',
+      boxShadow: theme.shadows[1],
+      fontSize: 13,
+      width: '1000px',
+    },
+  }))(Tooltip);
+
   return (
     <div className="title-box">
-      <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px' }}>Where in the World is AI?</h1>
-      {zoom < 3.55 && (
-        <h5 style={{ margin: 'auto', width: '40%' }}>
-          Everyone is talking about AI, but how and where is it actually being used? Since our mission is to ensure AI
-          is protecting us instead of harming us, we’ve mapped out some cases where AI is being used well, and times
-          where it has gone wrong. Cases are aggregated by AI Global, Awful AI, and Charlie Pownall/CPC & Associates{' '}
-          <a href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814">
-            (AI & Algorithmic Controversy Repository)
-          </a>
-        </h5>
-      )}
+      <LightTooltip
+        title={
+          <p style={{ textAlign: 'center' }}>
+            Everyone is talking about AI, but <strong>how and where is it actually being used?</strong> Since our
+            mission is to ensure AI is protecting us instead of harming us, we’ve mapped out some cases where AI is
+            being used well, and times where it has gone wrong. Cases are aggregated by AI Global, Awful AI, and Charlie
+            Pownall/CPC &amp; Associates (<em>https://tinyurl.com/AIControversy</em>).
+          </p>
+        }
+        placement="bottom"
+        arrow
+        leaveDelay={1000}
+        href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <h1 style={{ margin: 'auto', width: '45%', marginBottom: '20px', marginTop: '10px' }}>
+          Where in the World is AI?
+          <HelpOutlineIcon style={{ color: '#00ADEE' }} />
+        </h1>
+      </LightTooltip>
     </div>
   );
 }
 
 function InfoBox() {
+  const LightTooltip = withStyles((theme) => ({
+    arrow: {
+      color: '#00ADEE',
+    },
+    tooltip: {
+      backgroundColor: 'white',
+      color: '#00ADEE',
+      boxShadow: theme.shadows[1],
+      fontSize: 15,
+      width: '500px',
+    },
+  }))(Tooltip);
+
   return (
-    <a target="_blank" rel="noopener noreferrer" href="https://oproma.github.io/rai-trustindex/">
-      <button className="call-to-action-button" type="submit">
-        The negative consequences of AI can be prevented by focusing on a responsible design, development and
-        implementation of AI.
-        <br />
-        <br />
-        Check your AI with our <em>Design Assistant</em>
-      </button>
-    </a>
+    <div className="info-box-button">
+      <LightTooltip
+        title={
+          <p style={{ textAlign: 'center' }}>
+            Check how your AI System performs with curated responsibility metrics from our{' '}
+            <strong>
+              <em>Responsible AI Design Assistant</em>
+            </strong>
+          </p>
+        }
+        arrow
+        placement="top"
+      >
+        <Fab
+          href="https://oproma.github.io/rai-trustindex/"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="extended"
+          style={{ backgroundColor: '#00ADEE' }}
+        >
+          <div style={{ color: 'white', fontSize: '1.2em', display: 'flex', alignItems: 'center' }}>
+            <BeenhereIcon />
+            &nbsp; <strong>Responsible AI Design Assistant</strong>
+          </div>
+        </Fab>
+      </LightTooltip>
+    </div>
+  );
+}
+
+function DataBox() {
+  const LightTooltip = withStyles((theme) => ({
+    arrow: {
+      color: '#00ADEE',
+    },
+    tooltip: {
+      backgroundColor: 'white',
+      color: '#00ADEE',
+      boxShadow: theme.shadows[1],
+      fontSize: 15,
+      width: '125px',
+    },
+  }))(Tooltip);
+
+  return (
+    <div className="data-box-button">
+      <LightTooltip title={<p style={{ textAlign: 'center' }}>Check out our Dataset</p>} arrow placement="top">
+        <Fab
+          href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="extended"
+          style={{ backgroundColor: '#00ADEE' }}
+        >
+          <div style={{ color: 'white', fontSize: '1.2em', display: 'flex', alignItems: 'center' }}>
+            <StorageIcon />
+            &nbsp; <strong>DATASET &amp; STATS</strong>
+          </div>
+        </Fab>
+      </LightTooltip>
+    </div>
+  );
+}
+
+function CaseBox() {
+  const LightTooltip = withStyles((theme) => ({
+    arrow: {
+      color: '#00ADEE',
+    },
+    tooltip: {
+      backgroundColor: 'white',
+      color: '#00ADEE',
+      boxShadow: theme.shadows[1],
+      fontSize: 15,
+      width: '100px',
+    },
+  }))(Tooltip);
+
+  return (
+    <div className="case-box-button">
+      <LightTooltip
+        title={<p style={{ textAlign: 'center' }}>Submit a case to add to our Map Dataset</p>}
+        arrow
+        placement="top"
+      >
+        <Fab
+          href="https://docs.google.com/forms/d/e/1FAIpQLSeo4ZcT48qYDA3Z4GgRF8TjNLVuHpAvt9I1rVDX87usskLoVQ/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+          variant="extended"
+          style={{ backgroundColor: '#00ADEE' }}
+        >
+          <div style={{ color: 'white', fontSize: '1.2em', display: 'flex', alignItems: 'center' }}>
+            <AddIcon />
+            &nbsp; <strong>ADD CASE</strong>
+          </div>
+        </Fab>
+      </LightTooltip>
+    </div>
   );
 }
 
