@@ -32,7 +32,7 @@ class TitleBox extends React.Component {
             </Button>,]}
         >
           <p>Everyone is talking about AI, but <strong>how and where is it actually being used?</strong>
-            We've mapped out interesting examples where AI has gone right and where it's gone wrong. Cases 
+            We've mapped out interesting examples where AI has been harmful and where it's been helpful. Cases 
             are aggregated by AI Global, Awful AI, and Charlie
             Pownall/CPC &amp; Associates (
             <a href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814"
@@ -43,7 +43,7 @@ class TitleBox extends React.Component {
            <ul>
                <li>Configure desired time period on bottom by <strong>dragging the slider</strong></li>
                <li><strong>Click on points</strong> to see individual cases</li>
-               <li>Filter types of cases through the <strong>filter button on bottom right</strong></li>
+               <li>Filter types of cases through the <strong>filter button on bottom left</strong></li>
                <li>Cases are organized by <strong>domains via color coding</strong></li>
            </ul>
         </Modal>
