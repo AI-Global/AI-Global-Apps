@@ -1,6 +1,6 @@
 export default [
     {
-        "title": "Phone Call - Faking Voice",
+        "title": "Fraudsters Used AI to Mimic CEO\u2019s Voice in Unusual Cybercrime Case",
         "issue": "Criminals used AI-based software to copy a German CEO and requested to transfer over $243,000 to a supplier",
         "year": "2019",
         "domain": "Business",
@@ -16,13 +16,13 @@ export default [
         "insights": ""
     },
     {
-        "title": "Investment ",
+        "title": "Who to Sue When a Robot Loses Your Fortune",
         "issue": "Hong Kong Samathur Li-Kin kan let automated platform manage fund and lost 20 million daily",
         "year": "2019",
         "domain": "Business",
         "city": "Victoria",
         "state": "Hong Kong",
-        "country": "Hong Kong",
+        "country": "",
         "lat": "22.280302",
         "lng": "114.158777",
         "is_good": "Harmful",
@@ -144,8 +144,8 @@ export default [
         "insights": ""
     },
     {
-        "title": "Purchase Decision without Human Input",
-        "issue": "A TV advert created by Amazon triggered Alexa devices in the US to order a Dolls House on behalf of 100s of Customers.",
+        "title": "Amazon\u2019s Alexa started ordering people dollhouses after hearing its name on TV",
+        "issue": "A TV advert created by Amazon triggered Alexa devices in the US to order a Dolls House on behalf of 100s of Customers. This purchase decision without a human input has a potential to be harmful.",
         "year": "2017",
         "domain": "Business",
         "city": "Washington DC",
@@ -160,7 +160,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Boston Public Schools",
+        "title": "What the Boston School Bus Schedule Can Teach Us About AI",
         "issue": "Ending schools at different time zones might prioritize various families differently",
         "year": "2018",
         "domain": "Education",
@@ -208,7 +208,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "LG Cloi",
+        "title": "CES 2018: LG robot Cloi repeatedly fails on stage at its unveil",
         "issue": "Bot fails to demonstrate the enhance use of kitchen appliances",
         "year": "2018",
         "domain": "Housing",
@@ -288,7 +288,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "PredPol",
+        "title": "PredPol: Artificial Intelligence Is Now Used to Predict Crime. But Is It Biased?",
         "issue": "A Predictive policing software that started with LAPD and now is being used across the US. A lot of controversy on its use because of bias and feedback loops that reinforce targeting target minority neighborhoods",
         "year": "2018",
         "domain": "Law Enforcement",
@@ -400,7 +400,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Extremist Content on Social Media",
+        "title": "Extremist Content on Social Media: New Zealand Prime Minister Jacinda Ardern wants Facebook, Google, and Twitter to help slow the spread of violent content online",
         "issue": "Christchurch terrorist attack was live streamed on Facebook",
         "year": "2019",
         "domain": "Media",
@@ -416,7 +416,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Image Recognition",
+        "title": "FACIAL RECOGNITION TECHNOLOGY FALSELY IDENTIFIES FAMOUS ATHLETES",
         "issue": "A facial-recognition system identified NFL champions as criminals",
         "year": "2019",
         "domain": "Society",
@@ -432,7 +432,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Deep Nude ",
+        "title": "This Horrifying App Undresses a Photo of Any Woman With a Single Click",
         "issue": "Neural networks disrobe images of women",
         "year": "2019",
         "domain": "Society",
@@ -448,7 +448,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Masks Foil Facial Recognition",
+        "title": "Airport and Payment Facial Recognition Systems Fooled by Masks and Photos, Raising Security Concerns",
         "issue": "Kneron was able to fool facial recognition system at banks, border crossing and airports using 3D masks",
         "year": "2019",
         "domain": "Society",
@@ -560,7 +560,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Facebook Translation",
+        "title": "Facebook translates 'good morning' into 'attack them', leading to arrest",
         "issue": "Facebook translates good morning into attack them, leading into an arrest",
         "year": "2017",
         "domain": "Society",
@@ -576,7 +576,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Google Search",
+        "title": "Sexist Google Search",
         "issue": "Google Image Search for CEO has Barbie as first result",
         "year": "2015",
         "domain": "Society",
@@ -640,7 +640,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Facial Recognition Software ",
+        "title": "One Month, 500,000 Face Scans: How China Is Using A.I. to Profile a Minority",
         "issue": "Facial recognition software used at checkpoints was rejecting people of Asian decent due to the shape of their eyes.",
         "year": "2019",
         "domain": "Society",
@@ -1926,7 +1926,7 @@ export default [
         "domain": "Vision",
         "city": "Hong Kong",
         "state": "",
-        "country": "Hong Kong",
+        "country": "",
         "lat": "22.41855",
         "lng": "114.209",
         "is_good": "Harmful",
@@ -2144,7 +2144,7 @@ export default [
         "insights": ""
     },
     {
-        "title": "Flaw in AI Portrait Ars",
+        "title": "Flaw in AI Portrait Art",
         "issue": "An app that turns selfies into impressionist portraits whitens skin",
         "year": "2019",
         "domain": "Vision",
@@ -4755,7 +4755,7 @@ export default [
         "title": "Smart Cities Should Be Good Cities: AI, Equity, and Homelessness",
         "issue": "This research explores how to use AI to empower individuals experiencing homelessness and assist agencies",
         "year": "2020",
-        "domain": "Health Services",
+        "domain": "Housing",
         "city": "Austin",
         "state": "Texas",
         "country": "USA",
@@ -4843,6 +4843,102 @@ export default [
         "lng": "-58.081592",
         "is_good": "Harmful",
         "link": "https://www.technologyreview.com/2020/10/09/1009992/live-facial-recognition-is-tracking-kids-suspected-of-crime/",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "Artificial intelligence model detects asymptomatic Covid-19 infections through cellphone-recorded cough",
+        "issue": "Although asymptomatic people might not show symptoms, the model is able to distinguish coughs from healthy individuals and those with COVID-19 with a 98.5% accuracy",
+        "year": "2020",
+        "domain": "Health Services",
+        "city": "Cambridge",
+        "state": "Massachusetts",
+        "country": "USA",
+        "lat": "42.373611",
+        "lng": "-71.110558",
+        "is_good": "Helpful",
+        "link": "https://news.mit.edu/2020/covid-19-cough-cellphone-detection-1029",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "AI has just revealed there are over 1.8 billion trees in the Sahara Desert",
+        "issue": "The researchers used detailed satellite imagery from NASA with deep learning. Without deep learning, these trees would have been invisible",
+        "year": "2020",
+        "domain": "Society",
+        "city": "Sahara Desert",
+        "state": "",
+        "country": "Egypt",
+        "lat": "23.806078",
+        "lng": "11.288452",
+        "is_good": "Helpful",
+        "link": "https://www.weforum.org/agenda/2020/10/ai-billion-trees-sahara-desert-technology/#:~:text=Researchers%20counted%20over%201.8%20billion,humid%20zones%20of%20West%20Africa.",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "How a fake persona laid the groundwork for a Hunter Biden conspiracy deluge",
+        "issue": "A fake identity, Martin Aspen, was created by artificial intelligence to defame Hunter Biden",
+        "year": "2020",
+        "domain": "Vision",
+        "city": "",
+        "state": "Washington DC",
+        "country": "USA",
+        "lat": "38.889248",
+        "lng": "-77.050636",
+        "is_good": "Harmful",
+        "link": "https://www.nbcnews.com/tech/security/how-fake-persona-laid-groundwork-hunter-biden-conspiracy-deluge-n1245387",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "How an Algorithm Blocked Kidney Transplants to Black Patients",
+        "issue": "This kidney algorithm explicitly takes account of race whose Black patients' scores would have qualified them for a kidney transplant waitlist, yet none of them were referred or evaluated for a transplant.",
+        "year": "2020",
+        "domain": "Health Services",
+        "city": "Boston",
+        "state": "Massachusetts",
+        "country": "USA",
+        "lat": "42.362293",
+        "lng": "-71.059893",
+        "is_good": "Harmful",
+        "link": "https://www.wired.com/story/how-algorithm-blocked-kidney-transplants-black-patients/",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "Surveillance Startup Used Own Cameras to Harass Coworkers",
+        "issue": "Employees at Verkada accessed the company's facial recognition system to take photos of women colleagues and make sexually explicit jokes.",
+        "year": "2020",
+        "domain": "Vision",
+        "city": "San Mateo",
+        "state": "California",
+        "country": "USA",
+        "lat": "37.554169",
+        "lng": "-122.313057",
+        "is_good": "Harmful",
+        "link": "https://www.vice.com/en/article/pkdyqm/surveillance-startup-used-own-cameras-to-harass-coworkers",
+        "action": "",
+        "reading": "",
+        "insights": ""
+    },
+    {
+        "title": "The Netherlands Is Becoming a Predictive Policing Hot Spot",
+        "issue": "CAS, the Crime Anticipation System, perpetuates discriminatory practices by looking at variables such as number of one parent households, number of social benefits recipients, and number of non-Western immigrants",
+        "year": "2020",
+        "domain": "Law Enforcement",
+        "city": "Amsterdam",
+        "state": "",
+        "country": "Netherlands",
+        "lat": "52.377956",
+        "lng": "4.89707",
+        "is_good": "Harmful",
+        "link": "https://www.vice.com/en/article/5dpmdd/the-netherlands-is-becoming-a-predictive-policing-hot-spot",
         "action": "",
         "reading": "",
         "insights": ""
