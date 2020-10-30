@@ -16,7 +16,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import StorageIcon from '@material-ui/icons/Storage';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import TitleBox from "../components/TitleBox";
+import TitleBox from '../components/TitleBox';
 
 // renderPulse - Function to render dot -regardless if bad/good
 function renderPulse(map, context, size, offset, domain, colors) {
@@ -61,7 +61,6 @@ function renderPulseGood(map, context, size, offset, domain, colors, isGood) {
   return true;
 }
 
-// Define variables
 let initialDomainsSelected = ['Society', 'Law Enforcement', 'Business'];
 
 let domains = [...new Set(db.map((item) => item.domain.trim()))];
@@ -100,9 +99,9 @@ let endYear = 2020;
 for (let yr = startYear; yr <= endYear; yr += 1) {
   yearMarks[yr] = {
     style: {
-      fontSize: "1.3em",
+      fontSize: '1.3em',
     },
-  label: <strong>{yr}</strong>,
+    label: <strong>{yr}</strong>,
   };
 }
 
@@ -215,7 +214,6 @@ class Map extends React.Component {
           .setLngLat([x, y])
           .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popUpHTML));
         item.mrkr = mrkr;
-        // For filter to work! (Functionality on legend)
         if (initialGoodnessSelected.includes(item.isGood) && initialDomainsSelected.includes(item.domain)) {
           mrkr.addTo(map);
         }
@@ -262,7 +260,6 @@ class Map extends React.Component {
     });
   }
 
-  //onClickGoodness - Function to get legend filtering to work
   onClickGoodness(isGood) {
     window.gtag('send', 'click', {
       event_category: 'goodness',
@@ -313,7 +310,7 @@ class Map extends React.Component {
         <CaseBox />
         <div className="slider-box">
           <Slider
-            style= {{width: "95%", margin: "auto"}}
+            style={{ width: '95%', margin: 'auto' }}
             onChange={(v) => this.onYearSliderChange(v)}
             range
             marks={yearMarks}
@@ -458,7 +455,11 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
   return (
     <div class="legend-box-button" style={{ zIndex: '10000' }}>
       <React.Fragment key={'left'}>
-        <LightTooltip title={<p style={{ textAlign: 'center' }}>Add Filter to the Cases Displayed</p>} arrow placement="top">
+        <LightTooltip
+          title={<p style={{ textAlign: 'center' }}>Add Filter to the Cases Displayed</p>}
+          arrow
+          placement="top"
+        >
           <Fab variant="extended" style={{ backgroundColor: '#00ADEE' }} onClick={toggleDrawer('left', true)}>
             <div style={{ color: 'white', fontSize: '1.2em', display: 'flex', alignItems: 'center' }}>
               <FilterListIcon />
