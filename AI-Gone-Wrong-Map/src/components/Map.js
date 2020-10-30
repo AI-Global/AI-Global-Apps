@@ -426,7 +426,7 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
           ))}
           <hr />
           <h3 style={{ margin: '0', marginTop: '20px' }}>
-            <strong>Where AI Has Gone...</strong>
+            <strong>Where AI Has Been...</strong>
           </h3>
           {goodness.map((isGood) => (
             <FormControlLabel
