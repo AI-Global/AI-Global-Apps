@@ -51,7 +51,7 @@ class TitleBox extends React.Component {
         >
           <p>
             Everyone is talking about AI, but <strong>how and where is it actually being used?</strong>
-            We've mapped out interesting examples where AI has been harmful and where it's been helpful. Cases are
+            We've mapped out interesting examples where AI has been harmful and where it's been helpful. Please access on a non-mobile device for the best user experience. Cases are updated weekly and are
             aggregated by AI Global, Awful AI, and Charlie Pownall/CPC &amp; Associates (
             <a
               href="https://docs.google.com/spreadsheets/d/1Bn55B4xz21-_Rgdr8BBb2lt0n_4rzLGxFADMlVW0PYI/edit#gid=364376814"
