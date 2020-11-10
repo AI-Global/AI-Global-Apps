@@ -72,15 +72,9 @@ class TitleBox extends React.Component {
                <li>Cases are organized by <strong>domains via color coding</strong></li>
            </ul>
            <div style={{display: 'flex', alignItems:'center'}}><ErrorOutlineIcon style={{color: '#00ADEE'}}/>&nbsp;<p style={{margin: "0", fontSize: '1.1em'}}><strong>Disclaimer</strong></p></div>
-           <p>We acknowledge and understand that our classifications of what defines a system to be harmful and helpful is limited by our team's experiences and background. Click this 
-            <a 
-              href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=1296285744"
-              target="_blank"
-              rel="noopener noreferrer"
-            > 
-              link
-            </a> 
-            to learn more.
+           <p>We acknowledge and understand that our classifications of what defines a system to be harmful and helpful is limited by our team's experiences and background. Click this
+            <a href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=1296285744"target="_blank"rel="noopener noreferrer"> link </a>
+             to learn more.
            </p>
         </Modal>
       </div>
