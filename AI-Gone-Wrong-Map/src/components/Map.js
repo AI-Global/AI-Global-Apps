@@ -493,7 +493,7 @@ function InfoBox() {
     <div className="info-box-button">
       <LightTooltip
         title={
-          <p style={{ textAlign: 'center' }}>
+          <p style={{ textAlign: 'center', marginBottom: '2px'  }}>
             Check how your AI System performs with curated responsibility metrics from our{' '}
             <strong>
               <em>Responsible AI Design Assistant</em>
@@ -536,7 +536,7 @@ function DataBox() {
 
   return (
     <div className="data-box-button">
-      <LightTooltip title={<p style={{ textAlign: 'center' }}>Check out our Dataset</p>} arrow placement="top">
+      <LightTooltip title={<p style={{ textAlign: 'center', marginBottom: '2px'  }}>Check out our Dataset</p>} arrow placement="top">
         <Fab
           href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0"
           target="_blank"
@@ -571,7 +571,7 @@ function CaseBox() {
   return (
     <div className="case-box-button">
       <LightTooltip
-        title={<p style={{ textAlign: 'center' }}>Submit a case to add to our Map Dataset</p>}
+        title={<p style={{ textAlign: 'center', marginBottom: '2px' }}>Submit a case to add to our Map Dataset</p>}
         arrow
         placement="top"
       >
