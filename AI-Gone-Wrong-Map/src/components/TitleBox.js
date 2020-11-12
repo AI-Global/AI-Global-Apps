@@ -50,7 +50,7 @@ class TitleBox extends React.Component {
           width={700}
         >
           <p>Everyone is talking about AI, but <strong>how and where is it actually being used? </strong>
-            We've mapped out interesting examples where AI has been harmful and where it's been helpful. Cases 
+            We've mapped out interesting examples where AI has been harmful and where it's been helpful. Please access on web for best user experience. Cases are updated weekly and 
             are aggregated by AI Global, Awful AI, and Charlie
             Pownall/CPC &amp; Associates (
             <a 
@@ -71,8 +71,8 @@ class TitleBox extends React.Component {
                <li>Filter types of cases through the <strong>filter button on bottom left</strong></li>
                <li>Cases are organized by <strong>domains via color coding</strong></li>
            </ul>
-           <div style={{display: 'flex', alignItems:'center'}}><ErrorOutlineIcon style={{color: '#00ADEE'}}/>&nbsp;<p style={{margin: "0", fontSize: '1.1em'}}><strong>Disclaimer</strong></p></div>
-           <p>We acknowledge and understand that our classifications of what defines a system to be harmful and helpful is limited by our team's experiences and background. Click this
+           <div style={{display: 'flex', alignItems:'center'}}><ErrorOutlineIcon style={{color: '#00ADEE'}}/>&nbsp;<p style={{margin: "0", fontSize: '1.1em'}}><strong>Acknowledgment</strong></p></div>
+           <p>We acknowledge and understand that our classifications of what defines a system to be harmful and helpful is limited by our team's personal experiences and background. Click this
             <a href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=1296285744"target="_blank"rel="noopener noreferrer"> link </a>
              to learn more.
            </p>
