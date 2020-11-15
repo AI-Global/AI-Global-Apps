@@ -310,7 +310,7 @@ class Map extends React.Component {
         <CaseBox />
         <div className="slider-box">
           <Slider
-            style={{ width: '95%', margin: 'auto' }}
+            style={{ width: '95%', margin: 'auto'}}
             onChange={(v) => this.onYearSliderChange(v)}
             range
             marks={yearMarks}
@@ -351,13 +351,13 @@ function License() {
 // Custom Checkbox with AI Global Colors
 const CustomCheckbox = withStyles({
   root: {
-    color: '#00ADEE',
+    color: '#097AE8',
     '&$checked': {
-      color: '#00ADEE',
+      color: '#097AE8',
     },
   },
   checked: {},
-})((props) => <Checkbox color="#00ADEE" {...props} />);
+})((props) => <Checkbox color="#097AE8" {...props} />);
 
 const CustomColorCheckbox = (props) => {
   const CustomizedCheckbox = withStyles({
@@ -441,11 +441,11 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
 
   const LightTooltip = withStyles((theme) => ({
     arrow: {
-      color: '#00ADEE',
+      color: '#097AE8',
     },
     tooltip: {
       backgroundColor: 'white',
-      color: '#00ADEE',
+      color: '#097AE8',
       boxShadow: theme.shadows[1],
       fontSize: 15,
       width: '120px',
@@ -456,11 +456,11 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
     <div class="legend-box-button" style={{ zIndex: '10000' }}>
       <React.Fragment key={'left'}>
         <LightTooltip
-          title={<p style={{ textAlign: 'center' }}>Add Filter to the Cases Displayed</p>}
+          title={<p style={{ textAlign: 'center', marginBottom: '0' }}>Add Filter to the Cases Displayed</p>}
           arrow
           placement="top"
         >
-          <Fab variant="extended" style={{ backgroundColor: '#00ADEE' }} onClick={toggleDrawer('left', true)}>
+          <Fab variant="extended" style={{ backgroundColor: '#097AE8' }} onClick={toggleDrawer('left', true)}>
             <div style={{ color: 'white', fontSize: '1.2em', display: 'flex', alignItems: 'center' }}>
               <FilterListIcon />
               &nbsp; <strong>Filter</strong>
@@ -478,11 +478,11 @@ function SideDrawer({ selected, selectedGood, onClickDomain, onClickGoodness }) 
 function InfoBox() {
   const LightTooltip = withStyles((theme) => ({
     arrow: {
-      color: '#00ADEE',
+      color: '#097AE8',
     },
     tooltip: {
       backgroundColor: 'white',
-      color: '#00ADEE',
+      color: '#097AE8',
       boxShadow: theme.shadows[1],
       fontSize: 15,
       width: '500px',
@@ -508,7 +508,7 @@ function InfoBox() {
           target="_blank"
           rel="noopener noreferrer"
           variant="extended"
-          style={{ backgroundColor: '#00ADEE' }}
+          style={{ backgroundColor: '#097AE8' }}
         >
           <div style={{ color: 'white', fontSize: '1.2em', display: 'flex', alignItems: 'center' }}>
             <BeenhereIcon />
@@ -523,11 +523,11 @@ function InfoBox() {
 function DataBox() {
   const LightTooltip = withStyles((theme) => ({
     arrow: {
-      color: '#00ADEE',
+      color: '#097AE8',
     },
     tooltip: {
       backgroundColor: 'white',
-      color: '#00ADEE',
+      color: '#097AE8',
       boxShadow: theme.shadows[1],
       fontSize: 15,
       width: '175px',
@@ -542,7 +542,7 @@ function DataBox() {
           target="_blank"
           rel="noopener noreferrer"
           variant="extended"
-          style={{ backgroundColor: '#00ADEE' }}
+          style={{ backgroundColor: '#097AE8' }}
         >
           <div style={{ color: 'white', fontSize: '1.2em', display: 'flex', alignItems: 'center' }}>
             <StorageIcon />
@@ -557,11 +557,11 @@ function DataBox() {
 function CaseBox() {
   const LightTooltip = withStyles((theme) => ({
     arrow: {
-      color: '#00ADEE',
+      color: '#097AE8',
     },
     tooltip: {
       backgroundColor: 'white',
-      color: '#00ADEE',
+      color: '#097AE8',
       boxShadow: theme.shadows[1],
       fontSize: 15,
       width: '120px',
@@ -580,7 +580,7 @@ function CaseBox() {
           target="_blank"
           rel="noopener noreferrer"
           variant="extended"
-          style={{ backgroundColor: '#00ADEE' }}
+          style={{ backgroundColor: '#097AE8' }}
         >
           <div style={{ color: 'white', fontSize: '1.2em', display: 'flex', alignItems: 'center' }}>
             <AddIcon />
