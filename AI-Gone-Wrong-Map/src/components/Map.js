@@ -18,6 +18,18 @@ import StorageIcon from '@material-ui/icons/Storage';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import TitleBox from '../components/TitleBox';
 
+// Clean input data inplace
+const dataset = db
+  .filter(({ lat, lng }) => lat && lng)
+  .map((item, i) => {
+    item.domain = item.domain.trim();
+    item.isGood = item.is_good.trim();
+    item.year = parseInt(item.year);
+    item.yearFormatted = '' + item.year;
+    item.id = i;
+    return item;
+  });
+
 // renderPulse - Function to render dot -regardless if bad/good
 function renderPulse(map, context, size, offset, domain, colors) {
   let t = 0.8;
@@ -63,11 +75,11 @@ function renderPulseGood(map, context, size, offset, domain, colors, isGood) {
 
 let initialDomainsSelected = ['Society', 'Law Enforcement', 'Business'];
 
-let domains = [...new Set(db.map((item) => item.domain.trim()))];
+let domains = [...new Set(dataset.map((item) => item.domain.trim()))];
 
 let initialGoodnessSelected = ['Helpful', 'Harmful'];
 
-let goodness = [...new Set(db.map((item) => item.is_good.trim()))];
+let goodness = [...new Set(dataset.map((item) => item.is_good.trim()))];
 
 // UX DESIGN: if you ever need to change the colors
 // Add the hex triplet
@@ -104,16 +116,6 @@ for (let yr = startYear; yr <= endYear; yr += 1) {
     label: <strong>{yr}</strong>,
   };
 }
-
-// Clean input data inplace
-db.map((item, i) => {
-  item.domain = item.domain.trim();
-  item.isGood = item.is_good.trim();
-  item.year = parseInt(item.year);
-  item.yearFormatted = '' + item.year;
-  item.id = i;
-  return item;
-});
 
 let eventToFeatureJSON = (event) => {
   let { title, issue, lat, lng, link, domain, city, state, country, isGood } = event;
@@ -181,53 +183,55 @@ class Map extends React.Component {
       });
     });
     map.on('load', () => {
-      db.map((item) => eventToFeatureJSON(item)).forEach((marker, i) => {
-        let item = db[i];
-        let canvas = document.createElement('canvas');
-        canvas.width = 50;
-        canvas.height = 50;
-        canvas.addEventListener('click', () => {
-          window.gtag('send', 'click', {
-            event_category: 'marker',
-            event_label: item.title,
+      dataset
+        .map((item) => eventToFeatureJSON(item))
+        .forEach((marker, i) => {
+          let item = dataset[i];
+          let canvas = document.createElement('canvas');
+          canvas.width = 50;
+          canvas.height = 50;
+          canvas.addEventListener('click', () => {
+            window.gtag('send', 'click', {
+              event_category: 'marker',
+              event_label: item.title,
+            });
           });
-        });
-        let context = canvas.getContext('2d');
-        let offset = Math.random() * 1000;
-        let colors = domainToColors[item.domain];
-        let popUpHTML = `<h3>${marker.properties.title}</h3>
+          let context = canvas.getContext('2d');
+          let offset = Math.random() * 1000;
+          let colors = domainToColors[item.domain];
+          let popUpHTML = `<h3>${marker.properties.title}</h3>
           <hr/>
           <p><em><strong>${marker.properties.category} &#183; ${marker.properties.isGood}</strong></em></p>
           <p>${marker.properties.location}</p>
           <p>${marker.properties.description}</p>`;
-        if (marker.properties.link) {
-          popUpHTML += `<a target="_blank" href="${marker.properties.link}">More Info</a>`;
-        }
-        let [x, y] = marker.geometry.coordinates;
-        if (!item.dontShift) {
-          x = parseFloat(x);
-          y = parseFloat(y);
-          x += Math.random() * 0.25 - 0.12;
-          y += Math.random() * 0.25 - 0.12;
-        }
-        let mrkr = new mapboxgl.Marker(canvas)
-          .setLngLat([x, y])
-          .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popUpHTML));
-        item.mrkr = mrkr;
-        if (initialGoodnessSelected.includes(item.isGood) && initialDomainsSelected.includes(item.domain)) {
-          mrkr.addTo(map);
-        }
-        let markerRender = () => {
-          requestAnimationFrame(markerRender);
-          // If the value in isGood ever changes, need to edit here
-          if (item.isGood === 'Helpful') {
-            renderPulseGood(map, context, 50, offset, item.domain, colors, item.isGood);
-          } else {
-            renderPulse(map, context, 50, offset, item.domain, colors);
+          if (marker.properties.link) {
+            popUpHTML += `<a target="_blank" href="${marker.properties.link}">More Info</a>`;
           }
-        };
-        requestAnimationFrame(markerRender);
-      });
+          let [x, y] = marker.geometry.coordinates;
+          if (!item.dontShift) {
+            x = parseFloat(x);
+            y = parseFloat(y);
+            x += Math.random() * 0.25 - 0.12;
+            y += Math.random() * 0.25 - 0.12;
+          }
+          let mrkr = new mapboxgl.Marker(canvas)
+            .setLngLat([x, y])
+            .setPopup(new mapboxgl.Popup({ offset: 25 }).setHTML(popUpHTML));
+          item.mrkr = mrkr;
+          if (initialGoodnessSelected.includes(item.isGood) && initialDomainsSelected.includes(item.domain)) {
+            mrkr.addTo(map);
+          }
+          let markerRender = () => {
+            requestAnimationFrame(markerRender);
+            // If the value in isGood ever changes, need to edit here
+            if (item.isGood === 'Helpful') {
+              renderPulseGood(map, context, 50, offset, item.domain, colors, item.isGood);
+            } else {
+              renderPulse(map, context, 50, offset, item.domain, colors);
+            }
+          };
+          requestAnimationFrame(markerRender);
+        });
     });
     window.addEventListener('resize', () => {
       this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -235,7 +239,7 @@ class Map extends React.Component {
   }
 
   updateMarkersShown(selected, selectedGood, selectedYears) {
-    for (let item of db) {
+    for (let item of dataset) {
       if (selectedGood.includes(item.isGood) && selected.includes(item.domain) && selectedYears.includes(item.year)) {
         item.mrkr.addTo(window.map);
       } else {
@@ -493,7 +497,7 @@ function InfoBox() {
     <div className="info-box-button">
       <LightTooltip
         title={
-          <p style={{ textAlign: 'center', marginBottom: '2px'  }}>
+          <p style={{ textAlign: 'center', marginBottom: '2px' }}>
             Check how your AI System performs with curated responsibility metrics from our{' '}
             <strong>
               <em>Responsible AI Design Assistant</em>
@@ -536,7 +540,11 @@ function DataBox() {
 
   return (
     <div className="data-box-button">
-      <LightTooltip title={<p style={{ textAlign: 'center', marginBottom: '2px'  }}>Check out our Dataset</p>} arrow placement="top">
+      <LightTooltip
+        title={<p style={{ textAlign: 'center', marginBottom: '2px' }}>Check out our Dataset</p>}
+        arrow
+        placement="top"
+      >
         <Fab
           href="https://docs.google.com/spreadsheets/d/1hUAGsMGT-tbcboF6zzbtFHowT9k0yKjjy7K8hfbEuG8/edit#gid=0"
           target="_blank"
