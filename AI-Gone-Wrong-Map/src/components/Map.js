@@ -107,7 +107,7 @@ for (let dIdx in domains) {
 
 let yearMarks = {};
 let startYear = 2005;
-let endYear = 2020;
+let endYear = 2021;
 for (let yr = startYear; yr <= endYear; yr += 1) {
   yearMarks[yr] = {
     style: {
